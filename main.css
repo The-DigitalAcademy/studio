@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+}
+
+.drag-container {
+    height: 100vh;
+    overflow: auto;
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+
+.drag-item {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  text-align:center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+[data-type="text"] {
+font-family:Arial;
+font-size:14px;
+text-align:left;
+}
+.drag-item p {
+text-align:center;
+}
+
+#container {
+    min-height: 100vh;
+    width: 100%;
+    padding: 50px;
+}
+
+.block {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 1300px;
+}
