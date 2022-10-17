@@ -89,6 +89,18 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 }
 
 const ELEMENTS = {
+    heading1: {
+        content: "<h1 contenteditable>Heading 1</h1>",
+        icon: '<i class="bi bi-type-h1"></i>'
+    },
+    heading2: {
+        content: "<h2 contenteditable>Heading 2</h2>",
+        icon: '<i class="bi bi-type-h2"></i>'
+    },
+    heading3: {
+        content: "<h3 contenteditable>Heading 3</h3>",
+        icon: '<i class="bi bi-type-h3"></i>'
+    },
     hr: { content: "<hr/>", icon: '<p>divider</p>' },
     text: { content: `<div contenteditable><p>Lorem Ipsum is
                      simply dummy text of the printing and typesetting industry. 
