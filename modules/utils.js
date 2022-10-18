@@ -1,3 +1,5 @@
+import { Button, EmailForm, RadioForm, TextForm, TextAreaForm, Header } from './components.js'
+
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
   MOUSE_MOVE: "mousemove",
@@ -119,19 +121,21 @@ const ELEMENTS = {
     content: "<h3 contenteditable>Heading 3</h3>",
     icon: '<i class="bi bi-type-h3"></i>',
   },
+  Header,
+  TextAreaForm,
+  EmailForm,
+  RadioForm,
+  TextForm,
+  Button,
   hr: { content: "<hr/>", icon: "<p>divider</p>" },
   text: {
     content: `<div contenteditable><p>Lorem Ipsum is
                      simply dummy text of the printing and typesetting industry. 
                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                      when an unknown printer took a galley of type and scrambled it to make a 
-                     type specimen book. It has survived not only five centuries, 
-                     but also the le</p><div>`,
+                     type specimen book.
+              </p><div>`,
     icon: '<i class="bi bi-fonts"></i>',
-  },
-  text2: {
-    content: `<div contenteditable><p>sbuda</p><div>`,
-    icon: '<i class="bi bi-fonts">2</i>',
   },
   image: {
     content: '<img src="https://picsum.photos/100"/>',
@@ -146,18 +150,6 @@ const ELEMENTS = {
                     Sorry, your browser doesn't support embedded videos.
                     </video>`,
     icon: '<i class="bi bi-camera-video"></i>',
-  },
-  button: {
-    content: `<button>Button</button>`,
-    icon: `<button>button</button>`,
-  },
-  inputText: {
-    content: `<input type="text" placeholder="text here">`,
-    icon: '<i class="bi bi-fonts">form input</i>',
-  },
-  inputNumber: {
-    content: `<input type="number" placeholder="0">`,
-    icon: '<i class="bi bi-123">form input</i>',
   },
 };
 
