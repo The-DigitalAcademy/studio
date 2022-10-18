@@ -1,23 +1,11 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { ELEMENTS } from "./modules/utils.js"
-
-function renderDraggableElements() {
-  const draggablesContainer = document.getElementById('draggable');
-
-  for (const property in ELEMENTS) {
-          const container = document.createElement('div');
-          container.setAttribute('class', 'drag-item');
-          container.setAttribute('data-type', property);
-          container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
-          draggablesContainer.append(container);
-  }
-}
+import { ELEMENTS, renderDraggableElements } from "./modules/utils.js"
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
 
-    renderDraggableElements()
+    renderDraggableElements('draggable');
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

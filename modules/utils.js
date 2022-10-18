@@ -94,6 +94,18 @@ function renderMirrorImage(dragEl, clientX, clientY) {
   return _mirror;
 }
 
+function renderDraggableElements(containerElementID) {
+    const draggablesContainer = document.getElementById(containerElementID);
+  
+    for (const property in ELEMENTS) {
+            const container = document.createElement('div');
+            container.setAttribute('class', 'drag-item');
+            container.setAttribute('data-type', property);
+            container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
+            draggablesContainer.append(container);
+    }
+  }
+
 const ELEMENTS = {
   heading1: {
     content: "<h1 contenteditable>Heading 1</h1>",
@@ -158,5 +170,6 @@ export {
   DIRECTIONS,
   CLASS_NAMES,
   containerStack,
-  detectLeftButton
+  detectLeftButton,
+  renderDraggableElements
 };
