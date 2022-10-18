@@ -1,4 +1,5 @@
-// import { Dragoned } from "./DragonedClass";
+import { Dragoned } from "./modules/DragonedClass.js";
+import { ELEMENTS } from "./modules/utils.js"
 
 function renderDraggableElements() {
   const draggablesContainer = document.getElementById('draggable');

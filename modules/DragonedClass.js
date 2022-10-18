@@ -1,4 +1,4 @@
-// import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage } from "./utils";
+import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage, detectLeftButton } from "./utils.js";
 
 class Dragoned {
     constructor(container, options = {}) {
@@ -334,3 +334,4 @@ class Dragoned {
     }
   }
   
+export { Dragoned };
