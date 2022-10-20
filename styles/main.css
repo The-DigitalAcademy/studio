@@ -121,7 +121,19 @@ main {
   background-color: #fff;
 }
 #container .drag-item:hover {
-  border: 1px dotted rgb(61, 61, 61);
+  border: 1px dotted rgba(45, 129, 194, 0.7098039216);
+}
+
+.edit-options {
+  background: rgba(45, 129, 194, 0.7098039216);
+  border-radius: 0.3rem;
+  position: absolute;
+  width: 150px;
+  padding: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.edit-options button input {
+  width: 80%;
 }
 
 .block {
