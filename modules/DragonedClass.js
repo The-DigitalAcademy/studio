@@ -139,7 +139,8 @@ class Dragoned {
   
       const scroller = (_target) => {
         let scrollableEl = getScrollParent(_target) || document.body;
-        console.log(scrollableEl);
+        // console.log(scrollableEl);
+        // console.log(document.getElementById('container'))
         const scrollUp = () => scrollableEl.scroll(0, scrollableEl.scrollTop - 1);
         const scrollBottom = () =>
           scrollableEl.scroll(0, scrollableEl.scrollTop + 1);

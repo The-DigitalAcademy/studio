@@ -1,11 +1,12 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { ELEMENTS, renderDraggableElements } from "./modules/utils.js"
+import { ELEMENTS, renderDraggableElements, downloadCode } from "./modules/utils.js"
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
 
     renderDraggableElements('draggable');
+    document.getElementById('download-code').onclick = downloadCode
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

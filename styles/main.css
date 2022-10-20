@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+header {
+  background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
+  color: #f8f9fa;
+}
+header #download-code {
+  color: rgba(255, 255, 255, 0.748);
+}
+header #download-code:hover {
+  color: #f8f9fa;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 250px auto;
+}
+
+#components-wrapper {
+  background-color: #222222;
+}
+#components-wrapper .options {
+  background-color: #161616;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#components-wrapper .options button {
+  border: none;
+  color: #fff;
+  background-color: rgba(142, 142, 142, 0.246);
+  padding: 0.5rem;
+  border-radius: 2px;
+}
+
+.elements-container {
+  overflow-y: scroll;
+  padding: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.elements-container .drag-item {
+  background-color: rgba(255, 255, 255, 0.1882352941);
+  color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  height: 5rem;
+  margin: 10px;
+  cursor: -webkit-grab;
+  cursor: grab;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.825);
+  border: 1px solid rgba(255, 255, 255, 0.079);
+}
+.elements-container .drag-item i {
+  font-size: 1.5rem;
+  display: block;
+  margin: 0;
+}
+.elements-container .drag-item:hover {
+  border: 1px dotted rgba(255, 255, 255, 0.523);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.mirror {
+  width: 12rem;
+  opacity: 0.7;
+  border: 1px solid #fff;
+  position: fixed;
+  background-color: rgba(0, 103, 163, 0.4117647059);
+  border-radius: 5px;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.mirror i {
+  font-size: 2rem;
+}
+
+[data-type=text] {
+  font-family: Arial;
+  font-size: 14px;
+  text-align: left;
+}
+
+.drag-item p {
+  text-align: center;
+}
+
+#view-wrapper {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 200px #e3e3e3 inset;
+}
+#view-wrapper .mobile {
+  background-color: rgb(29, 29, 29);
+  border-radius: 0.8rem;
+  padding: 10px 5px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+#container {
+  height: 80vh;
+  overflow-y: scroll;
+  margin: 30px auto;
+  background-color: #fff;
+}
+#container .drag-item:hover {
+  border: 1px dotted rgb(61, 61, 61);
+}
+
+.block {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.block-content {
+  width: 80%;
+}/*# sourceMappingURL=main.css.map */

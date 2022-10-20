@@ -1,4 +1,4 @@
-import { Button, EmailForm, RadioForm, TextForm, TextAreaForm, Header } from './components.js'
+import { Button, EmailForm, RadioForm, TextForm, TextAreaForm, Header, Video, Hr, Heading1, Heading2, Heading3, Text, Image } from './components.js'
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -82,11 +82,9 @@ function renderMirrorImage(dragEl, clientX, clientY) {
   }
   let rect = dragEl.getBoundingClientRect();
   const _mirror = dragEl.cloneNode(true);
-  _mirror.style.position = "fixed";
   _mirror.classList.add("mirror");
-  _mirror.style.opacity = 0.5;
-  _mirror.style.width = `${rect.width}px`;
-  _mirror.style.height = `${rect.height}px`;
+  // _mirror.style.width = `${rect.width}px`;
+  // _mirror.style.height = `${rect.height}px`;
   _mirror.style.top = `${rect.top}px`;
   _mirror.style.left = `${rect.left}px`;
   _mirror.__offsetX = clientX - rect.left;
@@ -97,60 +95,36 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 }
 
 function renderDraggableElements(containerElementID) {
-    const draggablesContainer = document.getElementById(containerElementID);
-  
-    for (const property in ELEMENTS) {
-            const container = document.createElement('div');
-            container.setAttribute('class', 'drag-item');
-            container.setAttribute('data-type', property);
-            container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
-            draggablesContainer.append(container);
-    }
+  const draggablesContainer = document.getElementById(containerElementID);
+
+  for (const property in ELEMENTS) {
+    const container = document.createElement('div');
+    container.setAttribute('class', 'drag-item');
+    container.setAttribute('data-type', property);
+    container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
+    draggablesContainer.append(container);
   }
+}
+
+function downloadCode() {
+  const code = document.getElementById('container');
+  console.log(code);
+}
 
 const ELEMENTS = {
-  heading1: {
-    content: "<h1 contenteditable>Heading 1</h1>",
-    icon: '<i class="bi bi-type-h1"></i>',
-  },
-  heading2: {
-    content: "<h2 contenteditable>Heading 2</h2>",
-    icon: '<i class="bi bi-type-h2"></i>',
-  },
-  heading3: {
-    content: "<h3 contenteditable>Heading 3</h3>",
-    icon: '<i class="bi bi-type-h3"></i>',
-  },
   Header,
+  Heading1,
+  Heading2,
+  Heading3,
   TextAreaForm,
   EmailForm,
   RadioForm,
   TextForm,
   Button,
-  hr: { content: "<hr/>", icon: "<p>divider</p>" },
-  text: {
-    content: `<div contenteditable><p>Lorem Ipsum is
-                     simply dummy text of the printing and typesetting industry. 
-                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                     when an unknown printer took a galley of type and scrambled it to make a 
-                     type specimen book.
-              </p><div>`,
-    icon: '<i class="bi bi-fonts"></i>',
-  },
-  image: {
-    content: '<img src="https://picsum.photos/100"/>',
-    icon: '<i class="bi bi-image"></i>',
-  },
-  video: {
-    content: `<video controls width="250">
-                    <source src="/media/cc0-videos/flower.webm"
-                            type="video/webm">
-                    <source src="/media/cc0-videos/flower.mp4"
-                            type="video/mp4">
-                    Sorry, your browser doesn't support embedded videos.
-                    </video>`,
-    icon: '<i class="bi bi-camera-video"></i>',
-  },
+  Video,
+  Image,
+  Hr,
+  Text,
 };
 
 export {
@@ -163,5 +137,6 @@ export {
   CLASS_NAMES,
   containerStack,
   detectLeftButton,
-  renderDraggableElements
+  renderDraggableElements,
+  downloadCode
 };
