@@ -1,10 +1,10 @@
 import { Dragoned } from "./modules/DragonedClass.js";
+import { EditTool } from "./modules/editToolClass.js";
 import { ELEMENTS, renderDraggableElements, downloadCode } from "./modules/utils.js"
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
-
     renderDraggableElements('draggable');
     document.getElementById('download-code').onclick = downloadCode
 
@@ -27,7 +27,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       onEnd: (data) => {
         const { item } = data;
         const type = item.dataset.type;
-        item.innerHTML = ELEMENTS[type].content
+        item.innerHTML = ELEMENTS[type].content;
+        new EditTool(item, ['textAlign']);
       }
     });
   })();
