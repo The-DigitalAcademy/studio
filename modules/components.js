@@ -3,7 +3,7 @@ const Button = {
         <button class='btn btn-primary'>button</button>
         `,
     content: `
-        <button class='btn btn-primary'>button</button>
+        <button class='btn btn-primary'><span contenteditable>button</span></button>
         `
 }
 
@@ -62,7 +62,7 @@ const TextForm = {
 const TextAreaForm = {
     icon: `
         <i class="bi bi-pencil-square"></i>
-        <small>Text Form</small>
+        <small>Text area Form</small>
         `,
     content: `
         <div class='small mb-3 mx-2'>
