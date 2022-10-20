@@ -116,6 +116,7 @@ const ELEMENTS = {
   Heading1,
   Heading2,
   Heading3,
+  Text,
   TextAreaForm,
   EmailForm,
   RadioForm,
@@ -124,7 +125,6 @@ const ELEMENTS = {
   Video,
   Image,
   Hr,
-  Text,
 };
 
 export {
@@ -138,5 +138,5 @@ export {
   containerStack,
   detectLeftButton,
   renderDraggableElements,
-  downloadCode
+  downloadCode,
 };
