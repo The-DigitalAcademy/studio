@@ -119,7 +119,7 @@ const Heading3 = {
 }
 
 const Text = {
-    icon: '<i class="bi bi-fonts"></i>',
+    icon: '<i class="bi bi-justify"></i>',
     content: `<div contenteditable><p>Lorem Ipsum is
                      simply dummy text of the printing and typesetting industry. 
                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
