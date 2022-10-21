@@ -1,8 +1,9 @@
 class EditTool {
     /**
-     * 
-     * @param {Element} editableElement 
-     * @param {string[]} toolList 
+     * creates an EditTool instance, adds edit functionality to editableElement and includes
+     * tools specified in toolLIst
+     * @param {Element} editableElement element to add edit functionality to
+     * @param {string[]} toolList list of tools to include in the edit toolbox
      */
     constructor(editableElement, toolList) {
         this.editableElement = editableElement
@@ -13,30 +14,46 @@ class EditTool {
         this.#addEditFunctionality();
     }
 
-
+    /**
+     * adds an edit button to the editableElement. The edit button loads/unloads the toolbox
+     */
     #addEditFunctionality() {
         const editBtn = this.#createEditButton();
         editBtn.onclick = () => {
             if (this.toolboxLoaded) {
-                this.toolbox.style.visibility = 'visible'
+                this.toolbox.remove();
+                this.toolboxLoaded = false;
             } else {
                 document.body.append(this.toolbox);
                 this.toolboxLoaded = true;
             }
         }
 
+        //display edit button on hover 
+        this.editableElement.addEventListener('mouseover', () => {
+            editBtn.style.display = 'block';
+        })
+        this.editableElement.addEventListener('mouseout', () => {
+            editBtn.style.display = 'none';
+        })
+
         this.editableElement.prepend(editBtn);
     }
+    /**
+     * creates an edit button element
+     * @returns {Element} edit button ready to be appended/prepended to the editableElement
+     */
     #createEditButton() {
         const editButton = document.createElement('button');
-        editButton.className = 'btn btn-sm btn-primary';
+        editButton.className = 'btn btn-sm text-primary border-0';
         editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>'
         return editButton;
     }
 
     /**
-     * 
+     * creates the editing toolbox and includes the relevant tools according to the toolList
+     * @return {Element} complete toolbox container ready to be added to the DOM
      */
     #createEditToolbox() {
         //create tools specified in tools array
@@ -49,7 +66,10 @@ class EditTool {
         closeBtn.classList = 'btn';
         closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
 
-        closeBtn.onclick = () => this.toolbox.style.visibility = 'hidden';
+        closeBtn.onclick = () => {
+            this.toolbox.remove();
+            this.toolboxLoaded = false;
+        };
         toolContainer.append(closeBtn)
 
         //add tools to container
