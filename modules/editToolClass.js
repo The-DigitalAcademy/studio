@@ -27,7 +27,7 @@ class EditTool {
         const deleteBtn = this.#creatDeleteButton();
         const editBtn = this.#createEditButton();
 
-        //display edit & delete buttons on hover 
+        //display edit & delete buttons onmouseover 
         this.#editableElement.addEventListener('mouseover', () => {
             editBtn.style.display = 'block';
             deleteBtn.style.display = 'block';
@@ -79,6 +79,7 @@ class EditTool {
     #createEditToolbox() {
         //create tools specified in tools array
         const textAlignTool = this.#toolList.includes('textAlign') ? this.#createTextAlignTool() : null
+        const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-options'
@@ -95,6 +96,7 @@ class EditTool {
 
         //add tools to container
         textAlignTool ? toolContainer.append(textAlignTool) : '';
+        paddingTool ? toolContainer.append(paddingTool) : '';
 
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -105,7 +107,7 @@ class EditTool {
     }
 
     /**
-     * creates textAlign tool and returns Element
+     * creates textAlign tool and returns the element
      * @return {Element} text align tool element
      */
     #createTextAlignTool() {
@@ -116,17 +118,17 @@ class EditTool {
 
         //btn 1
         const leftAlignBtn = document.createElement('button');
-        leftAlignBtn.onclick = () => this.#alignTextLeft()
+        leftAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'left');
         leftAlignBtn.className = 'btn btn-outline-light';
         leftAlignBtn.innerHTML = '<i class="bi bi-justify-left"></i>';
         //btn 2
         const centerAlignBtn = document.createElement('button');
-        centerAlignBtn.onclick = () => this.#alignTextCenter()
+        centerAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'center');
         centerAlignBtn.className = 'btn btn-outline-light';
         centerAlignBtn.innerHTML = '<i class="bi bi-text-center"></i>';
         //btn 3
         const rightAlignBtn = document.createElement('button');
-        rightAlignBtn.onclick = () => this.#alignTextRight()
+        rightAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'right');
         rightAlignBtn.className = 'btn btn-outline-light';
         rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
 
@@ -135,16 +137,38 @@ class EditTool {
 
         return toolContainer
     }
-    
+    /**
+     * creates padding tool and returns the element
+     * @returns {Element} padding tool element
+     */
+    #createPaddingTool() {
+        //parent
+        const toolContainer = document.createElement('div');
+        toolContainer.className = 'paddingTool';
 
-    #alignTextLeft() {
-        this.#editableElement.children[2].style.textAlign = 'left'
+        const label = '<span>Padding X</span>'
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.max = '20';
+        input.step = '1';
+        input.onchange = (e) => {
+            this.#styleEditableElement('paddingLeft', `${e.target.value}%`);
+            this.#styleEditableElement('paddingRight', `${e.target.value}%`);
+        }
+
+        toolContainer.innerHTML = label;
+        toolContainer.append(input);
+
+        return toolContainer;
     }
-    #alignTextCenter() {
-        this.#editableElement.children[2].style.textAlign = 'center'
-    }
-    #alignTextRight() {
-        this.#editableElement.children[2].style.textAlign = 'right'
+    /**
+     * applies css styles to the editable element
+     * @param {string} property css declaration property in camelcase format
+     * @param {string} value css declaration value
+     */
+    #styleEditableElement(property, value) {
+        this.#editableElement.children[2].style[property] = value
     }
 }
 
