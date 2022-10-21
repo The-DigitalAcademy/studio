@@ -82,7 +82,7 @@ class EditTool {
         const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
 
         const toolContainer = document.createElement('div');
-        toolContainer.className = 'edit-options'
+        toolContainer.className = 'edit-toolbox'
 
         const closeBtn = document.createElement('button');
         closeBtn.classList = 'btn';
@@ -101,7 +101,7 @@ class EditTool {
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
         toolContainer.style.top = `${rect.top - 15}px`;
-        toolContainer.style.left = `${rect.right - 5}px`;
+        toolContainer.style.left = `${rect.right + 10}px`;
 
         return toolContainer;
     }

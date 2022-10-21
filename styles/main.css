@@ -124,26 +124,42 @@ main {
   box-shadow: 0 0 0 0.25rem rgba(45, 129, 194, 0.6588235294);
 }
 
-.edit-options {
+.edit-toolbox {
   background: rgba(45, 129, 194, 0.7098039216);
   border-radius: 0.3rem;
   position: absolute;
   width: 150px;
   padding: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  -webkit-animation: slide-left 0.5s forwards;
+          animation: slide-left 0.5s forwards;
 }
-.edit-options .paddingTool {
+.edit-toolbox .paddingTool {
   margin: 0.4rem 0;
   color: white;
   font-weight: lighter;
 }
-.edit-options .paddingTool input {
-  width: 45px;
-  height: 25px;
+.edit-toolbox .paddingTool input {
+  font-size: 0.9rem;
+  width: 40px;
+  height: 20px;
   border: none;
   outline: none;
   border-radius: 5px;
   margin-left: 5px;
+}
+
+.edit-toolbox::before {
+  border-style: solid;
+  border-top-width: 12px;
+  border-right-width: 18px;
+  border-bottom-width: 13px;
+  top: 21px;
+  border-left-width: 24px;
+  border-color: rgba(62, 71, 79, 0) rgba(45, 129, 194, 0.7098039216) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  left: -42px;
+  position: absolute;
+  content: "";
 }
 
 .block {
@@ -158,4 +174,26 @@ main {
 
 .block-content {
   width: 80%;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    opacity: 0.1;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 0.1;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }/*# sourceMappingURL=main.css.map */

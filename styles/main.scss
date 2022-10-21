@@ -4,6 +4,7 @@ body {
     width: 100vw;
     position: fixed;
 }
+
 header {
     background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
     color: #f8f9fa;
@@ -11,14 +12,17 @@ header {
     #download-code {
         color: rgba(255, 255, 255, 0.748);
     }
+
     #download-code:hover {
-        color:  #f8f9fa;
+        color: #f8f9fa;
     }
 }
+
 main {
     display: grid;
     grid-template-columns: 250px auto;
 }
+
 #components-wrapper {
     background-color: #222222;
     height: 94vh;
@@ -41,6 +45,7 @@ main {
         }
     }
 }
+
 .elements-container {
     height: 90%;
     overflow-y: scroll;
@@ -52,7 +57,7 @@ main {
     .drag-item {
         background-color: #ffffff30;
         color: #fff;
-        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
         height: 5rem;
         margin: 10px;
         cursor: grab;
@@ -71,11 +76,13 @@ main {
             margin: 0;
         }
     }
+
     .drag-item:hover {
         border: 1px dotted rgba(255, 255, 255, 0.523);
-        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     }
 }
+
 .mirror {
     width: 12rem;
     opacity: .7;
@@ -91,13 +98,15 @@ main {
 }
 
 [data-type="text"] {
-font-family:Arial;
-font-size:14px;
-text-align:left;
+    font-family: Arial;
+    font-size: 14px;
+    text-align: left;
 }
+
 .drag-item p {
-text-align:center;
+    text-align: center;
 }
+
 #view-wrapper {
     align-self: center;
     justify-self: center;
@@ -110,6 +119,7 @@ text-align:center;
         margin: 0 auto;
     }
 }
+
 #container {
     height: 76vh;
     width: 42vh;
@@ -121,15 +131,17 @@ text-align:center;
         box-shadow: 0 0 0 0.25rem #2d81c2a8;
     }
 }
+
 // EditTool CLASS STYLES ----------------
-.edit-options {
+.edit-toolbox {
     // visibility: hidden;
     background: #2d81c2b5;
     border-radius: .3rem;
     position: absolute;
     width: 150px;
     padding: .5rem;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    animation: slide-left .5s forwards;
 
     .paddingTool {
         margin: .4rem 0;
@@ -137,8 +149,9 @@ text-align:center;
         font-weight: lighter;
 
         input {
-            width: 45px;
-            height: 25px;
+            font-size: .9rem;
+            width: 40px;
+            height: 20px;
             border: none;
             outline: none;
             border-radius: 5px;
@@ -146,6 +159,19 @@ text-align:center;
         }
     }
 }
+.edit-toolbox::before {
+    border-style: solid;
+    border-top-width: 12px;
+    border-right-width: 18px;
+    border-bottom-width: 13px;
+    top: 21px;
+    border-left-width: 24px;
+    border-color: rgb(62 71 79 / 0%) rgba(45, 129, 194, 0.7098039216) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    left: -42px;
+    position: absolute;
+    content: "";
+}
+
 // ---------------------------------------
 .block {
     background-color: #fff;
@@ -156,6 +182,20 @@ text-align:center;
     width: 100%;
     max-width: 1300px;
 }
+
 .block-content {
     width: 80%;
+}
+
+
+@keyframes slide-left {
+    0% {
+        opacity: 0.1;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
