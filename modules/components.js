@@ -20,7 +20,8 @@ const EmailForm = {
                 We'll never share your email with anyone else.
             </div>
         </div>
-            `
+            `,
+    editingToolList: ['textAlign']
 }
 
 const RadioForm = {
@@ -40,7 +41,8 @@ const RadioForm = {
                 <label contenteditable class="form-check-label" for="radio2">No</label>
             </div>
         </div>
-        `
+        `,
+    editingToolList: ['textAlign']
 }
 
 const TextForm = {
@@ -56,7 +58,8 @@ const TextForm = {
                 enter your text here.
             </div>
         </div>
-            `
+            `,
+    editingToolList: ['textAlign']
 }
 
 const TextAreaForm = {
@@ -69,7 +72,8 @@ const TextAreaForm = {
             <label contenteditable for="Textarea" class="form-label fw-bold">Text form</label>
             <textarea class="form-control" id="Textarea" rows="3"></textarea>
         </div>
-            `
+            `,
+    editingToolList: ['textAlign', 'padding']
 }
 
 const Header = {
@@ -81,7 +85,8 @@ const Header = {
         <div class="bg-dark text-light p-2 mb-3">
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
-        `
+        `,
+    editingToolList: ['textAlign']
 }
 
 const Video = {
@@ -92,7 +97,8 @@ const Video = {
                 <source src="/media/cc0-videos/flower.mp4" type="video/mp4">
                 Sorry, your browser doesn't support embedded videos.
             </video>
-            `
+            `,
+    editingToolList: ['']
 }
 
 const Hr = {
@@ -100,22 +106,26 @@ const Hr = {
             <i class="bi bi-hr"></i>
             <small>Divider</small>
             `,
-    content: `<hr/ class='mx-1'>`
+    content: `<hr/ class='mx-1'>`,
+    editingToolList: ['padding']
 }
 
 const Heading1 = {
     icon: `<i class="bi bi-type-h1"></i>`,
-    content: `<h1 contenteditable>Heading 1</h1>`
+    content: `<h1 contenteditable>Heading 1</h1>`,
+    editingToolList: ['textAlign', 'padding']
 }
 
 const Heading2 = {
     icon: `<i class="bi bi-type-h2"></i>`,
-    content: `<h2 contenteditable>Heading 2</h2>`
+    content: `<h2 contenteditable>Heading 2</h2>`,
+    editingToolList: ['textAlign', 'padding']
 }
 
 const Heading3 = {
     icon: `<i class="bi bi-type-h3"></i>`,
-    content: `<h3 contenteditable>Heading 1</h3>`
+    content: `<h3 contenteditable>Heading 1</h3>`,
+    editingToolList: ['textAlign', 'padding']
 }
 
 const Text = {
@@ -125,12 +135,14 @@ const Text = {
                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                      when an unknown printer took a galley of type and scrambled it to make a 
                      type specimen book.
-              </p>`
+              </p>`,
+    editingToolList: ['textAlign', 'padding']
   }
 
 const Image = {
     icon: '<i class="bi bi-image"></i>',
-    content: '<img src="https://picsum.photos/100"/>'
+    content: '<img src="https://picsum.photos/100"/>',
+    editingToolList: ['']
   }
 
 
