@@ -118,10 +118,10 @@ text-align:center;
     background-color: #fff;
 
     .drag-item:hover {
-        border: 1px dotted #2d81c2b5;
+        box-shadow: 0 0 0 0.25rem #2d81c2a8;
     }
 }
-
+// EditTool CLASS STYLES ----------------
 .edit-options {
     // visibility: hidden;
     background: #2d81c2b5;
@@ -130,11 +130,8 @@ text-align:center;
     width: 150px;
     padding: .5rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-
-    button input {
-        width: 80%;
-    }
 }
+// ---------------------------------------
 .block {
     background-color: #fff;
     border-radius: 2px;
