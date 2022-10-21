@@ -141,6 +141,7 @@ main {
 }
 .edit-toolbox .paddingTool input {
   font-size: 0.9rem;
+  width: 40px;
   height: 20px;
   border: none;
   outline: none;

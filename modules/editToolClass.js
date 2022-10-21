@@ -82,6 +82,7 @@ class EditTool {
         const textAlignTool = this.#toolList.includes('textAlign') ? this.#createTextAlignTool() : null
         const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
         const imageUrlTool = this.#toolList.includes('imageUrl') ? this.#createImageUrlTool() : null
+        const imageSizeTool = this.#toolList.includes('imageSize') ? this.#createImageSizeTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-toolbox'
@@ -99,7 +100,8 @@ class EditTool {
         //add tools to container
         textAlignTool ? toolContainer.append(textAlignTool) : '';
         paddingTool ? toolContainer.append(paddingTool) : '';
-        imageUrlTool ? toolContainer.append(imageUrlTool) : ''
+        imageUrlTool ? toolContainer.append(imageUrlTool) : '';
+        imageSizeTool ? toolContainer.append(imageSizeTool) : '';
 
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -187,6 +189,32 @@ class EditTool {
         input.type = 'text';
         input.onchange = (e) => {
             this.#editableElement.children[2].src = e.target.value;
+        }
+
+        toolContainer.innerHTML = label;
+        toolContainer.append(input);
+
+        return toolContainer;
+    }
+    /**
+     * create and return image size tool. tool takes input number and sets width of image
+     * @returns {Element} image size tool element
+     */
+    #createImageSizeTool() {
+        //parent
+        const toolContainer = document.createElement('div');
+        toolContainer.className = 'paddingTool';
+
+        const label = '<span>size: %</span>'
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.value = '50'
+        input.min = '2';
+        input.step = '1';
+        input.style.width = '50px';
+        input.onchange = (e) => {
+            this.#styleEditableElement('width', `${e.target.value}%`);
+            this.#styleEditableElement('height', `auto`);
         }
 
         toolContainer.innerHTML = label;
