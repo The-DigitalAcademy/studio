@@ -18,26 +18,22 @@ class EditTool {
      * adds an edit button to the editableElement. The edit button loads/unloads the toolbox
      */
     #addEditFunctionality() {
+        const deleteBtn = this.#creatDeleteButton();
         const editBtn = this.#createEditButton();
-        editBtn.onclick = () => {
-            if (this.toolboxLoaded) {
-                this.toolbox.remove();
-                this.toolboxLoaded = false;
-            } else {
-                document.body.append(this.toolbox);
-                this.toolboxLoaded = true;
-            }
-        }
 
-        //display edit button on hover 
+        //display edit & delete buttons on hover 
         this.editableElement.addEventListener('mouseover', () => {
             editBtn.style.display = 'block';
+            deleteBtn.style.display = 'block';
         })
         this.editableElement.addEventListener('mouseout', () => {
             editBtn.style.display = 'none';
+            deleteBtn.style.display = 'none';
         })
 
+        //add edit & delete buttons to editableElement
         this.editableElement.prepend(editBtn);
+        this.editableElement.prepend(deleteBtn);
     }
     /**
      * creates an edit button element
@@ -47,8 +43,27 @@ class EditTool {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0';
         editButton.style.float = 'right';
-        editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>'
+        editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
+        editButton.onclick = () => {
+            if (this.toolboxLoaded) {
+                this.toolbox.remove();
+                this.toolboxLoaded = false;
+            } else {
+                document.body.append(this.toolbox);
+                this.toolboxLoaded = true;
+            }
+        }
         return editButton;
+    }
+    #creatDeleteButton() {
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-sm text-primary border-0';
+        deleteButton.style.float = 'right';
+        deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>';
+        deleteButton.onclick = () => {
+            this.editableElement.remove();
+        }
+        return deleteButton;
     }
 
     /**
@@ -115,13 +130,13 @@ class EditTool {
         return toolContainer
     }
     #alignTextLeft() {
-        this.editableElement.children[1].style.textAlign = 'left'
+        this.editableElement.children[2].style.textAlign = 'left'
     }
     #alignTextCenter() {
-        this.editableElement.children[1].style.textAlign = 'center'
+        this.editableElement.children[2].style.textAlign = 'center'
     }
     #alignTextRight() {
-        this.editableElement.children[1].style.textAlign = 'right'
+        this.editableElement.children[2].style.textAlign = 'right'
     }
 }
 

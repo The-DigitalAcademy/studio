@@ -9,111 +9,89 @@ header {
   background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
   color: #f8f9fa;
 }
-
 header #download-code {
   color: rgba(255, 255, 255, 0.748);
 }
-
 header #download-code:hover {
   color: #f8f9fa;
 }
 
 main {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 250px auto;
-      grid-template-columns: 250px auto;
+  grid-template-columns: 250px auto;
 }
 
 #components-wrapper {
   background-color: #222222;
   height: 94vh;
 }
-
 #components-wrapper .options {
   height: 10%;
   background-color: #161616;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   text-align: center;
-  font-size: .8rem;
-  display: -ms-grid;
+  font-size: 0.8rem;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
-
 #components-wrapper .options button {
   border: none;
   color: #fff;
   background-color: rgba(142, 142, 142, 0.246);
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 2px;
 }
 
 .elements-container {
   height: 90%;
   overflow-y: scroll;
-  padding: .9rem;
-  display: -ms-grid;
+  padding: 0.9rem;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
-
 .elements-container .drag-item {
-  background-color: #ffffff30;
+  background-color: rgba(255, 255, 255, 0.1882352941);
   color: #fff;
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-          box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   height: 5rem;
   margin: 10px;
   cursor: -webkit-grab;
   cursor: grab;
   border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: .4rem;
-  font-size: .7rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.825);
   border: 1px solid rgba(255, 255, 255, 0.079);
 }
-
 .elements-container .drag-item i {
   font-size: 1.5rem;
   display: block;
   margin: 0;
 }
-
 .elements-container .drag-item:hover {
   border: 1px dotted rgba(255, 255, 255, 0.523);
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .mirror {
   width: 12rem;
-  opacity: .7;
+  opacity: 0.7;
   border: 1px solid #fff;
   position: fixed;
-  background-color: #0067a369;
+  background-color: rgba(0, 103, 163, 0.4117647059);
   border-radius: 5px;
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
-
 .mirror i {
   font-size: 2rem;
 }
 
-[data-type="text"] {
+[data-type=text] {
   font-family: Arial;
   font-size: 14px;
   text-align: left;
@@ -124,18 +102,13 @@ main {
 }
 
 #view-wrapper {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
-          box-shadow: 0 0 200px #e3e3e3 inset;
+  align-self: center;
+  justify-self: center;
+  box-shadow: 0 0 200px #e3e3e3 inset;
 }
-
 #view-wrapper .mobile {
-  background-color: #1d1d1d;
-  border-radius: .8rem;
+  background-color: rgb(29, 29, 29);
+  border-radius: 0.8rem;
   padding: 10px 7px;
   margin: 0 auto;
 }
@@ -147,27 +120,23 @@ main {
   margin: 30px auto;
   background-color: #fff;
 }
-
 #container .drag-item:hover {
-  -webkit-box-shadow: 0 0 0 0.25rem #2d81c2a8;
-          box-shadow: 0 0 0 0.25rem #2d81c2a8;
+  box-shadow: 0 0 0 0.25rem rgba(45, 129, 194, 0.6588235294);
 }
 
 .edit-options {
-  background: #2d81c2b5;
-  border-radius: .3rem;
+  background: rgba(45, 129, 194, 0.7098039216);
+  border-radius: 0.3rem;
   position: absolute;
   width: 150px;
-  padding: .5rem;
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  padding: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .block {
   background-color: #fff;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
@@ -176,5 +145,4 @@ main {
 
 .block-content {
   width: 80%;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
