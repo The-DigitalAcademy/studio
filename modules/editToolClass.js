@@ -55,6 +55,7 @@ class EditTool {
                 this.#toolbox.remove();
                 this.#toolboxLoaded = false;
             } else {
+                this.#updateToolboxPosition()
                 document.body.append(this.#toolbox);
                 this.#toolboxLoaded = true;
             }
@@ -104,6 +105,14 @@ class EditTool {
         toolContainer.style.left = `${rect.right + 10}px`;
 
         return toolContainer;
+    }
+    /**
+     * update top & left style properties of toolbox
+     */
+    #updateToolboxPosition() {
+        let rect = this.#editableElement.getBoundingClientRect();
+        this.#toolbox.style.top = `${rect.top - 15}px`;
+        this.#toolbox.style.left = `${rect.right + 10}px`;
     }
 
     /**
