@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const { item } = data;
         const type = item.dataset.type;
         item.innerHTML = ELEMENTS[type].content;
-        new EditTool(item, ['textAlign']);
+        new EditTool(item, ['textAlign', 'padding']);
       }
     });
   })();

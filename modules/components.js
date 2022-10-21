@@ -13,7 +13,7 @@ const EmailForm = {
         <small>Email Form</small>
         `,
     content: `
-        <div class='small mb-3 mx-2'>
+        <div class='small mb-3 mx-1'>
             <label contenteditable for="inputEmail" class="form-label fw-bold">Email Adress</label>
             <input type="email" id="inputEmail" class="form-control form-control-sm" aria-describedby="emailHelpBlock">
             <div contenteditable id="emailHelpBlock" class="form-text">
@@ -29,7 +29,7 @@ const RadioForm = {
         <small>Radio Form</small>
         `,
     content: `
-        <div class='small mb-3 mx-2'>
+        <div class='small mb-3 mx-1'>
             <label contenteditable class="fw-bold">Have you ever used a computer before</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="radioDefault" id="radio1">
@@ -49,7 +49,7 @@ const TextForm = {
         <small>Text Form</small>
         `,
     content: `
-        <div class='small mb-3 mx-2'>
+        <div class='small mb-3 mx-1'>
             <label contenteditable for="inputText" class="form-label fw-bold">Text form</label>
             <input type="text" id="inputText" class="form-control form-control-sm" aria-describedby="textHelpBlock">
             <div contenteditable id="textHelpBlock" class="form-text">
@@ -65,7 +65,7 @@ const TextAreaForm = {
         <small>Text area Form</small>
         `,
     content: `
-        <div class='small mb-3 mx-2'>
+        <div class='small mb-3 mx-1'>
             <label contenteditable for="Textarea" class="form-label fw-bold">Text form</label>
             <textarea class="form-control" id="Textarea" rows="3"></textarea>
         </div>
@@ -100,7 +100,7 @@ const Hr = {
             <i class="bi bi-hr"></i>
             <small>Divider</small>
             `,
-    content: `<hr/ class='mx-2'>`
+    content: `<hr/ class='mx-1'>`
 }
 
 const Heading1 = {

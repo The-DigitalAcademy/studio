@@ -130,6 +130,21 @@ text-align:center;
     width: 150px;
     padding: .5rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+
+    .paddingTool {
+        margin: .4rem 0;
+        color: white;
+        font-weight: lighter;
+
+        input {
+            width: 45px;
+            height: 25px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+    }
 }
 // ---------------------------------------
 .block {
