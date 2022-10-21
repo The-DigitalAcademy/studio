@@ -1,15 +1,21 @@
+/** Class representing an editing tool*/
 class EditTool {
+
+    #editableElement;
+    #toolList;
+    #toolboxLoaded;
+    #toolbox
     /**
-     * creates an EditTool instance, adds edit functionality to editableElement and includes
+     * creates an EditTool for an element
      * tools specified in toolLIst
      * @param {Element} editableElement element to add edit functionality to
      * @param {string[]} toolList list of tools to include in the edit toolbox
      */
     constructor(editableElement, toolList) {
-        this.editableElement = editableElement
-        this.toolList = toolList
-        this.toolboxLoaded = false
-        this.toolbox = this.#createEditToolbox();
+        this.#editableElement = editableElement
+        this.#toolList = toolList
+        this.#toolboxLoaded = false
+        this.#toolbox = this.#createEditToolbox();
 
         this.#addEditFunctionality();
     }
@@ -22,18 +28,18 @@ class EditTool {
         const editBtn = this.#createEditButton();
 
         //display edit & delete buttons on hover 
-        this.editableElement.addEventListener('mouseover', () => {
+        this.#editableElement.addEventListener('mouseover', () => {
             editBtn.style.display = 'block';
             deleteBtn.style.display = 'block';
         })
-        this.editableElement.addEventListener('mouseout', () => {
+        this.#editableElement.addEventListener('mouseout', () => {
             editBtn.style.display = 'none';
             deleteBtn.style.display = 'none';
         })
 
         //add edit & delete buttons to editableElement
-        this.editableElement.prepend(editBtn);
-        this.editableElement.prepend(deleteBtn);
+        this.#editableElement.prepend(editBtn);
+        this.#editableElement.prepend(deleteBtn);
     }
     /**
      * creates an edit button element
@@ -45,12 +51,12 @@ class EditTool {
         editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
         editButton.onclick = () => {
-            if (this.toolboxLoaded) {
-                this.toolbox.remove();
-                this.toolboxLoaded = false;
+            if (this.#toolboxLoaded) {
+                this.#toolbox.remove();
+                this.#toolboxLoaded = false;
             } else {
-                document.body.append(this.toolbox);
-                this.toolboxLoaded = true;
+                document.body.append(this.#toolbox);
+                this.#toolboxLoaded = true;
             }
         }
         return editButton;
@@ -61,7 +67,7 @@ class EditTool {
         deleteButton.style.float = 'right';
         deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>';
         deleteButton.onclick = () => {
-            this.editableElement.remove();
+            this.#editableElement.remove();
         }
         return deleteButton;
     }
@@ -72,7 +78,7 @@ class EditTool {
      */
     #createEditToolbox() {
         //create tools specified in tools array
-        const textAlignTool = this.toolList.includes('textAlign') ? this.#createTextAlignTool() : null
+        const textAlignTool = this.#toolList.includes('textAlign') ? this.#createTextAlignTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-options'
@@ -82,8 +88,8 @@ class EditTool {
         closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
 
         closeBtn.onclick = () => {
-            this.toolbox.remove();
-            this.toolboxLoaded = false;
+            this.#toolbox.remove();
+            this.#toolboxLoaded = false;
         };
         toolContainer.append(closeBtn)
 
@@ -91,7 +97,7 @@ class EditTool {
         textAlignTool ? toolContainer.append(textAlignTool) : '';
 
         //set top/left position of container
-        let rect = this.editableElement.getBoundingClientRect();
+        let rect = this.#editableElement.getBoundingClientRect();
         toolContainer.style.top = `${rect.top - 15}px`;
         toolContainer.style.left = `${rect.right - 5}px`;
 
@@ -129,14 +135,16 @@ class EditTool {
 
         return toolContainer
     }
+    
+
     #alignTextLeft() {
-        this.editableElement.children[2].style.textAlign = 'left'
+        this.#editableElement.children[2].style.textAlign = 'left'
     }
     #alignTextCenter() {
-        this.editableElement.children[2].style.textAlign = 'center'
+        this.#editableElement.children[2].style.textAlign = 'center'
     }
     #alignTextRight() {
-        this.editableElement.children[2].style.textAlign = 'right'
+        this.#editableElement.children[2].style.textAlign = 'right'
     }
 }
 
