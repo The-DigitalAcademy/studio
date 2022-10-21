@@ -81,6 +81,7 @@ class EditTool {
         //create tools specified in tools array
         const textAlignTool = this.#toolList.includes('textAlign') ? this.#createTextAlignTool() : null
         const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
+        const imageUrlTool = this.#toolList.includes('imageUrl') ? this.#createImageUrlTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-toolbox'
@@ -98,6 +99,7 @@ class EditTool {
         //add tools to container
         textAlignTool ? toolContainer.append(textAlignTool) : '';
         paddingTool ? toolContainer.append(paddingTool) : '';
+        imageUrlTool ? toolContainer.append(imageUrlTool) : ''
 
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -147,7 +149,7 @@ class EditTool {
         return toolContainer
     }
     /**
-     * creates padding tool and returns the element
+     * create return padding tool. tool takes input number and sets the left and right padding of element
      * @returns {Element} padding tool element
      */
     #createPaddingTool() {
@@ -171,6 +173,28 @@ class EditTool {
 
         return toolContainer;
     }
+    /**
+     * create and return padding tool. tool takes input url text and sets it to the image src attribute
+     * @returns {Element} image url tool element
+     */
+    #createImageUrlTool() {
+        //parent
+        const toolContainer = document.createElement('div');
+        toolContainer.className = 'urlTool';
+
+        const label = '<span>URL:</span>'
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.onchange = (e) => {
+            this.#editableElement.children[2].src = e.target.value;
+        }
+
+        toolContainer.innerHTML = label;
+        toolContainer.append(input);
+
+        return toolContainer;
+    }
+
     /**
      * applies css styles to the editable element
      * @param {string} property css declaration property in camelcase format

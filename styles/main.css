@@ -128,7 +128,7 @@ main {
   background: rgba(45, 129, 194, 0.7098039216);
   border-radius: 0.3rem;
   position: absolute;
-  width: 150px;
+  width: 170px;
   padding: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   -webkit-animation: slide-left 0.5s forwards;
@@ -141,7 +141,20 @@ main {
 }
 .edit-toolbox .paddingTool input {
   font-size: 0.9rem;
-  width: 40px;
+  height: 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.edit-toolbox .urlTool {
+  margin: 0.4rem 0;
+  color: white;
+  font-weight: lighter;
+}
+.edit-toolbox .urlTool input {
+  font-size: 0.9rem;
+  width: 100px;
   height: 20px;
   border: none;
   outline: none;
