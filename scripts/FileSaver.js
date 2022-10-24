@@ -1,4 +1,4 @@
-(function (global, factory) {
+/*(function (global, factory) {
   if (typeof define === "function" && define.amd) {
     define([], factory);
   } else if (typeof exports !== "undefined") {
@@ -12,7 +12,7 @@
   }
 })(this, function () {
   "use strict";
-
+*/
   /*
   * FileSaver.js
   * A saveAs() FileSaver implementation.
@@ -185,4 +185,6 @@
   if (typeof module !== 'undefined') {
     module.exports = saveAs;
   }
-});
+// });
+
+export default saveAs
