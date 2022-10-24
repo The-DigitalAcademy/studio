@@ -1,4 +1,5 @@
 import { Button, EmailForm, RadioForm, TextForm, TextAreaForm, Header, Video, Hr, Heading1, Heading2, Heading3, Text, Image } from './components.js'
+import { ExportableProject } from "./exportableProjectClass.js"
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -107,8 +108,13 @@ function renderDraggableElements(containerElementID) {
 }
 
 function downloadCode() {
-  const code = document.getElementById('container');
-  console.log(code);
+  const rootApp = document.getElementById('container')
+  const newProject = new ExportableProject(rootApp);
+  const downloadLink = newProject.getFileUrl();
+
+  const linkElement = document.getElementById('download-project')
+  linkElement.setAttribute('href', downloadLink);
+  linkElement.click()
 }
 
 const ELEMENTS = {
