@@ -1,5 +1,3 @@
-import JSZip from '../scripts/jszip.js';
-
 /** class representing Exportable project */
 class ExportableProject {
 
