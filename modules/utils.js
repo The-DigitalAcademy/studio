@@ -108,13 +108,9 @@ function renderDraggableElements(containerElementID) {
 }
 
 function downloadCode() {
-  const rootApp = document.getElementById('container')
+  const rootApp = document.getElementById('container');
   const newProject = new ExportableProject(rootApp);
-  const downloadLink = newProject.getFileUrl();
-
-  const linkElement = document.getElementById('download-project')
-  linkElement.setAttribute('href', downloadLink);
-  linkElement.click()
+  newProject.saveZipFolder();
 }
 
 const ELEMENTS = {

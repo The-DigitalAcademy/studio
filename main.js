@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
     renderDraggableElements('draggable');
-    document.getElementById('download-code').onclick = downloadCode
+    document.getElementById('export-project').onclick = downloadCode
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

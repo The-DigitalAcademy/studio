@@ -9,10 +9,10 @@ header {
   background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
   color: #f8f9fa;
 }
-header #download-code {
+header #export-project {
   color: rgba(255, 255, 255, 0.748);
 }
-header #download-code:hover {
+header #export-project:hover {
   color: #f8f9fa;
 }
 
