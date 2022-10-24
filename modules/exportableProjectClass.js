@@ -1,3 +1,6 @@
+import JSZip from '../scripts/jszip.js';
+import saveAs from '../scripts/FileSaver.js';
+
 /** class representing Exportable project */
 class ExportableProject {
 
@@ -23,7 +26,9 @@ class ExportableProject {
         this.#removeEditModeElements();
 
         let rootInnerHtml = this.#rootApp.innerHTML;
-        const finalRootHtml = rootInnerHtml.replace(/contenteditable=""/g, "")
+        //remove all contenteditable element attributes
+        const finalRootHtml = rootInnerHtml.replace(/contenteditable=""/g, "");
+
         const HtmlBlob =`
         <!DOCTYPE html>
         <html lang="en">
@@ -35,15 +40,17 @@ class ExportableProject {
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+            <link rel="stylesheet" type="text/css" href="./style.css">
           </head>
           <body>
-          ${finalRootHtml}
+            ${finalRootHtml}
+            <script src="./script.js"></script>
           </body>
         </html>
                         `
         const file = new Blob(
             [HtmlBlob],
-            { type: 'text/html'}
+            { type: 'text/html' }
         );
         return file
     }
@@ -71,6 +78,20 @@ class ExportableProject {
     getFileUrl() {
         return URL.createObjectURL(this.#htmlFile);
     }
+    /**
+     * creates a zip folder containing project files and saves it to users computer
+     */
+    saveZipFolder() {
+        const zip = new JSZip();
+        zip.file("index.html", this.#htmlFile);
+        zip.file("style.css", "/* custom css */");
+        zip.file("script.js", "console.log('Studio microapp Script file')");
+
+        zip.generateAsync({type:"blob"})
+        .then(function (blob) {
+            saveAs(blob, "studio_microapp.zip");
+        });
+    }
 }
 
-export {ExportableProject}
+export { ExportableProject }
