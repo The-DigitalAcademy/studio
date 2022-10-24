@@ -110,7 +110,7 @@ function renderDraggableElements(containerElementID) {
 function downloadCode() {
   const rootApp = document.getElementById('container');
   const newProject = new ExportableProject(rootApp);
-  newProject.saveZipFolder();
+  newProject.saveAsZip();
 }
 
 const ELEMENTS = {

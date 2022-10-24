@@ -15,14 +15,14 @@ class ExportableProject {
      */
     constructor(rootApp) {
         this.#rootApp = rootApp.cloneNode(true)
-        this.#htmlFile = this.createHtmlFile()
+        this.#htmlFile = this.#createHtmlFile()
     }
 
     /**
      * embeds root application into an Html boilerplate and returns html Blob file.
      * @returns {Blob} html content of the file
      */
-    createHtmlFile() {
+    #createHtmlFile() {
         this.#removeEditModeElements();
 
         let rootInnerHtml = this.#rootApp.innerHTML;
@@ -81,7 +81,7 @@ class ExportableProject {
     /**
      * creates a zip folder containing project files and saves it to users computer
      */
-    saveZipFolder() {
+    saveAsZip() {
         const zip = new JSZip();
         zip.file("index.html", this.#htmlFile);
         zip.file("style.css", "/* custom css */");
