@@ -47,7 +47,7 @@ class EditTool {
      */
     #createEditButton() {
         const editButton = document.createElement('button');
-        editButton.className = 'btn btn-sm text-primary border-0';
+        editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
         editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
         editButton.onclick = () => {
@@ -64,7 +64,7 @@ class EditTool {
     }
     #creatDeleteButton() {
         const deleteButton = document.createElement('button');
-        deleteButton.className = 'btn btn-sm text-primary border-0';
+        deleteButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
         deleteButton.style.float = 'right';
         deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>';
         deleteButton.onclick = () => {
@@ -85,7 +85,7 @@ class EditTool {
         const imageSizeTool = this.#toolList.includes('imageSize') ? this.#createImageSizeTool() : null
 
         const toolContainer = document.createElement('div');
-        toolContainer.className = 'edit-toolbox'
+        toolContainer.className = 'edit-toolbox EDITONLY'
 
         const closeBtn = document.createElement('button');
         closeBtn.classList = 'btn';
