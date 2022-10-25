@@ -129,10 +129,17 @@ main {
   border-radius: 0.3rem;
   position: absolute;
   width: 180px;
-  padding: 0.5rem;
+  height: 250px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   -webkit-animation: slide-left 0.5s forwards;
           animation: slide-left 0.5s forwards;
+}
+.edit-toolbox .innerContainer {
+  box-shadow: 0 0 11px rgba(0, 0, 0, 0.0196078431) inset;
+  height: 249px;
+  overflow-y: scroll;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
 }
 .edit-toolbox .paddingTool {
   margin: 0.4rem 0;

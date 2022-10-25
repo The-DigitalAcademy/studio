@@ -139,9 +139,17 @@ main {
     border-radius: .3rem;
     position: absolute;
     width: 180px;
-    padding: .5rem;
+    height: 250px;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     animation: slide-left .5s forwards;
+
+    .innerContainer {
+        box-shadow: 0 0 11px #00000005 inset;
+        height: 249px;
+        overflow-y: scroll;
+        padding: .5rem;
+        border-radius: .3rem;
+    }
 
     .paddingTool {
         margin: .4rem 0;

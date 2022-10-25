@@ -88,8 +88,10 @@ class EditTool {
      * @return {Element} complete toolbox container ready to be added to the DOM
      */
     #createEditToolbox() {
+        const toolParentContainer = document.createElement('div');
+        toolParentContainer.className = 'edit-toolbox EDITONLY'
         const toolContainer = document.createElement('div');
-        toolContainer.className = 'edit-toolbox EDITONLY'
+        toolContainer.className = 'innerContainer'
 
         const closeBtn = document.createElement('button');
         closeBtn.classList = 'btn';
@@ -111,7 +113,8 @@ class EditTool {
         toolContainer.style.top = `${rect.top - 15}px`;
         toolContainer.style.left = `${rect.right + 10}px`;
 
-        return toolContainer;
+        toolParentContainer.append(toolContainer);
+        return toolParentContainer;
     }
     /**
      * update top & left style properties of toolbox
