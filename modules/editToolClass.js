@@ -84,6 +84,7 @@ class EditTool {
         const imageUrlTool = this.#toolList.includes('imageUrl') ? this.#createImageUrlTool() : null
         const imageSizeTool = this.#toolList.includes('imageSize') ? this.#createImageSizeTool() : null
         const borderRadiusTool = this.#toolList.includes('borderRadius') ? this.#createBorderRadiusTool() : null
+        const alignTool = this.#toolList.includes('alignTool') ? this.#createAlignTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-toolbox EDITONLY'
@@ -104,6 +105,7 @@ class EditTool {
         imageUrlTool ? toolContainer.append(imageUrlTool) : '';
         imageSizeTool ? toolContainer.append(imageSizeTool) : '';
         borderRadiusTool ? toolContainer.append(borderRadiusTool) : '';
+        alignTool ? toolContainer.append(alignTool) : '';
 
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -122,7 +124,7 @@ class EditTool {
     }
 
     /**
-     * creates textAlign tool and returns the element
+     * creates textAlign tool and returns the element. tool sets the text-align style property of element
      * @return {Element} text align tool element
      */
     #createTextAlignTool() {
@@ -146,6 +148,38 @@ class EditTool {
         rightAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'right');
         rightAlignBtn.className = 'btn btn-outline-light';
         rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
+
+        //append to parent
+        toolContainer.append(leftAlignBtn, centerAlignBtn, rightAlignBtn);
+
+        return toolContainer
+    }
+    /**
+     * creates align tool and returns element. tool positions element horizontally at start/end/center postion
+     * using the margin style property.
+     * @returns { Element } element align tool
+     */
+    #createAlignTool() {
+        //parent
+        const toolContainer = document.createElement('div');
+        toolContainer.className = 'btn-group';
+        toolContainer.setAttribute('aria-label', 'Basic label');
+
+        //btn 1
+        const leftAlignBtn = document.createElement('button');
+        leftAlignBtn.onclick = () => this.#styleEditableElement('margin', '0 auto 0 0');
+        leftAlignBtn.className = 'btn btn-outline-light';
+        leftAlignBtn.innerHTML = '<i class="bi bi-align-start"></i>';
+        //btn 2
+        const centerAlignBtn = document.createElement('button');
+        centerAlignBtn.onclick = () => this.#styleEditableElement('margin', '0 auto');
+        centerAlignBtn.className = 'btn btn-outline-light';
+        centerAlignBtn.innerHTML = '<i class="bi bi-align-center"></i>';
+        //btn 3
+        const rightAlignBtn = document.createElement('button');
+        rightAlignBtn.onclick = () => this.#styleEditableElement('margin', '0 0 0 auto');
+        rightAlignBtn.className = 'btn btn-outline-light';
+        rightAlignBtn.innerHTML = '<i class="bi bi-align-end"></i>';
 
         //append to parent
         toolContainer.append(leftAlignBtn, centerAlignBtn, rightAlignBtn);
@@ -199,7 +233,7 @@ class EditTool {
         return toolContainer;
     }
     /**
-     * create and return image size tool. tool takes input number and sets width of image
+     * create and return image size tool. tool takes input number and sets width of element in % units
      * @returns {Element} image size tool element
      */
     #createImageSizeTool() {
@@ -224,6 +258,10 @@ class EditTool {
 
         return toolContainer;
     }
+    /**
+     * creat and return border radius tool. tool takes input number and sets border-radius of element in % units
+     * @returns {Element} border radius tool element
+     */
     #createBorderRadiusTool() {
         const toolContainer = document.createElement('div');
         toolContainer.className = 'paddingTool';
