@@ -83,6 +83,7 @@ class EditTool {
         const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
         const imageUrlTool = this.#toolList.includes('imageUrl') ? this.#createImageUrlTool() : null
         const imageSizeTool = this.#toolList.includes('imageSize') ? this.#createImageSizeTool() : null
+        const borderRadiusTool = this.#toolList.includes('borderRadius') ? this.#createBorderRadiusTool() : null
 
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-toolbox EDITONLY'
@@ -102,6 +103,7 @@ class EditTool {
         paddingTool ? toolContainer.append(paddingTool) : '';
         imageUrlTool ? toolContainer.append(imageUrlTool) : '';
         imageSizeTool ? toolContainer.append(imageSizeTool) : '';
+        borderRadiusTool ? toolContainer.append(borderRadiusTool) : '';
 
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -215,6 +217,27 @@ class EditTool {
         input.onchange = (e) => {
             this.#styleEditableElement('width', `${e.target.value}%`);
             this.#styleEditableElement('height', `auto`);
+        }
+
+        toolContainer.innerHTML = label;
+        toolContainer.append(input);
+
+        return toolContainer;
+    }
+    #createBorderRadiusTool() {
+        const toolContainer = document.createElement('div');
+        toolContainer.className = 'paddingTool';
+
+        const label = '<span>Border radius: %</span>'
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.value = '0'
+        input.min = '0';
+        input.max = '50';
+        input.step = '1';
+        input.style.width = '40px';
+        input.onchange = (e) => {
+            this.#styleEditableElement('borderRadius', `${e.target.value}%`);
         }
 
         toolContainer.innerHTML = label;

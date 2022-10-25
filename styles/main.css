@@ -128,7 +128,7 @@ main {
   background: rgba(45, 129, 194, 0.7098039216);
   border-radius: 0.3rem;
   position: absolute;
-  width: 170px;
+  width: 180px;
   padding: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   -webkit-animation: slide-left 0.5s forwards;

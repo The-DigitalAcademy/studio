@@ -141,8 +141,8 @@ const Text = {
 
 const Image = {
     icon: '<i class="bi bi-image"></i>',
-    content: '<img src="https://picsum.photos/100"/>',
-    editingToolList: ['imageUrl', 'imageSize']
+    content: '<img class="d-block" src="https://picsum.photos/100"/>',
+    editingToolList: ['imageUrl', 'imageSize', 'borderRadius']
   }
 
 
