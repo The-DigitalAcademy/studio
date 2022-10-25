@@ -4,7 +4,15 @@ class EditTool {
     #editableElement;
     #toolList;
     #toolboxLoaded;
-    #toolbox
+    #toolbox;
+    #toolDirectory = {
+            horizontalAlign: this.#createHorizontalAlignTool(),
+            textAlign: this.#createTextAlignTool(),
+            borderRadius: this.#createBorderRadiusTool(),
+            imageSize: this.#createImageSizeTool(),
+            imageUrl: this.#createImageUrlTool(),
+            padding: this.#createPaddingTool()
+    }
     /**
      * creates an EditTool for an element
      * tools specified in toolLIst
@@ -78,14 +86,6 @@ class EditTool {
      * @return {Element} complete toolbox container ready to be added to the DOM
      */
     #createEditToolbox() {
-        //create tools specified in tools array
-        const textAlignTool = this.#toolList.includes('textAlign') ? this.#createTextAlignTool() : null
-        const paddingTool = this.#toolList.includes('padding') ? this.#createPaddingTool() : null
-        const imageUrlTool = this.#toolList.includes('imageUrl') ? this.#createImageUrlTool() : null
-        const imageSizeTool = this.#toolList.includes('imageSize') ? this.#createImageSizeTool() : null
-        const borderRadiusTool = this.#toolList.includes('borderRadius') ? this.#createBorderRadiusTool() : null
-        const alignTool = this.#toolList.includes('alignTool') ? this.#createAlignTool() : null
-
         const toolContainer = document.createElement('div');
         toolContainer.className = 'edit-toolbox EDITONLY'
 
@@ -100,13 +100,10 @@ class EditTool {
         toolContainer.append(closeBtn)
 
         //add tools to container
-        textAlignTool ? toolContainer.append(textAlignTool) : '';
-        paddingTool ? toolContainer.append(paddingTool) : '';
-        imageUrlTool ? toolContainer.append(imageUrlTool) : '';
-        imageSizeTool ? toolContainer.append(imageSizeTool) : '';
-        borderRadiusTool ? toolContainer.append(borderRadiusTool) : '';
-        alignTool ? toolContainer.append(alignTool) : '';
-
+        this.#toolList.forEach(tool => {
+            const includedTool = this.#toolDirectory[tool];
+            toolContainer.append(includedTool);
+        });
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
         toolContainer.style.top = `${rect.top - 15}px`;
@@ -159,7 +156,7 @@ class EditTool {
      * using the margin style property.
      * @returns { Element } element align tool
      */
-    #createAlignTool() {
+    #createHorizontalAlignTool() {
         //parent
         const toolContainer = document.createElement('div');
         toolContainer.className = 'btn-group';
