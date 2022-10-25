@@ -82,11 +82,11 @@ const Header = {
         <small>Header</small>
         `,
     content: `
-        <div class="bg-dark text-light p-2 mb-3">
+        <div style="background-color:#212529;" class="text-light p-2 mb-3">
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
         `,
-    editingToolList: ['textAlign']
+    editingToolList: ['textAlign', 'bgColor']
 }
 
 const Video = {

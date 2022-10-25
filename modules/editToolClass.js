@@ -11,7 +11,8 @@ class EditTool {
             borderRadius: this.#createBorderRadiusTool(),
             imageSize: this.#createImageSizeTool(),
             imageUrl: this.#createImageUrlTool(),
-            padding: this.#createPaddingTool()
+            padding: this.#createPaddingTool(),
+            bgColor: this.#createBgColorTool()
     }
     /**
      * creates an EditTool for an element
@@ -32,7 +33,7 @@ class EditTool {
      * adds an edit button to the editableElement. The edit button loads/unloads the toolbox
      */
     #addEditFunctionality() {
-        const deleteBtn = this.#creatDeleteButton();
+        const deleteBtn = this.#createDeleteButton();
         const editBtn = this.#createEditButton();
 
         //display edit & delete buttons onmouseover 
@@ -70,7 +71,7 @@ class EditTool {
         }
         return editButton;
     }
-    #creatDeleteButton() {
+    #createDeleteButton() {
         const deleteButton = document.createElement('button');
         deleteButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
         deleteButton.style.float = 'right';
@@ -277,6 +278,24 @@ class EditTool {
 
         toolContainer.innerHTML = label;
         toolContainer.append(input);
+
+        return toolContainer;
+    }
+    #createBgColorTool() {
+        const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd']
+        const toolContainer = document.createElement('div');
+        toolContainer.className = "border border-light my-1 p-1 rounded"
+        toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Background Color</p>'
+        colors.forEach(color => {
+            const btn = document.createElement('button');
+            btn.className = "btn m-1"
+            btn.style.width = '25px';
+            btn.style.height = '25px';
+            btn.style.backgroundColor = color;
+            btn.onclick = () => this.#styleEditableElement('backgroundColor', color);
+
+            toolContainer.append(btn);
+        });
 
         return toolContainer;
     }
