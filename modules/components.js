@@ -4,7 +4,8 @@ const Button = {
         `,
     content: `
         <button class='btn btn-primary'><span contenteditable>button</span></button>
-        `
+        `,
+    editingToolList: ['bgColor', 'textColor']
 }
 
 const EmailForm = {
@@ -21,7 +22,7 @@ const EmailForm = {
             </div>
         </div>
             `,
-    editingToolList: ['textAlign']
+    editingToolList: ['textAlign', 'textColor']
 }
 
 const RadioForm = {
@@ -42,7 +43,7 @@ const RadioForm = {
             </div>
         </div>
         `,
-    editingToolList: ['textAlign']
+    editingToolList: ['textAlign', 'textColor']
 }
 
 const TextForm = {
@@ -59,7 +60,7 @@ const TextForm = {
             </div>
         </div>
             `,
-    editingToolList: ['textAlign']
+    editingToolList: ['textAlign', 'textColor']
 }
 
 const TextAreaForm = {
@@ -73,7 +74,7 @@ const TextAreaForm = {
             <textarea class="form-control" id="Textarea" rows="3"></textarea>
         </div>
             `,
-    editingToolList: ['textAlign', 'padding']
+    editingToolList: ['textAlign', 'padding', 'textColor']
 }
 
 const Header = {
@@ -82,11 +83,11 @@ const Header = {
         <small>Header</small>
         `,
     content: `
-        <div style="background-color:#212529;" class="text-light p-2 mb-3">
+        <div style="background-color:#212529;color:#f8f9fa;" class="p-2 mb-3">
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
         `,
-    editingToolList: ['textAlign', 'bgColor']
+    editingToolList: ['textAlign', 'bgColor', 'textColor']
 }
 
 const Video = {
@@ -113,19 +114,19 @@ const Hr = {
 const Heading1 = {
     icon: `<i class="bi bi-type-h1"></i>`,
     content: `<h1 contenteditable>Heading 1</h1>`,
-    editingToolList: ['textAlign', 'padding']
+    editingToolList: ['textAlign', 'padding', 'textColor']
 }
 
 const Heading2 = {
     icon: `<i class="bi bi-type-h2"></i>`,
     content: `<h2 contenteditable>Heading 2</h2>`,
-    editingToolList: ['textAlign', 'padding']
+    editingToolList: ['textAlign', 'padding', 'textColor']
 }
 
 const Heading3 = {
     icon: `<i class="bi bi-type-h3"></i>`,
     content: `<h3 contenteditable>Heading 1</h3>`,
-    editingToolList: ['textAlign', 'padding']
+    editingToolList: ['textAlign', 'padding', 'textColor']
 }
 
 const Text = {
@@ -136,7 +137,7 @@ const Text = {
                      when an unknown printer took a galley of type and scrambled it to make a 
                      type specimen book.
               </p>`,
-    editingToolList: ['textAlign', 'padding']
+    editingToolList: ['textAlign', 'padding', 'textColor']
   }
 
 const Image = {

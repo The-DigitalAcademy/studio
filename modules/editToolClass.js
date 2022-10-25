@@ -12,7 +12,8 @@ class EditTool {
             imageSize: this.#createImageSizeTool(),
             imageUrl: this.#createImageUrlTool(),
             padding: this.#createPaddingTool(),
-            bgColor: this.#createBgColorTool()
+            bgColor: this.#createBgColorTool(),
+            textColor: this.#createTextColorTool()
     }
     /**
      * creates an EditTool for an element
@@ -257,7 +258,7 @@ class EditTool {
         return toolContainer;
     }
     /**
-     * creat and return border radius tool. tool takes input number and sets border-radius of element in % units
+     * create and return border radius tool. tool takes input number and sets border-radius of element in % units
      * @returns {Element} border radius tool element
      */
     #createBorderRadiusTool() {
@@ -281,6 +282,10 @@ class EditTool {
 
         return toolContainer;
     }
+    /**
+     * create and return background color tool. tool changes background color of editableElement.
+     * @returns {Element} background color tool element
+     */
     #createBgColorTool() {
         const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd']
         const toolContainer = document.createElement('div');
@@ -293,6 +298,28 @@ class EditTool {
             btn.style.height = '25px';
             btn.style.backgroundColor = color;
             btn.onclick = () => this.#styleEditableElement('backgroundColor', color);
+
+            toolContainer.append(btn);
+        });
+
+        return toolContainer;
+    }
+    /**
+     * create and return text color tool. tool changes text color of editableElement.
+     * @returns {Element} text color tool element
+     */
+     #createTextColorTool() {
+        const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd']
+        const toolContainer = document.createElement('div');
+        toolContainer.className = "border border-light my-1 p-1 rounded"
+        toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Text Color</p>'
+        colors.forEach(color => {
+            const btn = document.createElement('button');
+            btn.className = "btn m-1"
+            btn.style.width = '25px';
+            btn.style.height = '25px';
+            btn.style.backgroundColor = color;
+            btn.onclick = () => this.#styleEditableElement('color', color);
 
             toolContainer.append(btn);
         });
