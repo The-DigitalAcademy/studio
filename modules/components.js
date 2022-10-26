@@ -1,19 +1,20 @@
-const Button = {
-    icon: `
+const ELEMENTS = {
+    Button: {
+        icon: `
         <button class='btn btn-primary'>button</button>
         `,
-    content: `
+        content: `
         <button class='btn btn-primary'><span contenteditable>button</span></button>
         `,
-    editingToolList: ['bgColor', 'textColor']
-}
+        editingToolList: ['bgColor', 'textColor']
+    },
 
-const EmailForm = {
-    icon: `
+    EmailForm: {
+        icon: `
         <i class="bi bi-pencil-square"></i>
         <small>Email Form</small>
         `,
-    content: `
+        content: `
         <div class='small mb-3 mx-1'>
             <label contenteditable for="inputEmail" class="form-label fw-bold">Email Adress</label>
             <input type="email" id="inputEmail" class="form-control form-control-sm" aria-describedby="emailHelpBlock">
@@ -22,15 +23,15 @@ const EmailForm = {
             </div>
         </div>
             `,
-    editingToolList: ['textAlign', 'textColor']
-}
+        editingToolList: ['textAlign', 'textColor']
+    },
 
-const RadioForm = {
-    icon: `
+    RadioForm: {
+        icon: `
         <i class="bi bi-pencil-square"></i>
         <small>Radio Form</small>
         `,
-    content: `
+        content: `
         <div class='small mb-3 mx-1'>
             <label contenteditable class="fw-bold">Have you ever used a computer before</label>
             <div class="form-check">
@@ -43,15 +44,15 @@ const RadioForm = {
             </div>
         </div>
         `,
-    editingToolList: ['textAlign', 'textColor']
-}
+        editingToolList: ['textAlign', 'textColor']
+    },
 
-const TextForm = {
-    icon: `
+    TextForm: {
+        icon: `
         <i class="bi bi-pencil-square"></i>
         <small>Text Form</small>
         `,
-    content: `
+        content: `
         <div class='small mb-3 mx-1'>
             <label contenteditable for="inputText" class="form-label fw-bold">Text form</label>
             <input type="text" id="inputText" class="form-control form-control-sm" aria-describedby="textHelpBlock">
@@ -60,106 +61,92 @@ const TextForm = {
             </div>
         </div>
             `,
-    editingToolList: ['textAlign', 'textColor']
-}
+        editingToolList: ['textAlign', 'textColor']
+    },
 
-const TextAreaForm = {
-    icon: `
+    TextAreaForm: {
+        icon: `
         <i class="bi bi-pencil-square"></i>
         <small>Text area Form</small>
         `,
-    content: `
+        content: `
         <div class='small mb-3 mx-1'>
             <label contenteditable for="Textarea" class="form-label fw-bold">Text form</label>
             <textarea class="form-control" id="Textarea" rows="3"></textarea>
         </div>
             `,
-    editingToolList: ['textAlign', 'padding', 'textColor']
-}
+        editingToolList: ['textAlign', 'padding', 'textColor']
+    },
 
-const Header = {
-    icon: `
+    Header: {
+        icon: `
         <i class="bi bi-window-sidebar"></i>
         <small>Header</small>
         `,
-    content: `
+        content: `
         <div style="background-color:#212529;color:#f8f9fa;" class="p-2 mb-3">
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
         `,
-    editingToolList: ['textAlign', 'bgColor', 'textColor']
-}
+        editingToolList: ['textAlign', 'bgColor', 'textColor']
+    },
 
-const Video = {
-    icon: '<i class="bi bi-camera-video"></i>',
-    content: `
+    Video: {
+        icon: '<i class="bi bi-camera-video"></i>',
+        content: `
             <video controls width="250">
                 <source src="/media/cc0-videos/flower.webm" type="video/webm">
                 <source src="/media/cc0-videos/flower.mp4" type="video/mp4">
                 Sorry, your browser doesn't support embedded videos.
             </video>
             `,
-    editingToolList: ['']
-}
+        editingToolList: ['']
+    },
 
-const Hr = {
-    icon: `
+    Hr: {
+        icon: `
             <i class="bi bi-hr"></i>
             <small>Divider</small>
             `,
-    content: `<hr/ class='mx-1'>`,
-    editingToolList: ['padding']
-}
+        content: `<hr/ class='mx-1'>`,
+        editingToolList: ['padding']
+    },
 
-const Heading1 = {
-    icon: `<i class="bi bi-type-h1"></i>`,
-    content: `<h1 contenteditable>Heading 1</h1>`,
-    editingToolList: ['textAlign', 'padding', 'textColor']
-}
+    Heading1: {
+        icon: `<i class="bi bi-type-h1"></i>`,
+        content: `<h1 contenteditable>Heading 1</h1>`,
+        editingToolList: ['textAlign', 'padding', 'textColor']
+    },
 
-const Heading2 = {
-    icon: `<i class="bi bi-type-h2"></i>`,
-    content: `<h2 contenteditable>Heading 2</h2>`,
-    editingToolList: ['textAlign', 'padding', 'textColor']
-}
+    Heading2: {
+        icon: `<i class="bi bi-type-h2"></i>`,
+        content: `<h2 contenteditable>Heading 2</h2>`,
+        editingToolList: ['textAlign', 'padding', 'textColor']
+    },
 
-const Heading3 = {
-    icon: `<i class="bi bi-type-h3"></i>`,
-    content: `<h3 contenteditable>Heading 1</h3>`,
-    editingToolList: ['textAlign', 'padding', 'textColor']
-}
+    Heading3: {
+        icon: `<i class="bi bi-type-h3"></i>`,
+        content: `<h3 contenteditable>Heading 1</h3>`,
+        editingToolList: ['textAlign', 'padding', 'textColor']
+    },
 
-const Text = {
-    icon: '<i class="bi bi-justify"></i>',
-    content: `<p contenteditable>Lorem Ipsum is
+    Text: {
+        icon: '<i class="bi bi-justify"></i>',
+        content: `<p contenteditable>Lorem Ipsum is
                      simply dummy text of the printing and typesetting industry. 
                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                      when an unknown printer took a galley of type and scrambled it to make a 
                      type specimen book.
               </p>`,
-    editingToolList: ['textAlign', 'padding', 'textColor']
-  }
+        editingToolList: ['textAlign', 'padding', 'textColor']
+    },
 
-const Image = {
-    icon: '<i class="bi bi-image"></i>',
-    content: '<img class="d-block" src="https://picsum.photos/100"/>',
-    editingToolList: ['imageUrl', 'imageSize', 'borderRadius', 'horizontalAlign', 'padding', 'bgColor']
-  }
-
-
-
-export {
-    Button,
-    EmailForm,
-    RadioForm,
-    TextForm,
-    TextAreaForm,
-    Header,
-    Video,
-    Hr,
-    Heading1,
-    Heading2,
-    Heading3,
-    Text,
-    Image
+    Image: {
+        icon: '<i class="bi bi-image"></i>',
+        content: '<img class="d-block" src="https://picsum.photos/100"/>',
+        editingToolList: ['imageUrl', 'imageSize', 'borderRadius', 'horizontalAlign', 'padding', 'bgColor']
+    }
 }
+
+
+export default ELEMENTS

@@ -1,4 +1,4 @@
-import { Button, EmailForm, RadioForm, TextForm, TextAreaForm, Header, Video, Hr, Heading1, Heading2, Heading3, Text, Image } from './components.js'
+import  ELEMENTS from './components.js'
 import { ExportableProject } from "./exportableProjectClass.js"
 
 const EVENTS = {
@@ -113,24 +113,7 @@ function downloadCode() {
   newProject.saveAsZip();
 }
 
-const ELEMENTS = {
-  Header,
-  Heading1,
-  Heading2,
-  Heading3,
-  Text,
-  TextAreaForm,
-  EmailForm,
-  RadioForm,
-  TextForm,
-  Button,
-  Video,
-  Image,
-  Hr,
-};
-
 export {
-  ELEMENTS,
   renderMirrorImage,
   getImmediateChild,
   getParent,
