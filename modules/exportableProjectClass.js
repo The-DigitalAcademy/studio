@@ -1,5 +1,5 @@
-import JSZip from '../scripts/jszip.js';
-import saveAs from '../scripts/FileSaver.js';
+import JSZip from './jszip.js';
+import saveAs from './FileSaver.js';
 
 /** class representing Exportable project */
 class ExportableProject {
