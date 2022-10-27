@@ -1,3 +1,5 @@
+export default 
+`
 class AyobaStub {
   constructor() {
     this.finish = this.finish;
@@ -94,3 +96,4 @@ class AyobaStub {
   }
 
 }
+`

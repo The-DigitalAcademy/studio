@@ -1,5 +1,7 @@
 import JSZip from './jszip.js';
 import saveAs from './FileSaver.js';
+import MicroAppJs from '../assets/microapp.js';
+import AyobaStubJs from '../assets/ayobastub.js';
 
 /** class representing Exportable project */
 class ExportableProject {
@@ -44,7 +46,7 @@ class ExportableProject {
           </head>
           <body>
             ${finalRootHtml}
-            <script src="./script.js"></script>
+            <script src="./scripts/script.js"></script>
           </body>
         </html>
                         `
@@ -85,7 +87,9 @@ class ExportableProject {
         const zip = new JSZip();
         zip.file("index.html", this.#htmlFile);
         zip.file("style.css", "/* custom css */");
-        zip.file("script.js", "console.log('Studio microapp Script file')");
+        zip.file("scripts/script.js", "console.log('Studio microapp Script file')");
+        zip.file("scripts/microapp.js", MicroAppJs);
+        zip.file("scripts/ayobastub.js", AyobaStubJs);
 
         zip.generateAsync({type:"blob"})
         .then(function (blob) {

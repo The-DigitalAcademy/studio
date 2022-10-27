@@ -1,3 +1,5 @@
+export default 
+`
 /**
 * A boilerplate microapp for ayoba that implements a stub interface and debug logging on the page
 */
@@ -48,7 +50,7 @@ window.onload = function afterpagedLoad() {
 
         for (i = 0; i < arguments.length; i++) {
             arg = arguments[i];
-            output += "<span class=\"log-" + (typeof arg) + "\">";
+            output += "<span class='log-" + (typeof arg) + "'";
 
             if (
                 typeof arg === "object" &&
@@ -136,7 +138,7 @@ function composeMessage() {
 
 function copyMessage(theIndex) {
     var strInputCode = document.getElementById(theIndex).innerHTML;
-    var cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "\n");
+    var cleanText = strInputCode.replace(/<\\/?[^>]+(>|$)/g, "\\n");
     const el = document.createElement('textarea');
     el.value = cleanText;
     document.body.appendChild(el);
@@ -337,3 +339,4 @@ function onFileRetrievedResponse(responseCode, filePath) {
     document.getElementById("inputText").value = responseCode.concat(" - ").concat(filePath)
     document.getElementById("pictureRetrieved").src = filePath
 }
+`
