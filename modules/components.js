@@ -4,9 +4,9 @@ const ELEMENTS = {
         <button class='btn btn-primary'>button</button>
         `,
         content: `
-        <button class='btn btn-primary'><span contenteditable>button</span></button>
+        <button class='btn btn-primary d-block' contenteditable>Button</button>
         `,
-        editingToolList: ['bgColor', 'textColor']
+        editingToolList: ['horizontalAlign', 'bgColor', 'textColor']
     },
 
     EmailForm: {
