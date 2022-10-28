@@ -30,8 +30,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const { item } = data;
         const type = item.dataset.type;
         item.innerHTML = ELEMENTS[type].content;
+        new ActionTool(item, ELEMENTS[type].actionToolList);
         new EditTool(item, ELEMENTS[type].editingToolList);
-        // new ActionTool(item, ELEMENTS[type].actionToolList);
       }
     });
   })();
