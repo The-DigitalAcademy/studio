@@ -169,6 +169,10 @@ main {
   border-radius: 5px;
   margin-left: 5px;
 }
+.edit-toolbox .colorBtn {
+  width: 25px;
+  height: 25px;
+}
 
 .edit-toolbox::before {
   border-style: solid;

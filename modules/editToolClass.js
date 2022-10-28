@@ -6,14 +6,14 @@ class EditTool {
     #toolboxLoaded;
     #toolbox;
     #toolDirectory = {
-            horizontalAlign: this.#createHorizontalAlignTool(),
-            textAlign: this.#createTextAlignTool(),
-            borderRadius: this.#createBorderRadiusTool(),
-            imageSize: this.#createImageSizeTool(),
-            imageUrl: this.#createImageUrlTool(),
-            padding: this.#createPaddingTool(),
-            bgColor: this.#createBgColorTool(),
-            textColor: this.#createTextColorTool()
+        horizontalAlign: this.#createHorizontalAlignTool(),
+        textAlign: this.#createTextAlignTool(),
+        imageSize: this.#createImageSizeTool(),
+        imageUrl: this.#createImageUrlTool(),
+        padding: this.#createPaddingTool(),
+        bgColor: this.#createBgColorTool(),
+        textColor: this.#createTextColorTool(),
+        border: this.#createBorderTool()
     }
     /**
      * creates an EditTool for an element
@@ -268,7 +268,7 @@ class EditTool {
         const toolContainer = document.createElement('div');
         toolContainer.className = 'paddingTool';
 
-        const label = '<span>Border radius: %</span>'
+        const label = '<span>radius: %</span>'
         const input = document.createElement('input');
         input.type = 'number';
         input.value = '0'
@@ -296,9 +296,7 @@ class EditTool {
         toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Background Color</p>'
         colors.forEach(color => {
             const btn = document.createElement('button');
-            btn.className = "btn m-1"
-            btn.style.width = '25px';
-            btn.style.height = '25px';
+            btn.className = "btn m-1 colorBtn";
             btn.style.backgroundColor = color;
             btn.onclick = () => this.#styleEditableElement('backgroundColor', color);
 
@@ -308,19 +306,62 @@ class EditTool {
         return toolContainer;
     }
     /**
+     * create and return border tool. tool changes the border width, radius & color of editableElement.
+     * @returns {Element} border tool element
+     */
+    #createBorderTool() {
+        const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd'];
+
+        const toolContainer = document.createElement('div');
+        toolContainer.className = "border border-light my-1 p-1 rounded";
+        toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Border</p>';
+
+        const borderWidthContainer = document.createElement('div');
+        borderWidthContainer.className = 'paddingTool';
+
+        const label = '<span>width</span>'
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.max = '50';
+        input.step = '1';
+        input.onchange = (e) => {
+            this.#styleEditableElement('borderWidth', `${e.target.value}px`);
+            this.#styleEditableElement('borderStyle', 'solid');
+        }
+        borderWidthContainer.innerHTML = label;
+        borderWidthContainer.append(input);
+
+        const borderColorContainer = document.createElement('div');
+
+        colors.forEach(color => {
+            const colorBtn = document.createElement('button');
+            colorBtn.className = "btn m-1 colorBtn"
+            colorBtn.style.border = '2px solid ' + color;
+            colorBtn.onclick = () => {
+                this.#styleEditableElement('borderColor', color);
+            }
+            borderColorContainer.append(colorBtn);
+        });
+        const borderRadiusElement = this.#createBorderRadiusTool();
+        toolContainer.append(borderWidthContainer);
+        toolContainer.append(borderRadiusElement);
+        toolContainer.append(borderColorContainer);
+
+        return toolContainer;
+    }
+    /**
      * create and return text color tool. tool changes text color of editableElement.
      * @returns {Element} text color tool element
      */
-     #createTextColorTool() {
+    #createTextColorTool() {
         const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd']
         const toolContainer = document.createElement('div');
         toolContainer.className = "border border-light my-1 p-1 rounded"
         toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Text Color</p>'
         colors.forEach(color => {
             const btn = document.createElement('button');
-            btn.className = "btn m-1"
-            btn.style.width = '25px';
-            btn.style.height = '25px';
+            btn.className = "btn m-1 colorBtn";
             btn.style.backgroundColor = color;
             btn.onclick = () => this.#styleEditableElement('color', color);
 
