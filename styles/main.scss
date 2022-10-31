@@ -196,7 +196,10 @@ main {
     .colorBtn {
         width: 25px;
         height: 25px;
-        
+        transition: .5s;   
+    }
+    .colorBtn:hover {
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.247);
     }
 }
 .edit-toolbox::before {

@@ -6,7 +6,6 @@ class EditTool {
     #toolboxLoaded;
     #toolbox;
     #toolButton;
-    #mouseOntoolButton;
     #toolDirectory = {
         horizontalAlign: this.#createHorizontalAlignTool(),
         textAlign: this.#createTextAlignTool(),
@@ -27,7 +26,6 @@ class EditTool {
         this.#editableElement = editableElement
         this.#toolList = toolList
         this.#toolboxLoaded = false
-        this.#mouseOntoolButton = false
         this.#toolbox = this.#createEditToolbox();
         this.#toolButton = this.#createToolButton();
 
@@ -49,11 +47,9 @@ class EditTool {
 
         //hover display effect
         toolBtn.addEventListener('mouseover', () => {
-            // this.#mouseOntoolButton = true;
             toolBtn.style.display = 'inline';
         })
         toolBtn.addEventListener('mouseout', () => {
-            // this.#mouseOntoolButton = false
             toolBtn.style.display = 'none';
         })
         this.#editableElement.addEventListener('mouseover', () => {
@@ -74,7 +70,6 @@ class EditTool {
     #createEditButton() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        // editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
         editButton.onclick = () => {
             if (this.#toolboxLoaded) {
@@ -95,7 +90,6 @@ class EditTool {
     #createDeleteButton() {
         const deleteButton = document.createElement('button');
         deleteButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        // deleteButton.style.float = 'right';
         deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>';
         deleteButton.onclick = () => {
             this.#editableElement.remove();

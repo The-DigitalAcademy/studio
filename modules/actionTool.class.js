@@ -5,6 +5,7 @@ class ActionTool {
     #toolList;
     #toolboxLoaded;
     #toolbox;
+    #toolButton;
     #toolDirectory = {
         // horizontalAlign: this.#createHorizontalAlignTool(),
         // textAlign: this.#createTextAlignTool(),
@@ -16,8 +17,7 @@ class ActionTool {
         // textColor: this.#createTextColorTool()
     }
     /**
-     * creates an EditTool for an element
-     * tools specified in toolLIst
+     * creates an ActionTool for an element with tools specified in toolList
      * @param {Element} editableElement element to add edit functionality to
      * @param {string[]} toolList list of tools to include in the edit toolbox
      */
@@ -27,31 +27,47 @@ class ActionTool {
         this.#toolList = toolList
         this.#toolboxLoaded = false
         this.#toolbox = this.#createActionToolbox();
+        this.#toolButton = this.#createToolButton();
 
-        this.#addActionFunctionality();
+        document.body.append(this.#toolButton);
     }
 
     /**
-     * adds an action button to the editableElement. The action button loads/unloads the toolbox
+     * create toolbutton for editableElement. tool button allows for adding action methods to editableElement
      */
-    #addActionFunctionality() {
-        const actionBtn = this.#createActionButton();
+    #createToolButton() {
+        const editBtn = this.#createActionButton();
 
-        //display action button onmouseover 
+        const toolBtn = document.createElement('span');
+        toolBtn.className = 'p-1 shadow rounded-pill absolute border gradient-gray slide-right'
+        toolBtn.append(editBtn);
+        this.#updateElementPosition(toolBtn, 40, -5);
+
+        //hover display effect
+        toolBtn.addEventListener('mouseover', () => {
+            toolBtn.style.display = 'inline';
+        })
+        toolBtn.addEventListener('mouseout', () => {
+            toolBtn.style.display = 'none';
+        })
         this.#editableElement.addEventListener('mouseover', () => {
-            actionBtn.style.display = 'block';
+            this.#updateElementPosition(toolBtn, 40, -5);
+            toolBtn.style.display = 'inline';
         })
-        this.#editableElement.addEventListener('mouseout', () => {
-            actionBtn.style.display = 'none';
+        // FIX HERE
+        this.#editableElement.addEventListener('focusout', () => {
+            toolBtn.style.display = 'none';
         })
 
-        //add edit & delete buttons to editableElement
-        this.#editableElement.prepend(actionBtn);
+        return toolBtn;
     }
+    /**
+     * 
+     * @returns 
+     */
     #createActionButton() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-hand-index-fill"></i>';
         editButton.onclick = () => {
             if (this.#toolboxLoaded) {
@@ -67,7 +83,7 @@ class ActionTool {
     }
 
     /**
-     * creates the editing toolbox and includes the relevant tools according to the toolList
+     * creates the action toolbox and includes the relevant tools according to the toolList
      * @return {Element} complete toolbox container ready to be added to the DOM
      */
     #createActionToolbox() {
@@ -119,8 +135,19 @@ class ActionTool {
         this.#toolbox.style.top = `${rect.top - 15}px`;
         this.#toolbox.style.left = `${rect.right + 10}px`;
     }
+    /**
+     * update top & left displacement from editableElement
+     * @param {Element} element element who's left/right style properties are being changed
+     * @param {number} top displacement from top in px
+     * @param {number} right displacement from right in px
+     */
+    #updateElementPosition(element, top, right) {
+        let rect = this.#editableElement.getBoundingClientRect();
+        element.style.top = `${rect.top + top}px`;
+        element.style.left = `${rect.right + right}px`;
+    }
     #setOnloadFunction() {
-        
+
     }
 
 
