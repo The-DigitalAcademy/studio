@@ -86,17 +86,17 @@ class ActionTool {
         };
         toolContainer.append(closeBtn)
 
-        const checklistGroup = document.createElement('ul');
-        checklistGroup.className = 'list-group' ;
+        const checklistGroup = document.createElement('div');
+        checklistGroup.className = '';
         let listContent = '';
 
         //add tools to container
-        this.#toolList.forEach(tool => {
+        this.#toolList.forEach((tool, index) => {
             listContent += `
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                            ${tool}
-                        </li>
+                        <div class="form-check ps-0">
+                            <input type="radio" class="btn-check" name="action-item" id="${tool}" value="${tool}" autocomplete="off">
+                            <label class="btn btn-sm w-100 btn-outline-light" for="${tool}">${tool}</label>
+                        </div>
                             `
             // const includedTool = this.#toolDirectory[tool];
             // toolContainer.append(includedTool);
@@ -118,6 +118,9 @@ class ActionTool {
         let rect = this.#editableElement.getBoundingClientRect();
         this.#toolbox.style.top = `${rect.top - 15}px`;
         this.#toolbox.style.left = `${rect.right + 10}px`;
+    }
+    #setOnloadFunction() {
+        
     }
 
 
