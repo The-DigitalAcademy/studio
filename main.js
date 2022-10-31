@@ -1,8 +1,8 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { EditTool } from "./modules/editToolClass.js";
+import { EditTool } from "./modules/editTool.class.js";
 import { renderDraggableElements, downloadCode } from "./modules/utils.js"
 import ELEMENTS from "./modules/components.js"
-import { ActionTool } from "./modules/actionToolClass.js";
+import { ActionTool } from "./modules/actionTool.class.js";
 
 window.addEventListener('DOMContentLoaded', (event) => {
 

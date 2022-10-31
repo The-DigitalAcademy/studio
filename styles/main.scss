@@ -17,10 +17,22 @@ header {
         color: #f8f9fa;
     }
 }
+.ayoba-header-bg {
+    background: rgb(237,114,53);
+    background: linear-gradient(90deg, rgba(237,114,53,1) 0%, rgba(186,58,39,1) 100%);
+}
 
 main {
     display: grid;
     grid-template-columns: 250px auto;
+}
+.absolute {
+    position: absolute;
+}
+.gradient-gray {
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(250 250 250), #bebebeb0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #components-wrapper {
@@ -128,7 +140,7 @@ main {
     background-color: #fff;
 
     .drag-item:hover {
-        box-shadow: 0 0 0 0.25rem #2d81c2a8;
+        box-shadow: 0 0 0 0.1rem #2d81c2a8;
     }
 }
 
@@ -215,11 +227,27 @@ main {
     width: 80%;
 }
 
-
+.slide-left {
+    animation: slide-left .5s forwards;
+}
 @keyframes slide-left {
     0% {
         opacity: 0.1;
         transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.slide-right {
+    animation: slide-right .5s forwards;
+}
+@keyframes slide-right {
+    0% {
+        opacity: 0.1;
+        transform: translateX(-10px);
     }
 
     100% {

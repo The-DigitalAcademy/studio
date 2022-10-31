@@ -1,5 +1,5 @@
 import  ELEMENTS from './components.js'
-import { ExportableProject } from "./exportableProjectClass.js"
+import { ExportableProject } from "./exportableProject.class.js"
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
