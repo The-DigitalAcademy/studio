@@ -145,18 +145,18 @@ main {
       align-self: center;
   -ms-grid-column-align: center;
       justify-self: center;
-  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
-          box-shadow: 0 0 200px #e3e3e3 inset;
 }
 
 #view-wrapper .mobile {
   background-color: #1d1d1d;
-  border-radius: .8rem;
-  padding: 10px 7px;
-  margin: 0 auto;
+  border-radius: 25px;
+  padding: 12px 7px 20px 7px;
+  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
+          box-shadow: 0 0 200px #e3e3e3 inset;
+  border: 3px solid #ffffff26;
 }
 
-.hide-scrollbar, .elements-container, #container {
+.hide-scrollbar, .elements-container, #container, .edit-toolbox .innerContainer {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -164,16 +164,16 @@ main {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar, .elements-container::-webkit-scrollbar, #container::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar, .elements-container::-webkit-scrollbar, #container::-webkit-scrollbar, .edit-toolbox .innerContainer::-webkit-scrollbar {
   display: none;
 }
 
 #container {
   height: 76vh;
-  width: 42vh;
+  width: 40vh;
   overflow-y: scroll;
-  margin: 30px auto;
   background-color: #fff;
+  border-radius: 17px;
 }
 
 #container .drag-item:hover {
