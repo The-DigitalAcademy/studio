@@ -1,7 +1,8 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { EditTool } from "./modules/editToolClass.js";
+import { EditTool } from "./modules/editTool.class.js";
 import { renderDraggableElements, downloadCode } from "./modules/utils.js"
 import ELEMENTS from "./modules/components.js"
+import { ActionTool } from "./modules/actionTool.class.js";
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -29,6 +30,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const { item } = data;
         const type = item.dataset.type;
         item.innerHTML = ELEMENTS[type].content;
+        new ActionTool(item, ELEMENTS[type].actionToolList);
         new EditTool(item, ELEMENTS[type].editingToolList);
       }
     });

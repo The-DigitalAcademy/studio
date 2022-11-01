@@ -5,15 +5,16 @@ class EditTool {
     #toolList;
     #toolboxLoaded;
     #toolbox;
+    #toolButton;
     #toolDirectory = {
-            horizontalAlign: this.#createHorizontalAlignTool(),
-            textAlign: this.#createTextAlignTool(),
-            borderRadius: this.#createBorderRadiusTool(),
-            imageSize: this.#createImageSizeTool(),
-            imageUrl: this.#createImageUrlTool(),
-            padding: this.#createPaddingTool(),
-            bgColor: this.#createBgColorTool(),
-            textColor: this.#createTextColorTool()
+        horizontalAlign: this.#createHorizontalAlignTool(),
+        textAlign: this.#createTextAlignTool(),
+        imageSize: this.#createImageSizeTool(),
+        imageUrl: this.#createImageUrlTool(),
+        padding: this.#createPaddingTool(),
+        bgColor: this.#createBgColorTool(),
+        textColor: this.#createTextColorTool(),
+        border: this.#createBorderTool()
     }
     /**
      * creates an EditTool for an element
@@ -26,56 +27,69 @@ class EditTool {
         this.#toolList = toolList
         this.#toolboxLoaded = false
         this.#toolbox = this.#createEditToolbox();
+        this.#toolButton = this.#createToolButton();
 
-        this.#addEditFunctionality();
+        document.body.append(this.#toolButton);
     }
 
     /**
-     * adds an edit button to the editableElement. The edit button loads/unloads the toolbox
+     * create toolbutton for editableElement. tool button allows for editing and deleting editableElement
      */
-    #addEditFunctionality() {
+    #createToolButton() {
         const deleteBtn = this.#createDeleteButton();
         const editBtn = this.#createEditButton();
 
-        //display edit & delete buttons onmouseover 
-        this.#editableElement.addEventListener('mouseover', () => {
-            editBtn.style.display = 'block';
-            deleteBtn.style.display = 'block';
+        const toolBtn = document.createElement('span');
+        toolBtn.className = 'p-1 shadow rounded-pill absolute border gradient-gray slide-right'
+        toolBtn.append(editBtn);
+        toolBtn.append(deleteBtn);
+        this.#updateElementPosition(toolBtn, 0, -5);
+
+        //hover display effect
+        toolBtn.addEventListener('mouseover', () => {
+            toolBtn.style.display = 'inline';
         })
-        this.#editableElement.addEventListener('mouseout', () => {
-            editBtn.style.display = 'none';
-            deleteBtn.style.display = 'none';
+        toolBtn.addEventListener('mouseout', () => {
+            toolBtn.style.display = 'none';
+        })
+        this.#editableElement.addEventListener('mouseover', () => {
+            this.#updateElementPosition(toolBtn, 0, -5);
+            toolBtn.style.display = 'inline';
+        })
+        // FIX HERE
+        this.#editableElement.addEventListener('focusout', () => {
+            toolBtn.style.display = 'none';
         })
 
-        //add edit & delete buttons to editableElement
-        this.#editableElement.prepend(editBtn);
-        this.#editableElement.prepend(deleteBtn);
+        return toolBtn;
     }
     /**
      * creates an edit button element
-     * @returns {Element} edit button ready to be appended/prepended to the editableElement
+     * @returns {Element} edit button ready to added to the toolbar
      */
     #createEditButton() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        editButton.style.float = 'right';
         editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
         editButton.onclick = () => {
             if (this.#toolboxLoaded) {
                 this.#toolbox.remove();
                 this.#toolboxLoaded = false;
             } else {
-                this.#updateToolboxPosition()
+                this.#updateElementPosition(this.#toolbox, -15, 10);
                 document.body.append(this.#toolbox);
                 this.#toolboxLoaded = true;
             }
         }
         return editButton;
     }
+    /**
+     * creates a delete button element
+     * @returns {Element} delete button ready to added to the toolbar
+     */
     #createDeleteButton() {
         const deleteButton = document.createElement('button');
         deleteButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        deleteButton.style.float = 'right';
         deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>';
         deleteButton.onclick = () => {
             this.#editableElement.remove();
@@ -117,14 +131,16 @@ class EditTool {
         return toolParentContainer;
     }
     /**
-     * update top & left style properties of toolbox
+     * update top & left displacement from editableElement
+     * @param {Element} element element who's left/right style properties are being changed
+     * @param {number} top displacement from top in px
+     * @param {number} right displacement from right in px
      */
-    #updateToolboxPosition() {
+    #updateElementPosition(element, top, right) {
         let rect = this.#editableElement.getBoundingClientRect();
-        this.#toolbox.style.top = `${rect.top - 15}px`;
-        this.#toolbox.style.left = `${rect.right + 10}px`;
+        element.style.top = `${rect.top + top }px`;
+        element.style.left = `${rect.right + right }px`;
     }
-
     /**
      * creates textAlign tool and returns the element. tool sets the text-align style property of element
      * @return {Element} text align tool element
@@ -268,7 +284,7 @@ class EditTool {
         const toolContainer = document.createElement('div');
         toolContainer.className = 'paddingTool';
 
-        const label = '<span>Border radius: %</span>'
+        const label = '<span>radius: %</span>'
         const input = document.createElement('input');
         input.type = 'number';
         input.value = '0'
@@ -296,9 +312,7 @@ class EditTool {
         toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Background Color</p>'
         colors.forEach(color => {
             const btn = document.createElement('button');
-            btn.className = "btn m-1"
-            btn.style.width = '25px';
-            btn.style.height = '25px';
+            btn.className = "btn m-1 colorBtn";
             btn.style.backgroundColor = color;
             btn.onclick = () => this.#styleEditableElement('backgroundColor', color);
 
@@ -308,19 +322,62 @@ class EditTool {
         return toolContainer;
     }
     /**
+     * create and return border tool. tool changes the border width, radius & color of editableElement.
+     * @returns {Element} border tool element
+     */
+    #createBorderTool() {
+        const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd'];
+
+        const toolContainer = document.createElement('div');
+        toolContainer.className = "border border-light my-1 p-1 rounded";
+        toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Border</p>';
+
+        const borderWidthContainer = document.createElement('div');
+        borderWidthContainer.className = 'paddingTool';
+
+        const label = '<span>width</span>'
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.max = '50';
+        input.step = '1';
+        input.onchange = (e) => {
+            this.#styleEditableElement('borderWidth', `${e.target.value}px`);
+            this.#styleEditableElement('borderStyle', 'solid');
+        }
+        borderWidthContainer.innerHTML = label;
+        borderWidthContainer.append(input);
+
+        const borderColorContainer = document.createElement('div');
+
+        colors.forEach(color => {
+            const colorBtn = document.createElement('button');
+            colorBtn.className = "btn m-1 colorBtn"
+            colorBtn.style.border = '2px solid ' + color;
+            colorBtn.onclick = () => {
+                this.#styleEditableElement('borderColor', color);
+            }
+            borderColorContainer.append(colorBtn);
+        });
+        const borderRadiusElement = this.#createBorderRadiusTool();
+        toolContainer.append(borderWidthContainer);
+        toolContainer.append(borderRadiusElement);
+        toolContainer.append(borderColorContainer);
+
+        return toolContainer;
+    }
+    /**
      * create and return text color tool. tool changes text color of editableElement.
      * @returns {Element} text color tool element
      */
-     #createTextColorTool() {
+    #createTextColorTool() {
         const colors = ['#212529', '#f8f9fa', '#dc3545', '#ffc107', '#0dcaf0', '#198754', '#6c757d', '#0d6efd']
         const toolContainer = document.createElement('div');
         toolContainer.className = "border border-light my-1 p-1 rounded"
         toolContainer.innerHTML = '<p class="text-light mb-1 fw-light">Text Color</p>'
         colors.forEach(color => {
             const btn = document.createElement('button');
-            btn.className = "btn m-1"
-            btn.style.width = '25px';
-            btn.style.height = '25px';
+            btn.className = "btn m-1 colorBtn";
             btn.style.backgroundColor = color;
             btn.onclick = () => this.#styleEditableElement('color', color);
 
@@ -336,7 +393,7 @@ class EditTool {
      * @param {string} value css declaration value
      */
     #styleEditableElement(property, value) {
-        this.#editableElement.children[2].style[property] = value
+        this.#editableElement.children[0].style[property] = value
     }
 }
 

@@ -23,7 +23,8 @@ const ELEMENTS = {
             </div>
         </div>
             `,
-        editingToolList: ['textAlign', 'textColor']
+        editingToolList: ['textAlign', 'textColor'],
+        actionToolList: ['getMsisdn', 'getSomething', 'getAnother']
     },
 
     RadioForm: {
@@ -88,7 +89,7 @@ const ELEMENTS = {
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
         `,
-        editingToolList: ['textAlign', 'bgColor', 'textColor']
+        editingToolList: ['textAlign', 'bgColor', 'textColor', 'border']
     },
 
     Video: {
@@ -115,19 +116,19 @@ const ELEMENTS = {
     Heading1: {
         icon: `<i class="bi bi-type-h1"></i>`,
         content: `<h1 contenteditable>Heading 1</h1>`,
-        editingToolList: ['textAlign', 'padding', 'textColor']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
     },
 
     Heading2: {
         icon: `<i class="bi bi-type-h2"></i>`,
         content: `<h2 contenteditable>Heading 2</h2>`,
-        editingToolList: ['textAlign', 'padding', 'textColor']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
     },
 
     Heading3: {
         icon: `<i class="bi bi-type-h3"></i>`,
         content: `<h3 contenteditable>Heading 1</h3>`,
-        editingToolList: ['textAlign', 'padding', 'textColor']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
     },
 
     Text: {
@@ -138,13 +139,13 @@ const ELEMENTS = {
                      when an unknown printer took a galley of type and scrambled it to make a 
                      type specimen book.
               </p>`,
-        editingToolList: ['textAlign', 'padding', 'textColor']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
     },
 
     Image: {
         icon: '<i class="bi bi-image"></i>',
         content: '<img class="d-block" src="https://picsum.photos/100"/>',
-        editingToolList: ['imageUrl', 'imageSize', 'borderRadius', 'horizontalAlign', 'padding', 'bgColor']
+        editingToolList: ['imageUrl', 'imageSize', 'horizontalAlign', 'padding', 'bgColor', 'border']
     }
 }
 
