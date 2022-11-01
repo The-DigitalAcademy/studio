@@ -242,7 +242,7 @@ class EditTool {
         const input = document.createElement('input');
         input.type = 'text';
         input.onchange = (e) => {
-            this.#editableElement.children[2].src = e.target.value;
+            this.#editableElement.children[0].src = e.target.value;
         }
 
         toolContainer.innerHTML = label;
