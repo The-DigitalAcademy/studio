@@ -57,7 +57,7 @@ class EditTool {
             toolBtn.style.display = 'inline';
         })
         // FIX HERE
-        this.#editableElement.addEventListener('focusout', () => {
+        this.#editableElement.addEventListener('mouseout', () => {
             toolBtn.style.display = 'none';
         })
 
