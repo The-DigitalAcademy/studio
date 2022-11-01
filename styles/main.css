@@ -66,7 +66,7 @@ main {
   border-radius: 2px;
 }
 
-.elements-container {
+.components-container {
   height: 90%;
   overflow-y: scroll;
   padding: .9rem;
@@ -77,7 +77,7 @@ main {
   grid-gap: 10px;
 }
 
-.elements-container .drag-item {
+.components-container .drag-item {
   background-color: #ffffff30;
   color: #fff;
   -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -102,13 +102,13 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.079);
 }
 
-.elements-container .drag-item i {
+.components-container .drag-item i {
   font-size: 1.5rem;
   display: block;
   margin: 0;
 }
 
-.elements-container .drag-item:hover {
+.components-container .drag-item:hover {
   border: 1px dotted rgba(255, 255, 255, 0.523);
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -156,7 +156,7 @@ main {
   border: 3px solid #ffffff26;
 }
 
-.hide-scrollbar, .elements-container, #container, .edit-toolbox .innerContainer {
+.hide-scrollbar, .components-container, #container, .edit-toolbox .innerContainer {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -164,7 +164,7 @@ main {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar, .elements-container::-webkit-scrollbar, #container::-webkit-scrollbar, .edit-toolbox .innerContainer::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar, .components-container::-webkit-scrollbar, #container::-webkit-scrollbar, .edit-toolbox .innerContainer::-webkit-scrollbar {
   display: none;
 }
 

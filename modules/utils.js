@@ -112,6 +112,31 @@ function downloadCode() {
   const newProject = new ExportableProject(rootApp);
   newProject.saveAsZip();
 }
+function toggleLeftPanels(e) {
+  let container;
+  container = e.target.id == 'elementsBtn' ? 'elements' : 'templates';
+
+  const elementsBtn = document.querySelector('.options').children[0];
+  const templatesBtn = document.querySelector('.options').children[1];
+  const elementsContainer = document.querySelectorAll('.components-container')[0];
+  const templatesContainer = document.querySelectorAll('.components-container')[1];
+
+  if (container == 'elements') {
+    elementsBtn.classList.add('bg-primary');
+    elementsContainer.classList.remove('d-none');
+  } else {
+    elementsBtn.classList.remove('bg-primary');
+    elementsContainer.classList.add('d-none');
+  }
+
+  if (container == 'templates') {
+    templatesBtn.classList.add('bg-primary');
+    templatesContainer.classList.remove('d-none');
+  } else {
+    templatesBtn.classList.remove('bg-primary');
+    templatesContainer.classList.add('d-none');
+  }
+}
 
 export {
   renderMirrorImage,
@@ -124,4 +149,5 @@ export {
   detectLeftButton,
   renderDraggableElements,
   downloadCode,
+  toggleLeftPanels,
 };

@@ -1,6 +1,6 @@
 import { Dragoned } from "./modules/DragonedClass.js";
 import { EditTool } from "./modules/editTool.class.js";
-import { renderDraggableElements, downloadCode } from "./modules/utils.js"
+import { renderDraggableElements, downloadCode, toggleLeftPanels } from "./modules/utils.js"
 import ELEMENTS from "./modules/components.js"
 import { ActionTool } from "./modules/actionTool.class.js";
 
@@ -9,6 +9,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   (function () {
     renderDraggableElements('draggable');
     document.getElementById('export-project').onclick = downloadCode
+
+    const elementsBtn = document.querySelector('.options').children[0].addEventListener('click', toggleLeftPanels);
+    const templatesBtn = document.querySelector('.options').children[1].addEventListener('click', toggleLeftPanels);
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",
