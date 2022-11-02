@@ -68,7 +68,7 @@ class ActionTool {
     #createActionButton() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        editButton.innerHTML = '<i class="bi bi-hand-index-fill"></i>';
+        editButton.innerHTML = '<i class="bi bi-gear-fill"></i>';
         editButton.onclick = () => {
             if (this.#toolboxLoaded) {
                 this.#toolbox.remove();
@@ -93,7 +93,7 @@ class ActionTool {
         toolContainer.className = 'innerContainer'
 
         const closeBtn = document.createElement('button');
-        closeBtn.classList = 'btn';
+        closeBtn.classList = 'btn float-end';
         closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
 
         closeBtn.onclick = () => {
