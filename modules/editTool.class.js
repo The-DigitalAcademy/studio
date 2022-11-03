@@ -108,7 +108,7 @@ class EditTool {
         toolContainer.className = 'innerContainer'
 
         const closeBtn = document.createElement('button');
-        closeBtn.classList = 'btn';
+        closeBtn.classList = 'btn float-end';
         closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
 
         closeBtn.onclick = () => {
@@ -284,7 +284,7 @@ class EditTool {
         const toolContainer = document.createElement('div');
         toolContainer.className = 'paddingTool';
 
-        const label = '<span>radius: %</span>'
+        const label = '<span>radius:</span>'
         const input = document.createElement('input');
         input.type = 'number';
         input.value = '0'
@@ -293,7 +293,7 @@ class EditTool {
         input.step = '1';
         input.style.width = '40px';
         input.onchange = (e) => {
-            this.#styleEditableElement('borderRadius', `${e.target.value}%`);
+            this.#styleEditableElement('borderRadius', `${e.target.value/4}rem`);
         }
 
         toolContainer.innerHTML = label;

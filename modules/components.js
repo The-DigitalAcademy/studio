@@ -24,7 +24,25 @@ const ELEMENTS = {
         </div>
             `,
         editingToolList: ['textAlign', 'textColor'],
-        actionToolList: ['getMsisdn', 'getSomething', 'getAnother']
+        actionToolList: ['getMsisdn', 'getCountry', 'getLanguage']
+    },
+
+    PhoneForm: {
+        icon: `
+        <i class="bi bi-telephone-fill"></i>
+        <small>Phone Form</small>
+        `,
+        content: `
+        <div class='small mb-3 mx-1'>
+            <label contenteditable for="inputPhone" class="form-label fw-bold">Phone Number</label>
+            <input type="tel" id="inputPhone" class="form-control form-control-sm" aria-describedby="phoneHelpBlock">
+            <div contenteditable id="phoneHelpBlock" class="form-text">
+                We will not share your phone number with anyone else.
+            </div>
+        </div>
+            `,
+        editingToolList: ['textAlign', 'textColor'],
+        actionToolList: ['getMsisdn']
     },
 
     RadioForm: {
@@ -62,7 +80,8 @@ const ELEMENTS = {
             </div>
         </div>
             `,
-        editingToolList: ['textAlign', 'textColor']
+        editingToolList: ['textAlign', 'textColor'],
+        actionToolList: ['getCountry', 'getLanguage']
     },
 
     TextAreaForm: {
@@ -85,7 +104,7 @@ const ELEMENTS = {
         <small>Header</small>
         `,
         content: `
-        <div style="background-color:#212529;color:#f8f9fa;" class="p-2 mb-3">
+        <div style="background-color:#212529;color:#f8f9fa;" class="p-2">
             <h1 contenteditable class="dispay-4 small">Header</h1>
         </div>
         `,

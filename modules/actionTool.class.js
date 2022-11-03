@@ -68,7 +68,7 @@ class ActionTool {
     #createActionButton() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-sm text-primary border-0 EDITONLY';
-        editButton.innerHTML = '<i class="bi bi-hand-index-fill"></i>';
+        editButton.innerHTML = '<i class="bi bi-gear-fill"></i>';
         editButton.onclick = () => {
             if (this.#toolboxLoaded) {
                 this.#toolbox.remove();
@@ -93,7 +93,7 @@ class ActionTool {
         toolContainer.className = 'innerContainer'
 
         const closeBtn = document.createElement('button');
-        closeBtn.classList = 'btn';
+        closeBtn.classList = 'btn float-end';
         closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
 
         closeBtn.onclick = () => {
@@ -103,21 +103,33 @@ class ActionTool {
         toolContainer.append(closeBtn)
 
         const checklistGroup = document.createElement('div');
-        checklistGroup.className = '';
-        let listContent = '';
 
         //add tools to container
         this.#toolList.forEach((tool, index) => {
-            listContent += `
-                        <div class="form-check ps-0">
-                            <input type="radio" class="btn-check" name="action-item" id="${tool}" value="${tool}" autocomplete="off">
-                            <label class="btn btn-sm w-100 btn-outline-light" for="${tool}">${tool}</label>
-                        </div>
-                            `
-            // const includedTool = this.#toolDirectory[tool];
-            // toolContainer.append(includedTool);
+            const div = document.createElement('div');
+            div.className = "form-check ps-0";
+            const input = document.createElement('input');
+            let inputAttributes = {
+                type: 'radio',
+                className: "btn-check",
+                name: "action-item",
+                id: tool,
+                value: tool,
+                autocomplete: "off",
+                onchange: () => this.setOnloadClass()
+            }
+            this.#setElementAttributes(input, inputAttributes);
+            const label = document.createElement('label');
+            let labelAttributes = {
+                className: "btn btn-sm w-100 btn-outline-light",
+                htmlFor: tool,
+                innerHTML: tool
+            }
+            this.#setElementAttributes(label, labelAttributes);
+
+            div.append(input, label);
+            checklistGroup.append(div);
         });
-        checklistGroup.innerHTML = listContent;
         toolContainer.append(checklistGroup);
         //set top/left position of container
         let rect = this.#editableElement.getBoundingClientRect();
@@ -146,11 +158,16 @@ class ActionTool {
         element.style.top = `${rect.top + top}px`;
         element.style.left = `${rect.right + right}px`;
     }
-    #setOnloadFunction() {
-
+    #setElementAttributes(element, attributes) {
+        Object.keys(attributes).forEach(attr => {
+            element[attr] = attributes[attr];
+        });
     }
-
-
+    setOnloadClass() {
+        const action = document.querySelector('input[name="action-item"]:checked').value;
+        const element = this.#editableElement.children[0].children[1];
+        element.dataset.action = action;
+    }
 }
 
 export { ActionTool }
