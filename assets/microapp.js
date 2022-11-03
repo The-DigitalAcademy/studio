@@ -1,5 +1,22 @@
-export default 
+export default
 `
+function loadAyobaData() {
+    const msisdnInputs = document.querySelectorAll('[data-action="getMsisdn"]');
+    for (let i = 0; i < msisdnInputs.length; i++) {
+        const inputEle = msisdnInputs[i];
+        getMsisdn(inputEle)
+    }
+    const languageInputs = document.querySelectorAll('[data-action="getLanguage"]');
+    for (let i = 0; i < languageInputs.length; i++) {
+        const inputEle = languageInputs[i];
+        getLanguage(inputEle)
+    }
+    const countryInputs = document.querySelectorAll('[data-action="getCountry"]');
+    for (let i = 0; i < countryInputs.length; i++) {
+        const inputEle = countryInputs[i];
+        getCountry(inputEle)
+    }
+}
 /**
 * A boilerplate microapp for ayoba that implements a stub interface and debug logging on the page
 */
@@ -17,7 +34,7 @@ window.onload = function afterpagedLoad() {
     debug = ("true" === getURLParameter("debug"));
     if (debug) {
         console.log("Debug mode: " + debug);
-        document.getElementById("log-container").hidden = false;
+        // document.getElementById("log-container").hidden = false;
         console.log("Hosted at: " + window.location.href);
     }
     if (Ayoba === null) {
@@ -33,11 +50,12 @@ window.onload = function afterpagedLoad() {
         console.log(value);
     })
     console.log(Object.getOwnPropertyNames(Ayoba));
-    const copyButton = document.getElementById("btn_copy");
-    copyButton.addEventListener('click', () => {
-        copyMessage("logger");
-    });
-    console.log("Now let's wait till the presence is updated...");
+    // const copyButton = document.getElementById("btn_copy");
+    // copyButton.addEventListener('click', () => {
+    //     copyMessage("logger");
+    // });
+    // console.log("Now let's wait till the presence is updated...");
+    loadAyobaData();
 };
 
 /**
@@ -65,10 +83,10 @@ window.onload = function afterpagedLoad() {
             output += "</span>&nbsp;";
         }
 
-        logger.innerHTML += output + "<br>";
+        // logger.innerHTML += output + "<br>";
         console.old.apply(undefined, arguments);
     };
-})(document.getElementById("logger"));
+})(/*document.getElementById("logger")*/);
 
 /**
  * Checks if the microapp is running inside ayoba and on which OS 
@@ -110,14 +128,14 @@ function start(){
         console.log("JID: " + getSelfJid());
     };
     if (Object.getOwnPropertyNames(Ayoba).includes("getMsisdn")) {
-        console.log("Calling getMsisdn()...");
-        console.log("MSISDN: " + getMsisdn());
+        // console.log("Calling getMsisdn()...");
+        // console.log("MSISDN: " + getMsisdn());
     };
     if (Object.getOwnPropertyNames(Ayoba).includes("getCountry")) {
-        console.log("Country: " + getCountry());
+        // console.log("Country: " + getCountry());
     };
     if (Object.getOwnPropertyNames(Ayoba).includes("getLanguage")) {
-        console.log("Language: " + getLanguage());
+        // console.log("Language: " + getLanguage());
     };
 }
 
@@ -129,15 +147,15 @@ function finish() {
 }
 
 function sendMessage() {
-    Ayoba.sendMessage(document.getElementById("inputText").value);
+    // Ayoba.sendMessage(document.getElementById("inputText").value);
 }
 
 function composeMessage() {
-    Ayoba.composeMessage(document.getElementById("inputText").value);
+    // Ayoba.composeMessage(document.getElementById("inputText").value);
 }
 
 function copyMessage(theIndex) {
-    var strInputCode = document.getElementById(theIndex).innerHTML;
+    // var strInputCode = document.getElementById(theIndex).innerHTML;
     var cleanText = strInputCode.replace(/<\\/?[^>]+(>|$)/g, "\\n");
     const el = document.createElement('textarea');
     el.value = cleanText;
@@ -152,36 +170,36 @@ function sendMedia() {
 }
 
 function sendLocation() {
-    Ayoba.sendLocation(document.getElementById("inputTextLat").value, document.getElementById("inputTextLon").value);
+    // Ayoba.sendLocation(document.getElementById("inputTextLat").value, document.getElementById("inputTextLon").value);
 }
 
-function getCountry() {
+function getCountry(inputEle) {
     var country = Ayoba.getCountry();
-    document.getElementById("countryText").textContent = country
+    inputEle.value = country;
     return country
 }
 
-function getMsisdn() {
+function getMsisdn(inputEle) {
     var msisdn = Ayoba.getMsisdn();
-    document.getElementById("msisdnText").textContent = msisdn
+    inputEle.value = msisdn;
     return msisdn
 }
 
 function getSelfJid() {
     var jid = Ayoba.getSelfJid();
-    document.getElementById("selfjidText").textContent = jid
+    // document.getElementById("selfjidText").textContent = jid
     return jid
 }
 
 function getCanSendMessage() {
     var canSendMessage = Ayoba.getCanSendMessage();
-    document.getElementById("cansendText").textContent = canSendMessage
+    // document.getElementById("cansendText").textContent = canSendMessage
     return canSendMessage
 }
 
-function getLanguage() {
+function getLanguage(inputEle) {
     var language = Ayoba.getLanguage();
-    document.getElementById("languageText").textContent = language
+    inputEle.value = language;
     return language
 }
 
@@ -198,7 +216,7 @@ function getURLParameter(sParam) {
 
 function getSelfJidFromUrl() {
     var selfJid = getURLParameter("jid")
-    document.getElementById("selfjidText").textContent = selfJid
+    // document.getElementById("selfjidText").textContent = selfJid
     return selfJid
 }
 
@@ -213,7 +231,7 @@ function getSelfJidFromUrl() {
  * cases, will mean Ayoba cannot retrieve the GPS coordinates.
  */
 function onLocationChanged(lat, lon) {
-    document.getElementById("locationInputText").textContent = lat+", "+lon;
+    // document.getElementById("locationInputText").textContent = lat+", "+lon;
     console.log("Event: location changed, lat: " + lat + ", lon: " + lon);
 }
 
@@ -222,8 +240,8 @@ function onLocationChanged(lat, lon) {
  * the user profile changes (nickname or avatar)
  */
 function onProfileChanged(nickname, avatarPath) {
-    document.getElementById("nicknameInputText").textContent = nickname
-    document.getElementById("avatarImage").src = avatarPath
+    // document.getElementById("nicknameInputText").textContent = nickname
+    // document.getElementById("avatarImage").src = avatarPath
     console.log("Event: profile changed, nickname: " + nickname + ", avatar path: " + avatarPath);
 }
 
@@ -232,7 +250,7 @@ function onProfileChanged(nickname, avatarPath) {
  * the user nickname changes (infact, always online)
  */
 function onNicknameChanged(nickname) {
-    document.getElementById("nicknameInputText").textContent = nickname
+    // document.getElementById("nicknameInputText").textContent = nickname
     console.log("Event: nickname changed: " + nickname);
     //Only call start the 1st time the app is loaded
     if (!ready){ start();};
@@ -243,7 +261,7 @@ function onNicknameChanged(nickname) {
  * the user presence changes (infact, always online)
  */
 function onPresenceChanged(presence) {
-    document.getElementById("presenceInputText").textContent = presence
+    // document.getElementById("presenceInputText").textContent = presence
     console.log("Event: presence changed: " + presence);
 }
 
@@ -252,7 +270,7 @@ function onPresenceChanged(presence) {
  * the user avatar changes (infact, always online)
  */
 function onAvatarChanged(avatar) {
-    document.getElementById("avatarImage").src = avatar
+    // document.getElementById("avatarImage").src = avatar
     console.log("Event: avatar changed: " + avatar);
 }
 
@@ -265,7 +283,7 @@ function onAvatarChanged(avatar) {
  * @param encodedUrl: Base64 encoded media file’s url
  */
 function onMediaSentResponse(responseCode, encodedUrl) {
-    document.getElementById("inputText").value = responseCode+" - "+encodedUrl;
+    // document.getElementById("inputText").value = responseCode+" - "+encodedUrl;
     console.log("Event: media sent, response code: " + responseCode + " URL: " + encodedUrl);
 }
 
@@ -277,24 +295,24 @@ function onMediaSentResponse(responseCode, encodedUrl) {
  *  1: the location has been sent successfully
  */
 function onLocationSentResponse(responseCode) {
-    document.getElementById("inputText").value = responseCode
+    // document.getElementById("inputText").value = responseCode
 }
 
 function getContactJid() {
     var contactJid = getURLParameter("contactjid")
-    document.getElementById("inputText").value = contactJid
+    // document.getElementById("inputText").value = contactJid
     return contactJid
 }
 
 function getContactName() {
     var contactName = getURLParameter("contactname")
-    document.getElementById("inputText").value = contactName
+    // document.getElementById("inputText").value = contactName
     return contactName
 }
 
 function getContacts() {
     var contactsJson = Ayoba.getContacts();
-    document.getElementById("inputText").value = contactsJson
+    // document.getElementById("inputText").value = contactsJson
     return contactsJson;
 }
 
@@ -311,8 +329,8 @@ function takePicture() {
  *  1: the picture has been taken successfully
  */
 function onPictureRetrievedResponse(responseCode, picturePath) {
-    document.getElementById("inputText").value = responseCode
-    document.getElementById("pictureRetrieved").src = picturePath
+    // document.getElementById("inputText").value = responseCode
+    // document.getElementById("pictureRetrieved").src = picturePath
 }
 
 /*
@@ -336,7 +354,7 @@ function getFile() {
  * @param {String} filePath: user selected files paths array
  */
 function onFileRetrievedResponse(responseCode, filePath) {
-    document.getElementById("inputText").value = responseCode.concat(" - ").concat(filePath)
-    document.getElementById("pictureRetrieved").src = filePath
+    // document.getElementById("inputText").value = responseCode.concat(" - ").concat(filePath)
+    // document.getElementById("pictureRetrieved").src = filePath
 }
 `
