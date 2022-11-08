@@ -48,7 +48,7 @@ function restrictMobile() {
       document.body.innerHTML = `
                           <div class="container">
                             <div class="text-center">
-                              <img src="../assets/desktop_only.png" style="width: 90%;">
+                              <img src="assets/desktop_only.png" style="width: 90%;">
                             </div>
                             <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
                           </div>
