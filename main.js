@@ -1,8 +1,10 @@
 import { Dragoned } from "./modules/DragonedClass.js";
 import { EditTool } from "./modules/editTool.class.js";
-import { renderDraggableElements, downloadCode, toggleLeftPanels } from "./modules/utils.js"
+import { renderDraggableElements, downloadCode, toggleLeftPanels, restrictMobile } from "./modules/utils.js"
 import ELEMENTS from "./modules/components.js"
 import { ActionTool } from "./modules/actionTool.class.js";
+
+restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
