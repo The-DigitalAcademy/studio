@@ -28,6 +28,35 @@ const CLASS_NAMES = {
 const containerStack = [];
 
 /**
+ * display alert if device is mobile or small screen
+ */
+function restrictMobile() {
+  const agent = navigator.userAgent;
+  const isWebkit = (agent.indexOf("AppleWebKit") > 0);
+  const isIPad = (agent.indexOf("iPad") > 0);
+  const isIOS = (agent.indexOf("iPhone") > 0 || agent.indexOf("iPod") > 0);
+  const isAndroid = (agent.indexOf("Android") > 0);
+  const isNewBlackBerry = (agent.indexOf("AppleWebKit") > 0 && agent.indexOf("BlackBerry") > 0);
+  const isWebOS = (agent.indexOf("webOS") > 0);
+  const isWindowsMobile = (agent.indexOf("IEMobile") > 0);
+  const isSmallScreen = (screen.width < 767 ||  window.innerWidth < 767 || screen.width < 767);
+  const isUnknownMobile = (isWebkit && isSmallScreen);
+  const isMobile = (isIOS || isAndroid || isNewBlackBerry || isWebOS || isWindowsMobile || isUnknownMobile);
+  const isTablet = (isIPad || (isMobile && !isSmallScreen));
+
+  if (isMobile || isSmallScreen) {
+      document.body.innerHTML = `
+                          <div class="container">
+                            <div class="text-center">
+                              <img src="../assets/desktop_only.png" style="width: 90%;">
+                            </div>
+                            <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
+                          </div>
+                          `
+  };
+}
+
+/**
  * returns true if left mouse button clicked
  * @param {Event} evt event
  * @returns {Boolean} Boolean
@@ -150,4 +179,5 @@ export {
   renderDraggableElements,
   downloadCode,
   toggleLeftPanels,
+  restrictMobile
 };
