@@ -1,5 +1,6 @@
 import  ELEMENTS from './components.js'
-import { ExportableProject } from "./exportableProject.class.js"
+import { ExportableProject } from "./exportableProject.class.js";
+import TEMPELEMENTS from './templateComponents.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -136,6 +137,18 @@ function renderDraggableElements(containerElementID) {
   }
 }
 
+function renderDraggableTemplate(containerElementID) {
+  const draggablesContainer = document.getElementById(containerElementID);
+
+  for (const property in TEMPELEMENTS) {
+      const container = document.createElement('div');
+      container.setAttribute('class', 'drag-item');
+      container.setAttribute('data-type', property);
+      container.innerHTML = `${TEMPELEMENTS[property].icon}`
+      draggablesContainer.append(container);
+  }
+}
+
 function downloadCode() {
   const rootApp = document.getElementById('container');
   const newProject = new ExportableProject(rootApp);
@@ -177,6 +190,7 @@ export {
   containerStack,
   detectLeftButton,
   renderDraggableElements,
+  renderDraggableTemplate,
   downloadCode,
   toggleLeftPanels,
   restrictMobile
