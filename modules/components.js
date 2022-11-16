@@ -4,11 +4,10 @@ const ELEMENTS = {
         <button class='btn btn-primary'>button</button>
         `,
         content: `
-        <button class='btn btn-primary d-block' contenteditable>Button</button>
+        <button class='btn btn-primary d-block' contenteditable>Submit</button>
         `,
         editingToolList: ['horizontalAlign', 'bgColor', 'textColor']
     },
-
     EmailForm: {
         icon: `
         <i class="bi bi-pencil-square"></i>
@@ -16,7 +15,7 @@ const ELEMENTS = {
         `,
         content: `
         <div class='small mb-3 mx-1'>
-            <label contenteditable for="inputEmail" class="form-label fw-bold">Email Adress</label>
+            <label contenteditable for="inputEmail" class="form-label fw-bold">Email Address</label>
             <input type="email" id="inputEmail" class="form-control form-control-sm" aria-describedby="emailHelpBlock">
             <div contenteditable id="emailHelpBlock" class="form-text">
                 We'll never share your email with anyone else.
@@ -34,7 +33,7 @@ const ELEMENTS = {
         `,
         content: `
         <div class='small mb-3 mx-1'>
-            <label contenteditable for="inputPhone" class="form-label fw-bold">Phone Number</label>
+            <label contenteditable for="inputPhone" class="form-label fw-bold">Enter your cellphone number</label>
             <input type="tel" id="inputPhone" class="form-control form-control-sm" aria-describedby="phoneHelpBlock">
             <div contenteditable id="phoneHelpBlock" class="form-text">
                 We will not share your phone number with anyone else.
@@ -52,10 +51,10 @@ const ELEMENTS = {
         `,
         content: `
         <div class='small mb-3 mx-1'>
-            <label contenteditable class="fw-bold">Have you ever used a computer before</label>
+            <label contenteditable class="fw-bold">Have you ever used a computer before?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="radioDefault" id="radio1">
-                <label contenteditable class="form-check-label" for="radio1">yes</label>
+                <label contenteditable class="form-check-label" for="radio1">Yes</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="radioDefault" id="radio2" checked>
@@ -65,7 +64,46 @@ const ELEMENTS = {
         `,
         editingToolList: ['textAlign', 'textColor']
     },
-
+    RadioForm2: {
+        icon: `
+            <i class="bi bi-ui-radios"></i>
+            <small>Gender</small>
+            `,
+        content: `
+            <div class='small mb-3 mx-1'>
+                <label contenteditable class="fw-bold">What is your gender?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radio1">
+                    <label contenteditable class="form-check-label" for="radio1">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radio2" checked>
+                    <label contenteditable class="form-check-label" for="radio2">Female</label>
+                </div>
+            </div>
+            `,
+        editingToolList: ['textAlign', 'textColor']
+    },
+    RadioForm3: {
+        icon: `
+            <i class="bi bi-ui-radios"></i>
+            <small>Device</small>
+            `,
+        content: `
+            <div class='small mb-3 mx-1'>
+                <label contenteditable class="fw-bold">What do you use to access the internet?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radio1">
+                    <label contenteditable class="form-check-label" for="radio1">Mobile Phone</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radio2" checked>
+                    <label contenteditable class="form-check-label" for="radio2">Computer (Laptop/Desktop PC)</label>
+                </div>
+            </div>
+            `,
+        editingToolList: ['textAlign', 'textColor']
+    },
     TextForm: {
         icon: `
         <i class="bi bi-pencil-square"></i>
@@ -73,7 +111,7 @@ const ELEMENTS = {
         `,
         content: `
         <div class='small mb-3 mx-1'>
-            <label contenteditable for="inputText" class="form-label fw-bold">Text form</label>
+            <label contenteditable for="inputText" class="form-label fw-bold">Where are you located?</label>
             <input type="text" id="inputText" class="form-control form-control-sm" aria-describedby="textHelpBlock">
             <div contenteditable id="textHelpBlock" class="form-text">
                 enter your text here.
@@ -91,7 +129,7 @@ const ELEMENTS = {
         `,
         content: `
         <div class='small mb-3 mx-1'>
-            <label contenteditable for="Textarea" class="form-label fw-bold">Text form</label>
+            <label contenteditable for="Textarea" class="form-label fw-bold">In your own words explain the needs and benefist of computers</label>
             <textarea class="form-control" id="Textarea" rows="3"></textarea>
         </div>
             `,
@@ -135,30 +173,30 @@ const ELEMENTS = {
     Heading1: {
         icon: `<i class="bi bi-type-h1"></i>`,
         content: `<h1 contenteditable>Heading 1</h1>`,
-        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border', 'fontSize']
     },
 
     Heading2: {
         icon: `<i class="bi bi-type-h2"></i>`,
         content: `<h2 contenteditable>Heading 2</h2>`,
-        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border', 'fontSize']
     },
 
     Heading3: {
         icon: `<i class="bi bi-type-h3"></i>`,
         content: `<h3 contenteditable>Heading 1</h3>`,
-        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border', 'fontSize']
     },
 
     Text: {
         icon: '<i class="bi bi-justify"></i>',
         content: `<p contenteditable>Lorem Ipsum is
-                     simply dummy text of the printing and typesetting industry. 
-                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                     when an unknown printer took a galley of type and scrambled it to make a 
-                     type specimen book.
-              </p>`,
-        editingToolList: ['textAlign', 'padding', 'textColor', 'border']
+                    simply dummy text of the printing and typesetting industry. 
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                    when an unknown printer took a galley of type and scrambled it to make a 
+                    type specimen book.
+                </p>`,
+        editingToolList: ['textAlign', 'padding', 'textColor', 'border', 'fontSize']
     },
 
     Image: {
