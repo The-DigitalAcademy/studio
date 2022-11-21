@@ -1,5 +1,7 @@
+import Component from "./componentClass";
+
 /** Class representing an editing tool*/
-class EditTool {
+class NewEditTool {
 
     #editableElement;
     #toolList;
@@ -19,11 +21,11 @@ class EditTool {
     /**
      * creates an EditTool for an element
      * tools specified in toolLIst
-     * @param {Element} editableElement element to add edit functionality to
+     * @param {Component} editableComponent element to add edit functionality to
      * @param {string[]} toolList list of tools to include in the edit toolbox
      */
-    constructor(editableElement, toolList) {
-        this.#editableElement = editableElement
+    constructor(editableComponent, toolList) {
+        this.#editableElement = editableComponent
         this.#toolList = toolList
         this.#toolboxLoaded = false
         this.#toolbox = this.#createEditToolbox();
@@ -153,17 +155,18 @@ class EditTool {
 
         //btn 1
         const leftAlignBtn = document.createElement('button');
-        leftAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'text-start');
         leftAlignBtn.className = 'btn btn-outline-light';
         leftAlignBtn.innerHTML = '<i class="bi bi-justify-left"></i>';
+        leftAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-center');
+        
         //btn 2
         const centerAlignBtn = document.createElement('button');
-        centerAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'text-center');
+        centerAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-center');
         centerAlignBtn.className = 'btn btn-outline-light';
         centerAlignBtn.innerHTML = '<i class="bi bi-text-center"></i>';
         //btn 3
         const rightAlignBtn = document.createElement('button');
-        rightAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'text-end');
+        rightAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-end');
         rightAlignBtn.className = 'btn btn-outline-light';
         rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
 
@@ -424,4 +427,4 @@ class EditTool {
     }
 }
 
-export { EditTool }
+export { NewEditTool }
