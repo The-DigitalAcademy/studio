@@ -1,5 +1,6 @@
 import  ELEMENTS from './components.js'
-import { ExportableProject } from "./exportableProject.class.js";
+import components from './components/components.js';
+import { ExportableProject } from './projects/exportableProject.class.js';
 import TEMPELEMENTS from './templateComponents.js';
 
 const EVENTS = {
@@ -128,11 +129,11 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 function renderDraggableElements(containerElementID) {
   const draggablesContainer = document.getElementById(containerElementID);
 
-  for (const property in ELEMENTS) {
+  for (const property in components) {
     const container = document.createElement('div');
     container.setAttribute('class', 'drag-item');
     container.setAttribute('data-type', property);
-    container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
+    container.innerHTML = `<p>${components[property].getIcon()}</p>`
     draggablesContainer.append(container);
   }
 }
@@ -179,6 +180,15 @@ function toggleLeftPanels(e) {
     templatesContainer.classList.add('d-none');
   }
 }
+function generateUuid(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
+}
 
 export {
   renderMirrorImage,
@@ -193,5 +203,6 @@ export {
   renderDraggableTemplate,
   downloadCode,
   toggleLeftPanels,
-  restrictMobile
+  restrictMobile,
+  generateUuid
 };

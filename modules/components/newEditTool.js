@@ -1,4 +1,4 @@
-import Component from "./componentClass";
+import Component from "./component.class.js";
 
 /** Class representing an editing tool*/
 class NewEditTool {
@@ -8,6 +8,7 @@ class NewEditTool {
     #toolboxLoaded;
     #toolbox;
     #toolButton;
+    elementData;
     #toolDirectory = {
         horizontalAlign: this.#createHorizontalAlignTool(),
         textAlign: this.#createTextAlignTool(),
@@ -24,12 +25,13 @@ class NewEditTool {
      * @param {Component} editableComponent element to add edit functionality to
      * @param {string[]} toolList list of tools to include in the edit toolbox
      */
-    constructor(editableComponent, toolList) {
-        this.#editableElement = editableComponent
-        this.#toolList = toolList
+    constructor(elementData) {
+        this.elementData = elementData
+        // this.#editableElement = editableComponent
+        // this.#toolList = toolList
         this.#toolboxLoaded = false
-        this.#toolbox = this.#createEditToolbox();
-        this.#toolButton = this.#createToolButton();
+        // this.#toolbox = this.#createEditToolbox();
+        // this.#toolButton = this.#createToolButton();
 
         document.body.append(this.#toolButton);
     }
@@ -99,6 +101,33 @@ class NewEditTool {
         return deleteButton;
     }
 
+    renderTools() {
+        // const toolParentContainer = document.createElement('div');
+        // toolParentContainer.className = 'edit-toolbox EDITONLY'
+        const toolContainer = document.createElement('div');
+        // toolContainer.className = 'innerContainer';
+        const ToolPanel = document.getElementById('tools-panel');
+
+        // const closeBtn = document.createElement('button');
+        // closeBtn.classList = 'btn float-end';
+        // closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
+
+        // closeBtn.onclick = () => {
+        //     this.#toolbox.remove();
+        //     this.#toolboxLoaded = false;
+        // };
+        // toolContainer.append(closeBtn)
+        const toolDirectory = this.#toolDirectory;
+        //add tools to container
+        Object.keys(this.elementData.styleClasses).forEach(tool => {
+            const includedTool = toolDirectory[tool];
+            toolContainer.append(includedTool);
+        });
+
+        ToolPanel.append(toolContainer);
+        // return toolParentContainer;
+    }
+
     /**
      * creates the editing toolbox and includes the relevant tools according to the toolList
      * @return {Element} complete toolbox container ready to be added to the DOM
@@ -107,7 +136,8 @@ class NewEditTool {
         const toolParentContainer = document.createElement('div');
         toolParentContainer.className = 'edit-toolbox EDITONLY'
         const toolContainer = document.createElement('div');
-        toolContainer.className = 'innerContainer'
+        toolContainer.className = 'innerContainer';
+        const editingPanel = document.getElementById('editing-panel')
 
         const closeBtn = document.createElement('button');
         closeBtn.classList = 'btn float-end';
@@ -125,11 +155,11 @@ class NewEditTool {
             toolContainer.append(includedTool);
         });
         //set top/left position of container
-        let rect = this.#editableElement.getBoundingClientRect();
-        toolContainer.style.top = `${rect.top - 15}px`;
-        toolContainer.style.left = `${rect.right + 10}px`;
+        // let rect = this.#editableElement.getBoundingClientRect();
+        // toolContainer.style.top = `${rect.top - 15}px`;
+        // toolContainer.style.left = `${rect.right + 10}px`;
 
-        toolParentContainer.append(toolContainer);
+        editingPanel.append(toolContainer);
         return toolParentContainer;
     }
     /**
@@ -139,15 +169,15 @@ class NewEditTool {
      * @param {number} right displacement from right in px
      */
     #updateElementPosition(element, top, right) {
-        let rect = this.#editableElement.getBoundingClientRect();
-        element.style.top = `${rect.top + top }px`;
-        element.style.left = `${rect.right + right }px`;
+        // let rect = this.#editableElement.getBoundingClientRect();
+        // element.style.top = `${rect.top + top }px`;
+        // element.style.left = `${rect.right + right }px`;
     }
     /**
      * creates textAlign tool and returns the element. tool sets the text-align style property of element
      * @return {Element} text align tool element
      */
-    #createTextAlignTool1() {
+    #createTextAlignTool() {
         //parent
         const toolContainer = document.createElement('div');
         toolContainer.className = 'btn-group';
@@ -157,16 +187,16 @@ class NewEditTool {
         const leftAlignBtn = document.createElement('button');
         leftAlignBtn.className = 'btn btn-outline-light';
         leftAlignBtn.innerHTML = '<i class="bi bi-justify-left"></i>';
-        leftAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-center');
+        leftAlignBtn.onclick = () => this.#editableElement.updateStyling('textAlign', 'text-center');
         
         //btn 2
         const centerAlignBtn = document.createElement('button');
-        centerAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-center');
+        centerAlignBtn.onclick = () => this.#editableElement.updateStyling('textAlign', 'text-center');
         centerAlignBtn.className = 'btn btn-outline-light';
         centerAlignBtn.innerHTML = '<i class="bi bi-text-center"></i>';
         //btn 3
         const rightAlignBtn = document.createElement('button');
-        rightAlignBtn.onclick = () => this.#editableElement.updateParentStyles('textAlign', 'text-end');
+        rightAlignBtn.onclick = () => this.#editableElement.updateStyling('textAlign', 'text-end');
         rightAlignBtn.className = 'btn btn-outline-light';
         rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
 
@@ -175,33 +205,7 @@ class NewEditTool {
 
         return toolContainer
     }
-    // #createTextAlignTool() {
-    //     //parent
-    //     const toolContainer = document.createElement('div');
-    //     toolContainer.className = 'btn-group';
-    //     toolContainer.setAttribute('aria-label', 'Basic label');
 
-    //     //btn 1
-    //     const leftAlignBtn = document.createElement('button');
-    //     leftAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'left');
-    //     leftAlignBtn.className = 'btn btn-outline-light';
-    //     leftAlignBtn.innerHTML = '<i class="bi bi-justify-left"></i>';
-    //     //btn 2
-    //     const centerAlignBtn = document.createElement('button');
-    //     centerAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'center');
-    //     centerAlignBtn.className = 'btn btn-outline-light';
-    //     centerAlignBtn.innerHTML = '<i class="bi bi-text-center"></i>';
-    //     //btn 3
-    //     const rightAlignBtn = document.createElement('button');
-    //     rightAlignBtn.onclick = () => this.#styleEditableElement('textAlign', 'right');
-    //     rightAlignBtn.className = 'btn btn-outline-light';
-    //     rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
-
-    //     //append to parent
-    //     toolContainer.append(leftAlignBtn, centerAlignBtn, rightAlignBtn);
-
-    //     return toolContainer
-    // }
     /**
      * creates align tool and returns element. tool positions element horizontally at start/end/center postion
      * using the margin style property.

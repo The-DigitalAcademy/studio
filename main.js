@@ -4,6 +4,7 @@ import { renderDraggableElements, renderDraggableTemplate, downloadCode, toggleL
 import ELEMENTS from "./modules/components.js"
 import { ActionTool } from "./modules/actionTool.class.js";
 import TEMPELEMENTS from "./modules/templateComponents.js";
+import components from "./modules/components/components.js" 
 
 restrictMobile()
 
@@ -36,27 +37,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
       onEnd: (data) => {
         const { item } = data;
         const type = item.dataset.type;
-        item.innerHTML = ELEMENTS[type].content;
-        new ActionTool(item, ELEMENTS[type].actionToolList);
-        new EditTool(item, ELEMENTS[type].editingToolList);
+        item.innerHTML = components[type].getContent();
+        // new ActionTool(item, ELEMENTS[type].actionToolList);
+        // new EditTool(item, ELEMENTS[type].editingToolList);
       }
     });
-    const template = new Dragoned(document.querySelector('#template'), {
-      sort: false,
-      clone: true,
-      group: "shared",
-      onEnd: (data) => {
-        const { item } = data;
-        const type = item.dataset.type;
-        TEMPELEMENTS[type].elements.forEach(element => {
-          const container = document.createElement("div");
-          container.innerHTML = element.content;
-          new ActionTool(container, element.actionToolList);
-          new EditTool(container, element.editingToolList);
-          item.append(container);
-        });
-      }
-    });
+    // const template = new Dragoned(document.querySelector('#template'), {
+    //   sort: false,
+    //   clone: true,
+    //   group: "shared",
+    //   onEnd: (data) => {
+    //     const { item } = data;
+    //     const type = item.dataset.type;
+    //     TEMPELEMENTS[type].elements.forEach(element => {
+    //       const container = document.createElement("div");
+    //       container.innerHTML = element.content;
+          // new ActionTool(container, element.actionToolList);
+          // new EditTool(container, element.editingToolList);
+          // item.append(container);
+        // });
+      // }
+    // });
 
   })();
 });
