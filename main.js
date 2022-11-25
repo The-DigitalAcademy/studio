@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       clone: true,
       group: "blocks-group",
       onEnd: (data) => {
+        
         const { item } = data;
         const type = item.dataset.type;
         item.innerHTML = ELEMENTS[type].content;
@@ -46,6 +47,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       clone: true,
       group: "blocks-group",
       onEnd: (data) => {
+        data.item.innerText = "";
         const { item } = data;
         const type = item.dataset.type;
         TEMPELEMENTS[type].elements.forEach(element => {
