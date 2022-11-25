@@ -1,44 +1,63 @@
+import { generateUuid } from "../utils.js"
 import Component from "./component.class.js"
 
 export default 
 {
-    header: new Component({
+    header: {
+        id: generateUuid(),
         name: 'div',
         styleClasses: {
             textAlign: 'text-center',
             bgColor: 'bg-dark',
             textColor: 'text-light',
             padding: 'p-2',
-            fontSize: 'small'
+            fontSize: 'small',
+            borderColor: ' ',
+            borderWidth: ' ',
+            borderRadius: ' ',
         },
-        edtable: true,
+        editable: true,
         children: [
             {
+                id: generateUuid(),
                 name: 'h1',
                 innerText: 'New Header',
                 styleClasses: {},
-                contentEditable: true
+                contentEditable: true,
+                editable: true
             }
         ]
-    }, 'bi-window-sidebar'),
+    },
 
-    h3: new Component({
+    h3: {
+        id: generateUuid(),
         name: 'h3',
         innerText: 'Heading 3',
-        edtable: true,
+        editable: true,
         styleClasses: {
             textAlign: 'text-center',
         },
         contentEditable: true
-    }, 'bi-type-h3'),
+    },
 
-    paragraph: new Component({
+    paragraph1: {
+        id: generateUuid(),
         name: 'p',
-        edtable: true,
+        editable: true,
         styleClasses: {
             textAlign: 'text-center',
         },
-        innerText: 'This is a paragraph',
+        innerText: 'This is a paragraph 1',
         contentEditable: true
-    }, 'bi-justify')
+    },
+    paragraph2: {
+        id: generateUuid(),
+        name: 'p',
+        editable: false,
+        styleClasses: {
+            textAlign: 'text-center',
+        },
+        innerText: 'This is a paragraph 2',
+        contentEditable: true
+    }
 }

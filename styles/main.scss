@@ -141,19 +141,28 @@ main {
     display: none;
 }
 
+#mobile-header {
+    border-top-right-radius: 17px;
+    border-top-left-radius: 17px;
+}
+
 #container {
-    height: 76vh;
+    height: 70vh;
     width: 40vh;
     overflow-y: scroll;
     background-color: #fff;
-    border-radius: 17px;
+    border-bottom-left-radius: 17px;
+    border-bottom-right-radius: 17px;
     @extend .hide-scrollbar;
-    .drag-item:hover {
-        box-shadow: 0 0 0 0.1rem #2d81c2a8;
-    }
+    // .drag-item:hover {
+    //     box-shadow: 0 0 0 0.1rem #2d81c2a8;
+    // }
 }
 
 // EditTool CLASS STYLES ----------------
+#tools-panel {
+    background: #2d81c2b5;
+}
 .edit-toolbox {
     // visibility: hidden;
     background: #2d81c2b5;
@@ -163,7 +172,7 @@ main {
     height: 250px;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     animation: slide-left .5s forwards;
-
+}
     .innerContainer {
         box-shadow: 0 0 11px #00000005 inset;
         height: 249px;
@@ -211,7 +220,7 @@ main {
     .colorBtn:hover {
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.247);
     }
-}
+
 .edit-toolbox::before {
     border-style: solid;
     border-top-width: 12px;
@@ -268,3 +277,12 @@ main {
         transform: translateX(0px);
     }
 }
+
+
+[data-editable=true]:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 0.1rem #2d81c2a8;;
+}
+[contenteditable]:focus {
+    outline: 1px dotted rgb(190, 17, 212);
+  }

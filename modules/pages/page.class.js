@@ -2,30 +2,32 @@ import Component from "../components/component.class.js";
 
 class Page {
 
-    components
+    components = []
     pageData
-    rootElementId = ""
+    rootElementId = "container"
 
-    constructor(PageData = null) {
+    constructor(pageData = null) {
         this.pageData = pageData;
-        this.initializeComponents();
+        this.generateComponents();
     }
 
-    initializeComponents() {
-        if (!this.pageData.components || !this.pageData.components.length) return;
-        this.pageData.components.forEach(componentData => {
+    generateComponents() {
+        if (!this.pageData.componentsData || !this.pageData.componentsData.length) return;
+        this.pageData.componentsData.forEach(componentData => {
             let component = new Component(componentData);
             this.components.push(component);
         });
     }
 
     renderPage() {
-        const pageHtml = ''
+        const container = document.getElementById(this.rootElementId);
+
         this.components.forEach(component => {
-            const componentHtml = component.getInnerHtml();
-            pageHtml += componentHtml
+            let dragItem = document.createElement('div');
+            dragItem.className = "drag-item"
+            dragItem.appendChild(component.getElement());
+            container.append(dragItem)
         });
-        document.getElementById(this.rootElementId).innerHTML = pageHtml;
     }
 
 }

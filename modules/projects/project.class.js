@@ -3,33 +3,53 @@ import { generateUuid } from "../utils.js";
 
 class Project {
     
-    pages;
-    projectData;
+    pages = [];
+    projectData = 0;
+    workingPage;
 
-    constructor(projectData = null) {
-        this.projectData = projectData
-        this.initializePages()
+    /**
+     * 
+     * @param {Object | String} projectData Object containing the Project Data or a project name as a string if creating a new project
+     */
+    constructor(projectData) {
+        if (typeof projectData == 'string') {
+            this.projectData = {
+                id: generateUuid(),
+                name: projectData,
+                fileName: projectData.toLowerCase().replaceAll(" ","-"),
+                pagesData: []
+            }
+        } else this.projectData = projectData;
+        this.generatePages()
     }
 
-    initializePages() {
-        if (!pageData.pages || !pageData.pages.length) {
-            this.createPage()
+    generatePages() {
+        if (!this.projectData.pagesData.length) {
+            this.createNewPage('home')
+            return;
         }
-        pageData.pages.forEach(pageData => {
+        this.projectData.pagesData.forEach(pageData => {
             let page = new Page(pageData);
-            this.pages.push()
+            this.pages.push(page);
+            this.pages[0].renderPage()
         });
     }
 
-    createPage(pageName) {
+    createNewPage(pageName) {
         if (!pageName || typeof pageName != 'string' || pageName.length < 3) return
         const newPageData = {
             id: generateUuid(0),
-            name: pageName
+            name: pageName,
+            fileName: pageName.toLowerCase().replaceAll(" ", "-"),
+            pagesData: []
         }
         const newPage = new Page(newPageData)
-        this.pages.push(newPage)
-        this.pages[-1].renderPage();
+        this.pages.push(newPage);
+        this.pages[this.pages.length -1].renderPage();
+    }
+
+    renderProject() {
+        this.page[this.workingPage].renderPage();
     }
 
 }

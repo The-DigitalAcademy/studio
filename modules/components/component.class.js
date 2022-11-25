@@ -4,7 +4,7 @@ import { NewEditTool } from "./newEditTool.js"
 /** class representing a component */
 class Component {
 
-    #Editingtools
+    Editingtools
     #componentData
     #iconStyleClass
     #componentElement
@@ -14,7 +14,6 @@ class Component {
      */
     constructor(componentData, iconStyleClass) {
         this.#componentData = componentData
-        this.#iconStyleClass = iconStyleClass
         this.#generateComponent();
     }
 
@@ -23,12 +22,6 @@ class Component {
      */
     #generateComponent() {
         this.#componentElement = this.#generateElement(this.#componentData);
-        this.#Editingtools = new NewEditTool(this.#componentData)
-        this.#componentElement.onclick = () => {
-            console.log('generateElement: onlick');
-            this.#Editingtools.renderTools()
-        }
-        console.log(this.#componentElement);
     }
 
     /**
@@ -37,15 +30,16 @@ class Component {
      * @return {Element} generated Element
      */
     #generateElement(elementData) {
+        let editingTools = new NewEditTool(elementData)
         const element = document.createElement(elementData.name);
-        console.log('generateElement');
-        // const editTool = new NewEditTool(elementData)
-        // editTool.renderTools()
-        // element.onclick = () => {
-        //     console.log('generateElement: onlick');
-        //     editTool.renderTools()
-        // }
+        element.dataset.editable = elementData.editable;
+        element.dataset.componentId = elementData.id;
         element.className = Object.values(elementData.styleClasses).join(" ");
+        element.onclick = (e) => {
+            if (e.target.dataset.componentId == elementData.id) {
+                editingTools.renderTools()
+            }
+        }
         if (!elementData.children || !elementData.children.length) {
             element.innerText = elementData.innerText;
             element.contentEditable = elementData.contentEditable;
@@ -68,15 +62,16 @@ class Component {
     }
 
     getIcon() {
-        return `<i class="bi ${this.#iconStyleClass}"></i>`
+        return `<i class="bi bi-pencil-square"></i>`
     }
-    getContent() {
+    getInnerHtml() {
         const container = document.createElement('span');
         container.append(this.#componentElement);
         return container.innerHTML;
     }
     getElement() {
-        return this.#componentElement
+        let componentCopy = this.#componentElement;
+        return componentCopy
     }
 
     /**

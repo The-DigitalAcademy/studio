@@ -34,62 +34,27 @@
         </div>
         <div id="view-wrapper">
             <div class="mobile shadow">
+                <div id="mobile-header" class="p-2 ayoba-header-bg EDITONLY shadow-sm">
+                    <h1 class="dispay-4 fs-4 text-center text-light">
+                        <i class="bi bi-x-lg float-start fs-4"></i>
+                        <span contenteditable>Ayoba</span>
+                    </h1>
+                </div>
                 <div id="container">
-                    <div class="p-2 ayoba-header-bg EDITONLY shadow-sm">
+                    <!-- <div class="p-2 ayoba-header-bg EDITONLY shadow-sm">
                         <h1 class="dispay-4 fs-4 text-center text-light">
-                            <i class="bi bi-arrow-left float-start fs-4"></i>
+                            <i class="bi bi-x-lg float-start fs-4"></i>
                             <span contenteditable>Ayoba</span>
                         </h1>
-                    </div>
+                    </div> -->
                     <!-- <div data-type="text" class="block"></div> -->
                 </div>
             </div>
         </div>
-        <div class="shadow-sm p-2" id="tools-panel">
+        <div class="shadow-sm p-4" id="tools-panel">
             <div class="text-center mb-3">Tools</div>
-            <div>
-                <p class="mb-0 mt-2">Align Text</p>
-                <hr class="mt-0">
-                <div class="btn-group" aria-label="Basic label">
-                    <button class="btn btn-outline-secondary">
-                        <i class="bi bi-justify-left"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary">
-                        <i class="bi bi-text-center"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary">
-                        <i class="bi bi-justify-right"></i>
-                    </button>
-                </div>
-
-                <p class="mb-0 mt-3">Border</p>
-                <hr class="mt-0">
-                <div>
-                    <div>
-                        <span>width:</span>
-                        <input type="number" class="border-1 rounded" min="0" max="5">                        
-                    </div>
-                    <div>
-                        <button class="btn btn-outline-secondary m-1 rounded-0 p-1">Normal</button>
-                        <button class="btn btn-outline-secondary m-1 rounded p-1">rounded</button>
-                        <button class="btn btn-outline-secondary m-1 rounded-circle px-1 py-2">circle</button>
-                        <button class="btn btn-outline-secondary m-1 rounded-pill px-4 py-1">pill</button>
-                    </div>
-                    <div>
-                        <div>
-                            <button class="btn m-1 border-dark border-2"></button>
-                            <button class="btn m-1 border-primary border-2"></button>
-                            <button class="btn m-1 border-secondary border-2"></button>
-                            <button class="btn m-1 border-success border-2"></button>
-                            <button class="btn m-1 border-danger border-2"></button>
-                            <button class="btn m-1 border-warning border-2"></button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <div id="tools-container"></div>
+            
         </div>
     </main>
 </body>

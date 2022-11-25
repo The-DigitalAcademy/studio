@@ -1,4 +1,5 @@
 import  ELEMENTS from './components.js'
+import Component from './components/component.class.js';
 import components from './components/components.js';
 import { ExportableProject } from './projects/exportableProject.class.js';
 import TEMPELEMENTS from './templateComponents.js';
@@ -133,7 +134,7 @@ function renderDraggableElements(containerElementID) {
     const container = document.createElement('div');
     container.setAttribute('class', 'drag-item');
     container.setAttribute('data-type', property);
-    container.innerHTML = `<p>${components[property].getIcon()}</p>`
+    container.innerHTML = `${new Component(components[property]).getIcon()}`
     draggablesContainer.append(container);
   }
 }
