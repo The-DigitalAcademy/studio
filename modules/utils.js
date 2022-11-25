@@ -1,4 +1,4 @@
-import  ELEMENTS from './components.js'
+import ELEMENTS from './components.js'
 import { ExportableProject } from "./exportableProject.class.js";
 import TEMPELEMENTS from './templateComponents.js';
 
@@ -40,13 +40,13 @@ function restrictMobile() {
   const isNewBlackBerry = (agent.indexOf("AppleWebKit") > 0 && agent.indexOf("BlackBerry") > 0);
   const isWebOS = (agent.indexOf("webOS") > 0);
   const isWindowsMobile = (agent.indexOf("IEMobile") > 0);
-  const isSmallScreen = (screen.width < 767 ||  window.innerWidth < 767 || screen.width < 767);
+  const isSmallScreen = (screen.width < 767 || window.innerWidth < 767 || screen.width < 767);
   const isUnknownMobile = (isWebkit && isSmallScreen);
   const isMobile = (isIOS || isAndroid || isNewBlackBerry || isWebOS || isWindowsMobile || isUnknownMobile);
   const isTablet = (isIPad || (isMobile && !isSmallScreen));
 
   if (isMobile || isSmallScreen) {
-      document.body.innerHTML = `
+    document.body.innerHTML = `
                           <div class="container">
                             <div class="text-center">
                               <img src="assets/desktop_only.png" style="width: 90%;">
@@ -141,11 +141,11 @@ function renderDraggableTemplate(containerElementID) {
   const draggablesContainer = document.getElementById(containerElementID);
 
   for (const property in TEMPELEMENTS) {
-      const container = document.createElement('div');
-      container.setAttribute('class', 'drag-item');
-      container.setAttribute('data-type', property);
-      container.innerHTML = `${TEMPELEMENTS[property].icon}`
-      draggablesContainer.append(container);
+    const container = document.createElement('div');
+    container.setAttribute('class', 'drag-item');
+    container.setAttribute('data-type', property);
+    container.innerHTML = `${TEMPELEMENTS[property].icon}`
+    draggablesContainer.append(container);
   }
 }
 

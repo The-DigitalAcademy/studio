@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const template = new Dragoned(document.querySelector('#template'), {
       sort: false,
       clone: true,
-      group: "shared",
+      group: "blocks-group",
       onEnd: (data) => {
         const { item } = data;
         const type = item.dataset.type;
