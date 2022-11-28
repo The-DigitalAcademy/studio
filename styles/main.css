@@ -23,6 +23,10 @@ header #export-project:hover {
 
 main {
   display: grid;
+<<<<<<< HEAD
+=======
+  -ms-grid-columns: 250px auto;
+>>>>>>> e91fe40 (ecommerce start)
   grid-template-columns: 250px auto;
 }
 
@@ -46,6 +50,10 @@ main {
   text-align: center;
   font-size: 0.8rem;
   display: grid;
+<<<<<<< HEAD
+=======
+  -ms-grid-columns: 1fr 1fr;
+>>>>>>> e91fe40 (ecommerce start)
   grid-template-columns: 1fr 1fr;
 }
 #components-wrapper .options button {
@@ -61,25 +69,45 @@ main {
   overflow-y: scroll;
   padding: 0.9rem;
   display: grid;
+<<<<<<< HEAD
+=======
+  -ms-grid-columns: (1fr)[];
+>>>>>>> e91fe40 (ecommerce start)
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 .components-container .drag-item {
   background-color: rgba(255, 255, 255, 0.1882352941);
   color: #fff;
+<<<<<<< HEAD
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   height: 5rem;
   margin: 10px;
+=======
+  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  height: 5rem;
+>>>>>>> e91fe40 (ecommerce start)
   padding: 0;
   margin: 0;
   cursor: -webkit-grab;
   cursor: grab;
   border-radius: 5px;
   display: flex;
+<<<<<<< HEAD
   align-items: center;
   justify-content: center;
   padding: 0.4rem;
   font-size: 0.7rem;
+=======
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: .7rem;
+>>>>>>> e91fe40 (ecommerce start)
   color: rgba(255, 255, 255, 0.825);
   border: 1px solid rgba(255, 255, 255, 0.079);
 }
@@ -90,6 +118,10 @@ main {
 }
 .components-container .drag-item:hover {
   border: 1px dotted rgba(255, 255, 255, 0.523);
+<<<<<<< HEAD
+=======
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+>>>>>>> e91fe40 (ecommerce start)
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
@@ -115,23 +147,47 @@ main {
 
 .drag-item p {
   text-align: center;
+<<<<<<< HEAD
   margin: 0;
 }
 
 #view-wrapper {
   align-self: center;
+=======
+  margin : 0;
+}
+
+#view-wrapper {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  -ms-grid-column-align: center;
+>>>>>>> e91fe40 (ecommerce start)
   justify-self: center;
 }
 #view-wrapper .mobile {
   background-color: rgb(29, 29, 29);
   border-radius: 25px;
   padding: 12px 7px 20px 7px;
+<<<<<<< HEAD
   box-shadow: 0 0 200px #e3e3e3 inset;
   border: 3px solid rgba(255, 255, 255, 0.1490196078);
   overflow-y: hidden;
 }
 
 .hide-scrollbar, .edit-toolbox .innerContainer, #container, .components-container {
+=======
+  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
+  box-shadow: 0 0 200px #e3e3e3 inset;
+  border: 3px solid #ffffff26;
+  overflow-y: hidden;
+}
+
+.hide-scrollbar,
+.components-container,
+#container,
+.edit-toolbox .innerContainer {
+>>>>>>> e91fe40 (ecommerce start)
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -139,19 +195,31 @@ main {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
+<<<<<<< HEAD
 .hide-scrollbar::-webkit-scrollbar, .edit-toolbox .innerContainer::-webkit-scrollbar, #container::-webkit-scrollbar, .components-container::-webkit-scrollbar {
+=======
+.hide-scrollbar::-webkit-scrollbar,
+.components-container::-webkit-scrollbar,
+#container::-webkit-scrollbar,
+.edit-toolbox .innerContainer::-webkit-scrollbar {
+>>>>>>> e91fe40 (ecommerce start)
   display: none;
 }
 
 #container {
   height: 76vh;
   width: 40vh;
-  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: #fff;
   border-radius: 17px;
 }
 #container .drag-item:hover {
+<<<<<<< HEAD
   box-shadow: 0 0 0 0.1rem rgba(45, 129, 194, 0.6588235294);
+=======
+  -webkit-box-shadow: 0 0 0 0.1rem #2d81c2a8;
+  box-shadow: 0 0 0 0.1rem #2d81c2a8;
+>>>>>>> e91fe40 (ecommerce start)
 }
 
 .edit-toolbox {
@@ -160,12 +228,24 @@ main {
   position: absolute;
   width: 180px;
   height: 250px;
+<<<<<<< HEAD
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   -webkit-animation: slide-left 0.5s forwards;
           animation: slide-left 0.5s forwards;
+=======
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  -webkit-animation: slide-left .5s forwards;
+  animation: slide-left .5s forwards;
+>>>>>>> e91fe40 (ecommerce start)
 }
 .edit-toolbox .innerContainer {
+<<<<<<< HEAD
   box-shadow: 0 0 11px rgba(0, 0, 0, 0.0196078431) inset;
+=======
+  -webkit-box-shadow: 0 0 11px #00000005 inset;
+  box-shadow: 0 0 11px #00000005 inset;
+>>>>>>> e91fe40 (ecommerce start)
   height: 249px;
   overflow-y: scroll;
   padding: 0.5rem;
@@ -205,6 +285,10 @@ main {
   transition: 0.5s;
 }
 .edit-toolbox .colorBtn:hover {
+<<<<<<< HEAD
+=======
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
+>>>>>>> e91fe40 (ecommerce start)
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
 }
 
@@ -224,6 +308,10 @@ main {
 .block {
   background-color: #fff;
   border-radius: 2px;
+<<<<<<< HEAD
+=======
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+>>>>>>> e91fe40 (ecommerce start)
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   padding: 10px;
@@ -236,17 +324,31 @@ main {
 }
 
 .slide-left {
+<<<<<<< HEAD
   -webkit-animation: slide-left 0.5s forwards;
           animation: slide-left 0.5s forwards;
+=======
+  -webkit-animation: slide-left .5s forwards;
+  animation: slide-left .5s forwards;
+>>>>>>> e91fe40 (ecommerce start)
 }
 
 @-webkit-keyframes slide-left {
   0% {
     opacity: 0.1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(20px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(20px);
   }
+
   100% {
     opacity: 1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(0px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(0px);
   }
 }
@@ -254,25 +356,48 @@ main {
 @keyframes slide-left {
   0% {
     opacity: 0.1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(20px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(20px);
   }
+
   100% {
     opacity: 1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(0px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(0px);
   }
 }
 .slide-right {
+<<<<<<< HEAD
   -webkit-animation: slide-right 0.5s forwards;
           animation: slide-right 0.5s forwards;
+=======
+  -webkit-animation: slide-right .5s forwards;
+  animation: slide-right .5s forwards;
+>>>>>>> e91fe40 (ecommerce start)
 }
 
 @-webkit-keyframes slide-right {
   0% {
     opacity: 0.1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(-10px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(-10px);
   }
+
   100% {
     opacity: 1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(0px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(0px);
   }
 }
@@ -280,10 +405,24 @@ main {
 @keyframes slide-right {
   0% {
     opacity: 0.1;
+<<<<<<< HEAD
+=======
+    -webkit-transform: translateX(-10px);
+>>>>>>> e91fe40 (ecommerce start)
     transform: translateX(-10px);
   }
+
   100% {
     opacity: 1;
+<<<<<<< HEAD
     transform: translateX(0px);
   }
 }/*# sourceMappingURL=main.css.map */
+=======
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
+>>>>>>> e91fe40 (ecommerce start)
