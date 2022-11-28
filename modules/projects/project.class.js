@@ -17,18 +17,25 @@ class Project {
                 id: generateUuid(),
                 name: projectData,
                 fileName: projectData.toLowerCase().replaceAll(" ","-"),
-                pagesData: []
+                pages: []
             }
         } else this.projectData = projectData;
         this.generatePages()
+ 
+        window.addEventListener('hashchange', () => {
+            if (!location.hash.includes("#(render)")) return
+            this.pages[0].renderPage();
+            const componentId = location.hash.replace("#(render)", "");
+            location.hash = '(edit)' + componentId
+        })
     }
 
     generatePages() {
-        if (!this.projectData.pagesData.length) {
+        if (!this.projectData.pages.length) {
             this.createNewPage('home')
             return;
         }
-        this.projectData.pagesData.forEach(pageData => {
+        this.projectData.pages.forEach(pageData => {
             let page = new Page(pageData);
             this.pages.push(page);
             this.pages[0].renderPage()
@@ -41,7 +48,7 @@ class Project {
             id: generateUuid(0),
             name: pageName,
             fileName: pageName.toLowerCase().replaceAll(" ", "-"),
-            pagesData: []
+            pages: []
         }
         const newPage = new Page(newPageData)
         this.pages.push(newPage);

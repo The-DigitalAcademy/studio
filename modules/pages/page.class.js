@@ -8,21 +8,14 @@ class Page {
 
     constructor(pageData = null) {
         this.pageData = pageData;
-        this.generateComponents();
+        this.renderPage();
     }
-
-    generateComponents() {
-        if (!this.pageData.componentsData || !this.pageData.componentsData.length) return;
-        this.pageData.componentsData.forEach(componentData => {
-            let component = new Component(componentData);
-            this.components.push(component);
-        });
-    }
-
+    
     renderPage() {
         const container = document.getElementById(this.rootElementId);
-
-        this.components.forEach(component => {
+        container.innerHTML = ''
+        this.pageData.components.forEach(componentData => {
+            let component = new Component(componentData);
             let dragItem = document.createElement('div');
             dragItem.className = "drag-item"
             dragItem.appendChild(component.getElement());

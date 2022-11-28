@@ -1,5 +1,4 @@
 import { ActionTool } from "../actionTool.class.js"
-import { NewEditTool } from "./newEditTool.js"
 
 /** class representing a component */
 class Component {
@@ -30,14 +29,13 @@ class Component {
      * @return {Element} generated Element
      */
     #generateElement(elementData) {
-        let editingTools = new NewEditTool(elementData)
         const element = document.createElement(elementData.name);
         element.dataset.editable = elementData.editable;
         element.dataset.componentId = elementData.id;
         element.className = Object.values(elementData.styleClasses).join(" ");
         element.onclick = (e) => {
             if (e.target.dataset.componentId == elementData.id) {
-                editingTools.renderTools()
+                location.hash = "(edit)" + elementData.id
             }
         }
         if (!elementData.children || !elementData.children.length) {

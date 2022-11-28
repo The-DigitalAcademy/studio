@@ -8,14 +8,17 @@ import components from "./modules/components/components.js"
 import Project from "./modules/projects/project.class.js";
 import testProjectData from "./modules/pages/testProjectData.js";
 import Component from "./modules/components/component.class.js";
+import { NewEditTool } from "./modules/components/newEditTool.js";
 
 restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
-    let ProjectData = testProjectData
-    const project = new Project(ProjectData);
+    let projectData = testProjectData
+    const project = new Project(projectData);
+    const editor = new NewEditTool(projectData);
+    
     renderDraggableElements('draggable');
     document.getElementById('export-project').onclick = downloadCode;
     renderDraggableTemplate('template');

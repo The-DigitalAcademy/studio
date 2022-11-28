@@ -4,10 +4,6 @@ import Component from "./component.class.js";
 class NewEditTool {
   #editableElement;
   #toolList;
-  #toolboxLoaded;
-  #toolbox;
-  #toolButton;
-  elementData;
   #toolDirectory = {
     horizontalAlign: this.#createHorizontalAlignTool(),
     textAlign: this.#createTextAlignTool(),
@@ -25,65 +21,17 @@ class NewEditTool {
    * @param {Component} editableComponent element to add edit functionality to
    * @param {string[]} toolList list of tools to include in the edit toolbox
    */
-  constructor(elementData) {
-    this.elementData = elementData;
-    this.#toolboxLoaded = false;
+  constructor(projectData) {
+    this.projectData = projectData;
 
-    document.body.append(this.#toolButton);
+    window.addEventListener("hashchange", () => {
+      this.renderTools();
+    })
   }
 
   /**
    * create toolbutton for editableElement. tool button allows for editing and deleting editableElement
    */
-  #createToolButton() {
-    const deleteBtn = this.#createDeleteButton();
-    const editBtn = this.#createEditButton();
-
-    const toolBtn = document.createElement("span");
-    toolBtn.className =
-      "p-1 shadow rounded-pill absolute border gradient-gray slide-right";
-    toolBtn.append(editBtn);
-    toolBtn.append(deleteBtn);
-    this.#updateElementPosition(toolBtn, 0, -5);
-
-    //hover display effect
-    toolBtn.addEventListener("mouseover", () => {
-      toolBtn.style.display = "inline";
-    });
-    toolBtn.addEventListener("mouseout", () => {
-      toolBtn.style.display = "none";
-    });
-    this.#editableElement.addEventListener("mouseover", () => {
-      this.#updateElementPosition(toolBtn, 0, -5);
-      toolBtn.style.display = "inline";
-    });
-    // FIX HERE
-    this.#editableElement.addEventListener("mouseout", () => {
-      toolBtn.style.display = "none";
-    });
-
-    return toolBtn;
-  }
-  /**
-   * creates an edit button element
-   * @returns {Element} edit button ready to added to the toolbar
-   */
-  #createEditButton() {
-    const editButton = document.createElement("button");
-    editButton.className = "btn btn-sm text-primary border-0 EDITONLY";
-    editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
-    editButton.onclick = () => {
-      if (this.#toolboxLoaded) {
-        this.#toolbox.remove();
-        this.#toolboxLoaded = false;
-      } else {
-        this.#updateElementPosition(this.#toolbox, -15, 10);
-        document.body.append(this.#toolbox);
-        this.#toolboxLoaded = true;
-      }
-    };
-    return editButton;
-  }
   /**
    * creates a delete button element
    * @returns {Element} delete button ready to added to the toolbar
@@ -99,11 +47,17 @@ class NewEditTool {
   }
 
   renderTools() {
+    if (!location.hash.includes('#(edit)')) return
+    const componentId = location.hash.replace("#(edit)", "");
+    //find component by id
+    let foundComponent = this.findComponentById(componentId, this.projectData.pages[0].components)
+    if (!foundComponent || !foundComponent.styleClasses || !foundComponent.editable) return
+    //get and display editable styles
     const toolContainer = document.createElement("div");
     const ToolPanel = document.getElementById("tools-container");
-
     const toolDirectory = this.#toolDirectory;
-    Object.keys(this.elementData.styleClasses).forEach((tool) => {
+
+    Object.keys(foundComponent.styleClasses).forEach((tool) => {
         if (toolDirectory[tool]) {
             const includedTool = toolDirectory[tool];
             toolContainer.append(includedTool);
@@ -111,41 +65,6 @@ class NewEditTool {
     });
     ToolPanel.innerHTML = "";
     ToolPanel.append(toolContainer);
-  }
-
-  /**
-   * creates the editing toolbox and includes the relevant tools according to the toolList
-   * @return {Element} complete toolbox container ready to be added to the DOM
-   */
-  #createEditToolbox() {
-    const toolParentContainer = document.createElement("div");
-    toolParentContainer.className = "edit-toolbox EDITONLY";
-    const toolContainer = document.createElement("div");
-    toolContainer.className = "innerContainer";
-    const editingPanel = document.getElementById("editing-panel");
-
-    const closeBtn = document.createElement("button");
-    closeBtn.classList = "btn float-end";
-    closeBtn.innerHTML = `<i class="bi bi-x-lg"></i>`;
-
-    closeBtn.onclick = () => {
-      this.#toolbox.remove();
-      this.#toolboxLoaded = false;
-    };
-    toolContainer.append(closeBtn);
-
-    //add tools to container
-    this.#toolList.forEach((tool) => {
-      const includedTool = this.#toolDirectory[tool];
-      toolContainer.append(includedTool);
-    });
-    //set top/left position of container
-    // let rect = this.#editableElement.getBoundingClientRect();
-    // toolContainer.style.top = `${rect.top - 15}px`;
-    // toolContainer.style.left = `${rect.right + 10}px`;
-
-    editingPanel.append(toolContainer);
-    return toolParentContainer;
   }
   /**
    * update top & left displacement from editableElement
@@ -173,18 +92,18 @@ class NewEditTool {
     leftAlignBtn.className = "btn btn-outline-light";
     leftAlignBtn.innerHTML = '<i class="bi bi-justify-left"></i>';
     leftAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("textAlign", "text-start");
+      this.styleComponent("textAlign", "text-start");
 
     //btn 2
     const centerAlignBtn = document.createElement("button");
     centerAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("textAlign", "text-center");
+      this.styleComponent("textAlign", "text-center");
     centerAlignBtn.className = "btn btn-outline-light";
     centerAlignBtn.innerHTML = '<i class="bi bi-text-center"></i>';
     //btn 3
     const rightAlignBtn = document.createElement("button");
     rightAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("textAlign", "text-end");
+      this.styleComponent("textAlign", "text-end");
     rightAlignBtn.className = "btn btn-outline-light";
     rightAlignBtn.innerHTML = '<i class="bi bi-justify-right"></i>';
 
@@ -208,19 +127,19 @@ class NewEditTool {
     //btn 1
     const leftAlignBtn = document.createElement("button");
     leftAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("horizontalAlign", "me-auto");
+      this.styleComponent("horizontalAlign", "me-auto");
     leftAlignBtn.className = "btn btn-outline-light";
     leftAlignBtn.innerHTML = '<i class="bi bi-align-start"></i>';
     //btn 2
     const centerAlignBtn = document.createElement("button");
     centerAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("horizontalAlign", "mx-auto");
+      this.styleComponent("horizontalAlign", "mx-auto");
     centerAlignBtn.className = "btn btn-outline-light";
     centerAlignBtn.innerHTML = '<i class="bi bi-align-center"></i>';
     //btn 3
     const rightAlignBtn = document.createElement("button");
     rightAlignBtn.onclick = () =>
-      this.updateComponentStyleClasses("horizontalAlign", "ms-auto");
+      this.styleComponent("horizontalAlign", "ms-auto");
     rightAlignBtn.className = "btn btn-outline-light";
     rightAlignBtn.innerHTML = '<i class="bi bi-align-end"></i>';
 
@@ -245,8 +164,7 @@ class NewEditTool {
     input.max = "5";
     input.step = "1";
     input.onchange = (e) => {
-      this.updateComponentStyleClasses("padding", `px-${e.target.value}`);
-      this.updateComponentStyleClasses("padding", `px-${e.target.value}`);
+      this.styleComponent("padding", `px-${e.target.value}`);
     };
 
     toolContainer.innerHTML = label;
@@ -293,7 +211,7 @@ class NewEditTool {
     input.max = "100"
     input.style.width = "50px";
     input.onchange = (e) => {
-      this.updateComponentStyleClasses("width", `w-${e.target.value}`);
+      this.styleComponent("width", `w-${e.target.value}`);
     };
 
     toolContainer.innerHTML = label;
@@ -318,7 +236,7 @@ class NewEditTool {
     input.step = "1";
     input.style.width = "40px";
     input.onchange = (e) => {
-      this.updateComponentStyleClasses("borderRadius", `rounded-${e.target.value}`);
+      this.styleComponent("borderRadius", `rounded-${e.target.value}`);
     };
 
     toolContainer.innerHTML = label;
@@ -348,7 +266,7 @@ class NewEditTool {
     colors.forEach((color) => {
       const btn = document.createElement("button");
       btn.className = `btn m-1 colorBtn bg-${color}`;
-      btn.onclick = () => this.updateComponentStyleClasses("bgColor", `bg-${color}`);
+      btn.onclick = () => this.styleComponent("bgColor", `bg-${color}`);
 
       toolContainer.append(btn);
     });
@@ -385,7 +303,7 @@ class NewEditTool {
     input.max = "5";
     input.step = "1";
     input.onchange = (e) => {
-      this.updateComponentStyleClasses("borderWidth", `border border-${e.target.value}`);
+      this.styleComponent("borderWidth", `border border-${e.target.value}`);
     };
     borderWidthContainer.innerHTML = label;
     borderWidthContainer.append(input);
@@ -397,7 +315,7 @@ class NewEditTool {
       colorBtn.className = "btn m-1 colorBtn";
       colorBtn.style.border = `border-${color} border-3`;
       colorBtn.onclick = () => {
-        this.updateComponentStyleClasses("borderColor", `border-${color}`);
+        this.styleComponent("borderColor", `border-${color}`);
       };
       borderColorContainer.append(colorBtn);
     });
@@ -430,7 +348,7 @@ class NewEditTool {
     colors.forEach((color) => {
       const btn = document.createElement("button");
       btn.className = "btn m-1 colorBtn " + "bg-"+color;
-      btn.onclick = () => this.updateComponentStyleClasses("textColor", `text-color`);
+      btn.onclick = () => this.styleComponent("textColor", `text-color`);
 
       toolContainer.append(btn);
     });
@@ -447,6 +365,30 @@ class NewEditTool {
     this.#editableElement.children[0].style[property] = value;
   }
 
+  findComponentById(id, components) {
+    for (const component of components) {
+      if (component.id == id) {
+        return component
+      } else if (component.children && component.children.length) {
+        return this.findComponentById(id, component.children)
+      } else  {return component.id}
+    }
+
+    // return null
+  }
+
+  styleComponent(property, value) {
+    const componentId = location.hash.replace("#(edit)", "");
+    const componentList = this.projectData.pages[0].components;
+    const component = this.findComponentById(componentId, componentList)
+    console.log(component.styleClasses[property])
+    if (component.styleClasses[property]) {
+      location.hash = "(render)" + componentId;
+      console.log(component.styleClasses[property])
+      component.styleClasses[property] = value;
+    }
+  }
+  
   updateComponentStyleClasses(property, value, components = [this.elementData], id=this.elementData.id) {
     for (const component of components) {
       if (component.id == id) {
