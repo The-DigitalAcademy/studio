@@ -4,7 +4,7 @@ const ELEMENTS = {
         <button class='btn btn-primary'>button</button>
         `,
         content: `
-        <button class='btn btn-primary d-block' contenteditable>Submit</button>
+        <button class='btn btn-primary d-block' id="submit" contenteditable>Submit</button>
         `,
         editingToolList: ['horizontalAlign', 'bgColor', 'textColor']
     },
@@ -112,9 +112,9 @@ const ELEMENTS = {
         content: `
         <div class='small mb-3 mx-1'>
             <label contenteditable for="inputText" class="form-label fw-bold">Where are you located?</label>
-            <input type="text" id="inputText" class="form-control form-control-sm" aria-describedby="textHelpBlock">
+            <input type="text" id="inputText" class="form-control form-control-sm" aria-described-by="textHelpBlock">
             <div contenteditable id="textHelpBlock" class="form-text">
-                enter your text here.
+                Enter your text here.
             </div>
         </div>
             `,
