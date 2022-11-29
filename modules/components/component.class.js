@@ -35,7 +35,7 @@ class Component {
         element.className = Object.values(elementData.styleClasses).join(" ");
         element.onclick = (e) => {
             if (e.target.dataset.componentId == elementData.id) {
-                location.hash = "(edit)" + elementData.id
+                location.hash = elementData.id
             }
         }
         if (!elementData.children || !elementData.children.length) {

@@ -47,8 +47,8 @@ class NewEditTool {
   }
 
   renderTools() {
-    if (!location.hash.includes('#(edit)')) return
-    const componentId = location.hash.replace("#(edit)", "");
+    if (location.hash.includes('#(render)')) return
+    const componentId = location.hash.replace("#", "");
     //find component by id
     let foundComponent = this.findComponentById(componentId, this.projectData.pages[0].components)
     if (!foundComponent || !foundComponent.styleClasses || !foundComponent.editable) return
@@ -378,7 +378,7 @@ class NewEditTool {
   }
 
   styleComponent(property, value) {
-    const componentId = location.hash.replace("#(edit)", "");
+    const componentId = location.hash.replace("#", "");
     const componentList = this.projectData.pages[0].components;
     const component = this.findComponentById(componentId, componentList)
     console.log(component.styleClasses[property])

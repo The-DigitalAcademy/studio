@@ -1,3 +1,4 @@
+import components from "../components/components.js";
 import Page from "../pages/page.class.js";
 import { generateUuid } from "../utils.js";
 
@@ -23,11 +24,47 @@ class Project {
         this.generatePages()
  
         window.addEventListener('hashchange', () => {
-            if (!location.hash.includes("#(render)")) return
-            this.pages[0].renderPage();
-            const componentId = location.hash.replace("#(render)", "");
-            location.hash = '(edit)' + componentId
+            const hash = location.hash
+            if (hash.includes("#(render)")) {
+                this.pages[0].renderPage();
+                const componentId = location.hash.replace("#(render)", "");
+                location.hash = componentId                
+            } 
+            else if (hash.includes("#(addComponent)")) {
+                let nameStartIndex = hash.indexOf("name=") + 5
+                let ampersand = hash.indexOf("&")
+                const componentName = hash.substring(nameStartIndex, ampersand);
+
+                let positionStartIndex = hash.indexOf("pos=") + 4
+                const position = Number(hash.substring(positionStartIndex));
+                
+                this.projectData.pages[0].components.splice(position,0, components[componentName]);
+
+                this.pages[0].renderPage()
+            }
+            else if (hash.includes("#(reorder)")) {
+                let componentStartIndex = hash.indexOf("component=") + 5
+                let componentEndIndex = hash.indexOf("&", componentStartIndex)
+                const componentId = hash.substring(componentStartIndex, componentEndIndex);
+
+                let fromStartIndex = hash.indexOf("from=") + 5
+                let fromEndIndex = hash.indexOf("&", fromStartIndex)
+                const from = hash.substring(fromStartIndex, fromEndIndex);
+
+                let toStartIndex = hash.indexOf("to=") + 3
+                const to = hash.substring(toStartIndex);
+
+                // console.log(this.projectData.pages[0].components);
+                this.reorderArray(this.projectData.pages[0].components, from, to);
+                // console.log(this.projectData.pages[0].components);
+            }
         })
+    }
+
+    reorderArray(arr, from, to) {
+        console.log(arr);
+        arr.splice(to, 0, arr.splice(from, 1)[0]);
+        console.log(arr);
     }
 
     generatePages() {

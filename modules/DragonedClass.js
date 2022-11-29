@@ -101,6 +101,14 @@ class Dragoned {
           });
         }
       }
+      //LOCATION HASH STATE MANAGEMENT
+      if (!this.dragEl.dataset.type) {
+        const componentId = this.dropEl.querySelector('[data-component-id]').dataset.componentId;
+        window.location.hash = `(reorder)component=${componentId}&from=${this.oldIndex}&to=${this.newIndex}`
+      } else {
+        window.location.hash = `(addComponent)name=${this.dragEl.dataset.type}&pos=${this.newIndex}`
+      }
+
     }
     onMouseMove(event) {
       event.preventDefault();

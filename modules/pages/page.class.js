@@ -16,11 +16,31 @@ class Page {
         container.innerHTML = ''
         this.pageData.components.forEach(componentData => {
             let component = new Component(componentData);
+
+            let deleteBtn = document.createElement('button');
+            deleteBtn.className = "deleteBtn";
+            deleteBtn.innerHTML = '<i class="bi bi-trash-fill"></i>'
+            deleteBtn.onclick = () => {
+                this.deleteComponent(componentData.id, this.pageData.components);
+                location.hash = "(render)" + componentData.id;
+            }
+
             let dragItem = document.createElement('div');
-            dragItem.className = "drag-item"
+            dragItem.className = "drag-item relative";
+            dragItem.appendChild(deleteBtn)
             dragItem.appendChild(component.getElement());
             container.append(dragItem)
         });
+    }
+
+    deleteComponent(id, components) {
+        for (let i = 0; i < components.length; i++) {
+            const component = components[i];
+            if (component.id == id) {
+                //delete component
+                components.splice(i, 1)
+            }
+        }
     }
 
 }
