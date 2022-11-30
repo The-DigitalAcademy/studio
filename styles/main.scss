@@ -17,18 +17,21 @@ header {
         color: #f8f9fa;
     }
 }
+
 .ayoba-header-bg {
-    background: rgb(237,114,53);
-    background: linear-gradient(90deg, rgba(237,114,53,1) 0%, rgba(186,58,39,1) 100%);
+    background: rgb(237, 114, 53);
+    background: linear-gradient(90deg, rgba(237, 114, 53, 1) 0%, rgba(186, 58, 39, 1) 100%);
 }
 
 main {
     display: grid;
     grid-template-columns: 250px auto;
 }
+
 .absolute {
     position: absolute;
 }
+
 .gradient-gray {
     background: #bdc3c7;
     background: linear-gradient(to right, rgb(255, 255, 255), #bebebeb0);
@@ -72,6 +75,8 @@ main {
         box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
         height: 5rem;
         margin: 10px;
+        padding: 0;
+        margin: 0;
         cursor: grab;
         border-radius: 5px;
         display: flex;
@@ -117,6 +122,7 @@ main {
 
 .drag-item p {
     text-align: center;
+    margin: 0;
 }
 
 #view-wrapper {
@@ -130,12 +136,17 @@ main {
         padding: 12px 7px 20px 7px;
         box-shadow: 0 0 200px #e3e3e3 inset;
         border: 3px solid #ffffff26;
+        overflow-y: hidden;
     }
 }
+
 .hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
@@ -148,6 +159,7 @@ main {
     background-color: #fff;
     border-radius: 17px;
     @extend .hide-scrollbar;
+
     .drag-item:hover {
         box-shadow: 0 0 0 0.1rem #2d81c2a8;
     }
@@ -188,6 +200,7 @@ main {
             margin-left: 5px;
         }
     }
+
     .urlTool {
         margin: .4rem 0;
         color: white;
@@ -203,15 +216,18 @@ main {
             margin-left: 5px;
         }
     }
+
     .colorBtn {
         width: 25px;
         height: 25px;
-        transition: .5s;   
+        transition: .5s;
     }
+
     .colorBtn:hover {
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.247);
     }
 }
+
 .edit-toolbox::before {
     border-style: solid;
     border-top-width: 12px;
@@ -243,6 +259,7 @@ main {
 .slide-left {
     animation: slide-left .5s forwards;
 }
+
 @keyframes slide-left {
     0% {
         opacity: 0.1;
@@ -254,9 +271,11 @@ main {
         transform: translateX(0px);
     }
 }
+
 .slide-right {
     animation: slide-right .5s forwards;
 }
+
 @keyframes slide-right {
     0% {
         opacity: 0.1;
