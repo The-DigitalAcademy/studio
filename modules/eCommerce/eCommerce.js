@@ -19,7 +19,7 @@ const eCommerce = {
                                 <a class="nav-link active" aria-current="page" href="#">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">SHOP</a>
+                                <a class="nav-link" href="#Shop">SHOP</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#AbouUs">ABOUT</a>
@@ -38,7 +38,7 @@ const eCommerce = {
                 Specials 50% off
             </div>
         </header>
-    <div class="row mb-3 position-relative">
+    <div id="Shop" class="row mb-3 position-relative" >
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -236,16 +236,16 @@ const eCommerce = {
                     <h5 class="text-uppercase pt-3 text-left fs-6">Contact Us</h5>
                     <ul class="list-unstyled mb-0 text-justify">
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                     </ul>
                 </div>
@@ -253,16 +253,16 @@ const eCommerce = {
                     <h5 class="text-uppercase pt-3 fs-6">Our products</h5>
                     <ul class="list-unstyled mb-0">
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                     </ul>
                 </div>
@@ -270,16 +270,16 @@ const eCommerce = {
                     <h5 class="text-uppercase pt-3 fs-6">Quick Links</h5>
                     <ul class="list-unstyled mb-0 ">
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link text-dark p-0 ">Link 1</a>
+                            <a contenteditable  href="#!" class="nav-link text-dark p-0 ">Link 1</a>
                         </li>
                     </ul>
                 </div>
