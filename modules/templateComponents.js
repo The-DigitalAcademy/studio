@@ -15,8 +15,6 @@ const TEMPELEMENTS = {
     Template2: {
         icon: `<p>eCommerce Template</p>`,
         elements: [Main],
-        elements: [Header, EmailForm, RadioForm, RadioForm2, TextForm, RadioForm3, PhoneForm, TextAreaForm, Image, Button],
-
     }
 }
 
