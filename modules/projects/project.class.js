@@ -49,10 +49,10 @@ class Project {
 
                 let fromStartIndex = hash.indexOf("from=") + 5
                 let fromEndIndex = hash.indexOf("&", fromStartIndex)
-                const from = hash.substring(fromStartIndex, fromEndIndex);
+                const from = Number(hash.substring(fromStartIndex, fromEndIndex));
 
                 let toStartIndex = hash.indexOf("to=") + 3
-                const to = hash.substring(toStartIndex);
+                const to = Number(hash.substring(toStartIndex));
 
                 // console.log(this.projectData.pages[0].components);
                 this.reorderArray(this.projectData.pages[0].components, from, to);
