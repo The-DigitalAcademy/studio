@@ -191,6 +191,26 @@ function generateUuid(){
   return uuid;
 }
 
+function setHashData(hashData) {
+  let hashString = ''
+  for (const [key, value] of Object.entries(hashData)) {
+    hashString += `${key}=${value}&`;
+  }
+  window.location.hash = hashString;
+}
+function getHashData() {
+  const hash = window.location.hash
+  let keyValueStrings = hash.replace("#","").split('&');
+  let result = {}
+  keyValueStrings.forEach(keyValue => {
+    if (keyValue) {
+      keyValueArr = keyValue.split('=');
+      result[keyValueArr[0]] = keyValueArr[1];      
+    }
+  });
+  return result
+}
+
 export {
   renderMirrorImage,
   getImmediateChild,
@@ -205,5 +225,7 @@ export {
   downloadCode,
   toggleLeftPanels,
   restrictMobile,
-  generateUuid
+  generateUuid,
+  setHashData,
+  getHashData
 };

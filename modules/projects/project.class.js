@@ -54,17 +54,14 @@ class Project {
                 let toStartIndex = hash.indexOf("to=") + 3
                 const to = Number(hash.substring(toStartIndex));
 
-                // console.log(this.projectData.pages[0].components);
                 this.reorderArray(this.projectData.pages[0].components, from, to);
-                // console.log(this.projectData.pages[0].components);
+                this.pages[0].renderPage()
             }
         })
     }
 
     reorderArray(arr, from, to) {
-        console.log(arr);
         arr.splice(to, 0, arr.splice(from, 1)[0]);
-        console.log(arr);
     }
 
     generatePages() {

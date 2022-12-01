@@ -1,4 +1,5 @@
 import { ActionTool } from "../actionTool.class.js"
+import { setHashData } from "../utils.js"
 
 /** class representing a component */
 class Component {
@@ -35,7 +36,11 @@ class Component {
         element.className = Object.values(elementData.styleClasses).join(" ");
         element.onclick = (e) => {
             if (e.target.dataset.componentId == elementData.id) {
-                location.hash = elementData.id
+                const hashData = {
+                    method: 'edit',
+                    component: elementData.id,
+                } 
+                setHashData(hashData)
             }
         }
         if (!elementData.children || !elementData.children.length) {

@@ -1,4 +1,4 @@
-import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage, detectLeftButton } from "./utils.js";
+import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage, detectLeftButton, setHashData } from "./utils.js";
 
 class Dragoned {
     constructor(container, options = {}) {
@@ -104,9 +104,20 @@ class Dragoned {
       //LOCATION HASH STATE MANAGEMENT
       if (!this.dragEl.dataset.type) {
         const componentId = this.dropEl.querySelector('[data-component-id]').dataset.componentId;
-        window.location.hash = `(reorder)component=${componentId}&from=${this.oldIndex}&to=${this.newIndex}`
+        const hashData = {
+          method: 'reorder',
+          component: componentId,
+          from: this.oldIndex,
+          to: this.newIndex
+        }
+        setHashData(hashData)
       } else {
-        window.location.hash = `(addComponent)name=${this.dragEl.dataset.type}&pos=${this.newIndex}`
+        const hashData = {
+          method: 'add',
+          type: this.dragEl.dataset.type,
+          position: this.newIndex
+        }
+        setHashData(hashData)
       }
 
     }
