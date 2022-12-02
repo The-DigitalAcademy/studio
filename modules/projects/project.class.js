@@ -1,6 +1,6 @@
 import components from "../components/components.js";
 import Page from "../pages/page.class.js";
-import { generateUuid } from "../utils.js";
+import { generateUuid, getHashData, setHashData } from "../utils.js";
 
 class Project {
     
@@ -24,37 +24,17 @@ class Project {
         this.generatePages()
  
         window.addEventListener('hashchange', () => {
-            const hash = location.hash
-            if (hash.includes("#(render)")) {
+            const hashData = getHashData()
+            if (hashData.method == "render") {
                 this.pages[0].renderPage();
-                const componentId = location.hash.replace("#(render)", "");
-                location.hash = componentId                
+                setHashData({...hashData, method: 'edit'});            
             } 
-            else if (hash.includes("#(addComponent)")) {
-                let nameStartIndex = hash.indexOf("name=") + 5
-                let ampersand = hash.indexOf("&")
-                const componentName = hash.substring(nameStartIndex, ampersand);
-
-                let positionStartIndex = hash.indexOf("pos=") + 4
-                const position = Number(hash.substring(positionStartIndex));
-                
-                this.projectData.pages[0].components.splice(position,0, components[componentName]);
-
+            else if (hashData.method == "add") {
+                this.projectData.pages[0].components.splice(hashData.position,0, hashData.type);
                 this.pages[0].renderPage()
             }
-            else if (hash.includes("#(reorder)")) {
-                let componentStartIndex = hash.indexOf("component=") + 5
-                let componentEndIndex = hash.indexOf("&", componentStartIndex)
-                const componentId = hash.substring(componentStartIndex, componentEndIndex);
-
-                let fromStartIndex = hash.indexOf("from=") + 5
-                let fromEndIndex = hash.indexOf("&", fromStartIndex)
-                const from = Number(hash.substring(fromStartIndex, fromEndIndex));
-
-                let toStartIndex = hash.indexOf("to=") + 3
-                const to = Number(hash.substring(toStartIndex));
-
-                this.reorderArray(this.projectData.pages[0].components, from, to);
+            else if (hashData.method == "reorder") {
+                this.reorderArray(this.projectData.pages[0].components, hashData.from, hashDatas.to);
                 this.pages[0].renderPage()
             }
         })

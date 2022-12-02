@@ -10,6 +10,7 @@ class NewEditTool {
    */
   constructor(projectData) {
     this.projectData = projectData;
+    this.addStylingHandlerToStylingTools()
 
     window.addEventListener("hashchange", () => {
       this.renderTools();
@@ -25,59 +26,57 @@ class NewEditTool {
     let foundComponent = this.findComponentById(componentId, this.projectData.pages[0].components)
     if (!foundComponent || !foundComponent.styleClasses || !foundComponent.editable) return
 
-    Object.keys(foundComponent.styleClasses).forEach((tool) => {
-      this.addStylingHandlerToStylingTool(tool)
-    });
+    const stylePropsArr = Object.keys(foundComponent.styleClasses);
+    const styleTools = document.querySelectorAll(`[data-style-prop]`);
+    for (const tool of styleTools) {
+      if (stylePropsArr.includes(tool.dataset.styleProp) && !tool.dataset.styleValue) {
+        tool.classList.remove('d-none')
+      } else if (tool.dataset.styleProp && !tool.dataset.styleValue) {
+        tool.classList.add('d-none')
+      }
+    }
   }
+
   findComponentById(id, components) {
     for (const component of components) {
       if (component.id == id) {
         return component
       } else if (component.children && component.children.length) {
         return this.findComponentById(id, component.children)
-      } else  {return component.id}
+      } else  {
+        return null
+      }
     }
   }
-  addStylingHandlerToStylingTool(styleProp) {
-    const stylingTools = document.querySelectorAll(`[data-style-prop]='${styleProp}'`);
+  addStylingHandlerToStylingTools() {
+    const stylingTools = document.querySelectorAll(`[data-style-prop]`);
     for (const toolElement of stylingTools) {
-      toolElement.onclick = (e) => {
-        this.handleStyleChange(e)
+      if (toolElement.dataset.styleValue) {
+        toolElement.onclick = (e) => {
+          this.handleStyleChange(e)
+        }        
       }
     }
   }
   handleStyleChange(e) {
-    const id = location.hash.replace("#", "");;
-    const property = e.target.dataset.styleProp;
-    const value = e.target.dataset.styleValue;
+    const id = getHashData().component;
+    const property = e.currentTarget.dataset.styleProp;
+    const value = e.currentTarget.dataset.styleValue;
     this.styleComponent(id, property, value);
 
     let hashData = {
-      action: "render",
+      method: "render",
       component: id,
     }
     setHashData(hashData);
   }
   styleComponent(id, property, value) {
     const componentList = this.projectData.pages[0].components;
-    const component = this.findComponentById(id, componentList)
+    const component = this.findComponentById(id, componentList);
     if (component.styleClasses[property]) {
-      location.hash = "(render)" + id;
-      console.log(component.styleClasses[property])
       component.styleClasses[property] = value;
     }
   }
-  // styleComponent(property, value) {
-  //   const componentId = location.hash.replace("#", "");
-  //   const componentList = this.projectData.pages[0].components;
-  //   const component = this.findComponentById(componentId, componentList)
-  //   console.log(component.styleClasses[property])
-  //   if (component.styleClasses[property]) {
-  //     location.hash = "(render)" + componentId;
-  //     console.log(component.styleClasses[property])
-  //     component.styleClasses[property] = value;
-  //   }
-  // }
   
   updateComponentStyleClasses(property, value, components = [this.elementData], id=this.elementData.id) {
     for (const component of components) {

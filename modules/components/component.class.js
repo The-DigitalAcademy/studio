@@ -34,7 +34,7 @@ class Component {
         element.dataset.editable = elementData.editable;
         element.dataset.componentId = elementData.id;
         element.className = Object.values(elementData.styleClasses).join(" ");
-        element.onclick = (e) => {
+        element.ondblclick = (e) => {
             if (e.target.dataset.componentId == elementData.id) {
                 const hashData = {
                     method: 'edit',

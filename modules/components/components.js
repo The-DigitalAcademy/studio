@@ -4,7 +4,7 @@ import Component from "./component.class.js"
 export default 
 {
     header: {
-        id: '3f31c9cd-3509-4bd7-bb45-6f982b76d450',
+        id: generateUuid(),
         name: 'div',
         styleClasses: {
             textAlign: 'text-center',
@@ -12,9 +12,6 @@ export default
             textColor: 'text-light',
             padding: 'p-2',
             fontSize: 'small',
-            borderColor: ' ',
-            borderWidth: ' ',
-            borderRadius: ' ',
         },
         editable: true,
         children: [
@@ -30,7 +27,7 @@ export default
     },
 
     h3: {
-        id: 'ebf03e6c-1866-4199-b245-3b113f894ace',
+        id: generateUuid(),
         name: 'h3',
         innerText: 'Heading 3',
         editable: true,
@@ -41,7 +38,7 @@ export default
     },
 
     paragraph1: {
-        id: 'f2b0b151-ada6-42bc-89ca-1846e50dc463',
+        id: generateUuid(),
         name: 'p',
         editable: true,
         styleClasses: {
@@ -51,7 +48,7 @@ export default
         contentEditable: true
     },
     paragraph2: {
-        id: '08af5f3b-0ee6-4e31-954b-d220f1784cb6',
+        id: generateUuid(),
         name: 'p',
         editable: false,
         styleClasses: {

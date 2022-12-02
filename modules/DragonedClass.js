@@ -102,7 +102,7 @@ class Dragoned {
         }
       }
       //LOCATION HASH STATE MANAGEMENT
-      if (!this.dragEl.dataset.type) {
+      if (this.dragEl && this.dragEl.dataset.componentId) {
         const componentId = this.dropEl.querySelector('[data-component-id]').dataset.componentId;
         const hashData = {
           method: 'reorder',
@@ -111,7 +111,7 @@ class Dragoned {
           to: this.newIndex
         }
         setHashData(hashData)
-      } else {
+      } else if (this.dragEl && !this.dragEl.dataset.type) {
         const hashData = {
           method: 'add',
           type: this.dragEl.dataset.type,

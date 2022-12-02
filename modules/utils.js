@@ -204,7 +204,7 @@ function getHashData() {
   let result = {}
   keyValueStrings.forEach(keyValue => {
     if (keyValue) {
-      keyValueArr = keyValue.split('=');
+      const keyValueArr = keyValue.split('=');
       result[keyValueArr[0]] = keyValueArr[1];      
     }
   });
