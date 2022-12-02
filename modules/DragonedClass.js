@@ -111,7 +111,7 @@ class Dragoned {
           to: this.newIndex
         }
         setHashData(hashData)
-      } else if (this.dragEl && !this.dragEl.dataset.type) {
+      } else if (this.dragEl && this.dragEl.dataset.type) {
         const hashData = {
           method: 'add',
           type: this.dragEl.dataset.type,
