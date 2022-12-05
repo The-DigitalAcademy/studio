@@ -1,5 +1,4 @@
 import { getHashData, setHashData } from "./utils.js";
-import Component from "./component.class.js";
 
 /** Class representing an editing tool*/
 class NewEditTool {
@@ -73,6 +72,7 @@ class NewEditTool {
   styleComponent(id, property, value) {
     const componentList = this.projectData.pages[0].components;
     const component = this.findComponentById(id, componentList);
+    console.log(component.id);
     if (component.styleClasses[property]) {
       component.styleClasses[property] = value;
     }

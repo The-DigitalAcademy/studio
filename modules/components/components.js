@@ -1,5 +1,5 @@
 import { generateUuid } from "../utils.js"
-import Component from "./component.class.js"
+import Component from "../component.class.js"
 
 export default 
 {

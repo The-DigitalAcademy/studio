@@ -55,17 +55,8 @@ class Component {
         return element
     }
 
-    /**
-     * update the parent class list
-     */
-    updateStyling(property, value) {
-        // this.#componentElementClassList[property] = value
-        // const classList = Object.values(this.#componentElementClassList)
-        // this.#componentElement.className.value = classList.join(" ")
-    }
-
     getIcon() {
-        return `<i class="bi bi-pencil-square"></i>`
+        return `<i class="bi bi-pencil-square text-light"></i>`
     }
     getInnerHtml() {
         const container = document.createElement('span');

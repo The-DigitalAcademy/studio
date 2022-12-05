@@ -1,7 +1,7 @@
-import JSZip from '../jszip.js';
-import saveAs from '../FileSaver.js';
-import MicroAppJs from '../../assets/microapp.js';
-import AyobaStubJs from '../../assets/ayobastub.js';
+import JSZip from './jszip.js';
+import saveAs from './FileSaver.js';
+import MicroAppJs from '../assets/microapp.js';
+import AyobaStubJs from '../assets/ayobastub.js';
 
 /** class representing Exportable project */
 class ExportableProject {

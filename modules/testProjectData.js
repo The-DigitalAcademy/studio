@@ -1,5 +1,5 @@
-import components from "../components/components.js";
-import { generateUuid } from "../utils.js";
+import components from "./components/components.js";
+import { generateUuid } from "./utils.js";
 
 export default
 {
@@ -13,6 +13,15 @@ export default
             components: [
                 components.header,
                 components.h3,
+            ]
+        },
+        {
+            id: generateUuid(),
+            name: 'about',
+            fileName: 'about',
+            components: [
+                components.header,
+                components.paragraph1,
             ]
         }
     ]

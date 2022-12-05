@@ -32,15 +32,23 @@
 
     </header>
     <main>
-        <div id="components-wrapper" class="shadow-sm">
-            <div class="options shadow">
-                <button id="elementsBtn" class="bg-primary">Elements</button>
-                <button id="templatesBtn">Templates</button>
-            </div>
-            <div class="components" id="draggable"></div>
-            <div class="components d-none" id="template"></div>
+        <!-- ################# LEFT menu panel ################ -->
+        <div class="bg-dark border-end border-secondary text-light">
+            <button id="menu-components-btn" class="btn btn-outline-light w-100 border-0 rounded-0 fs-3">
+                <i class="bi bi-bounding-box"></i>
+            </button>
+            <button id="menu-pages-btn" class="btn btn-outline-light w-100 border-0 rounded-0 fs-3">
+                <i class="bi bi-files"></i>
+            </button>
         </div>
+        <div id="components-wrapper" class="shadow-sm">
+            <div class="components-container" id="draggable"></div>
+            <div class="components-container" id="pages-panel"></div>
+        </div>
+
+        <!-- ################# MIDDLE mobile view ################## -->
         <div id="view-wrapper">
+            <p class="text-center m-0 fs-5 text-capitalize fw-bold mb-1" id="workingPageName"></p>
             <div class="mobile shadow">
                 <div id="mobile-header" class="p-2 ayoba-header-bg EDITONLY shadow-sm">
                     <h1 class="dispay-4 fs-4 text-center text-light">
@@ -48,17 +56,11 @@
                         <span contenteditable>Ayoba</span>
                     </h1>
                 </div>
-                <div id="container">
-                    <!-- <div class="p-2 ayoba-header-bg EDITONLY shadow-sm">
-                        <h1 class="dispay-4 fs-4 text-center text-light">
-                            <i class="bi bi-x-lg float-start fs-4"></i>
-                            <span contenteditable>Ayoba</span>
-                        </h1>
-                    </div> -->
-                    <!-- <div data-type="text" class="block"></div> -->
-                </div>
+                <div id="container"></div>
             </div>
         </div>
+
+        <!-- ################# RIGHT tools panel ################## -->
         <div class="shadow-sm p-4" id="tools-pane">
             <div>
                 <div data-style-prop="textAlign">

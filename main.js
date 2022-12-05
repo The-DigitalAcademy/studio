@@ -1,14 +1,14 @@
 import { Dragoned } from "./modules/DragonedClass.js";
 import { EditTool } from "./modules/editTool.class.js";
-import { renderDraggableElements, renderDraggableTemplate, downloadCode, toggleLeftPanels, restrictMobile } from "./modules/utils.js"
+import { renderDraggableElements, downloadCode, renderPages, restrictMobile } from "./modules/utils.js"
 import ELEMENTS from "./modules/components.js"
 import { ActionTool } from "./modules/actionTool.class.js";
 import TEMPELEMENTS from "./modules/templateComponents.js";
 import components from "./modules/components/components.js" 
-import Project from "./modules/projects/project.class.js";
-import testProjectData from "./modules/pages/testProjectData.js";
-import Component from "./modules/components/component.class.js";
-import { NewEditTool } from "./modules/components/newEditTool.js";
+import Project from "./modules/project.class.js";
+import testProjectData from "./modules/testProjectData.js";
+import Component from "./modules/component.class.js";
+import { NewEditTool } from "./modules/newEditTool.js";
 
 restrictMobile()
 
@@ -19,12 +19,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const project = new Project(projectData);
     const editor = new NewEditTool(projectData);
     
-    renderDraggableElements('draggable');
-    document.getElementById('export-project').onclick = downloadCode;
-    renderDraggableTemplate('template');
+    document.getElementById('menu-components-btn').addEventListener('click', () => renderDraggableElements('draggable'));
+    document.getElementById('menu-pages-btn').addEventListener('click', () => renderPages('pages-panel', projectData.pages));
 
-    const elementsBtn = document.querySelector('.options').children[0].addEventListener('click', toggleLeftPanels);
-    const templatesBtn = document.querySelector('.options').children[1].addEventListener('click', toggleLeftPanels);
+    document.getElementById('export-project').onclick = downloadCode;
+    // renderDraggableTemplate('template');
+
+    // const elementsBtn = document.querySelector('.options').children[0].addEventListener('click', toggleLeftPanels);
+    // const templatesBtn = document.querySelector('.options').children[1].addEventListener('click', toggleLeftPanels);
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

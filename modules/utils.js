@@ -1,7 +1,7 @@
 import  ELEMENTS from './components.js'
-import Component from './components/component.class.js';
+import Component from './component.class.js';
 import components from './components/components.js';
-import { ExportableProject } from './projects/exportableProject.class.js';
+import { ExportableProject } from './exportableProject.class.js';
 import TEMPELEMENTS from './templateComponents.js';
 
 const EVENTS = {
@@ -129,6 +129,8 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 
 function renderDraggableElements(containerElementID) {
   const draggablesContainer = document.getElementById(containerElementID);
+  draggablesContainer.classList.toggle('d-none')
+  draggablesContainer.innerHTML = ""
 
   for (const property in components) {
     const container = document.createElement('div');
@@ -138,18 +140,45 @@ function renderDraggableElements(containerElementID) {
     draggablesContainer.append(container);
   }
 }
-
-function renderDraggableTemplate(containerElementID) {
+function renderPages(containerElementID, pages) {
   const draggablesContainer = document.getElementById(containerElementID);
+  draggablesContainer.classList.toggle('d-none')
+  draggablesContainer.innerHTML = ""
 
-  for (const property in TEMPELEMENTS) {
-      const container = document.createElement('div');
-      container.setAttribute('class', 'drag-item');
-      container.setAttribute('data-type', property);
-      container.innerHTML = `${TEMPELEMENTS[property].icon}`
-      draggablesContainer.append(container);
-  }
+  const addBtn = document.createElement('div');
+  addBtn.className = "text-light text-center btn"
+  addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-1"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
+  draggablesContainer.append(addBtn);
+
+  pages.forEach((page, index) => {
+    const container = document.createElement('div');
+    container.className = "text-center border-0 btn btn-outline-light"
+    container.innerHTML = `<i class="bi bi-file-earmark  display-1"></i><p class='text-center mb-0 text-capitalize'>${page.name}</p>`
+    container.onclick = () => {
+      document.querySelector('#workingPageName').innerHTML = page.name
+      const hashData = {
+        method: 'render',
+        page: index
+      }
+      setHashData(hashData)
+    }
+    draggablesContainer.append(container);
+  })
+
+
 }
+
+// function renderDraggableTemplate(containerElementID) {
+//   const draggablesContainer = document.getElementById(containerElementID);
+
+//   for (const property in TEMPELEMENTS) {
+//       const container = document.createElement('div');
+//       container.setAttribute('class', 'drag-item');
+//       container.setAttribute('data-type', property);
+//       container.innerHTML = `${TEMPELEMENTS[property].icon}`
+//       draggablesContainer.append(container);
+//   }
+// }
 
 function downloadCode() {
   const rootApp = document.getElementById('container');
@@ -221,7 +250,7 @@ export {
   containerStack,
   detectLeftButton,
   renderDraggableElements,
-  renderDraggableTemplate,
+  renderPages,
   downloadCode,
   toggleLeftPanels,
   restrictMobile,
