@@ -1,4 +1,4 @@
-import { getHashData, setHashData } from "../utils.js";
+import { getHashData, setHashData } from "./utils.js";
 import Component from "./component.class.js";
 
 /** Class representing an editing tool*/

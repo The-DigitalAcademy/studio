@@ -1,5 +1,5 @@
 import Component from "../components/component.class.js";
-import { setHashData } from "../utils.js";
+import { setHashData } from "./utils.js";
 
 class Page {
 

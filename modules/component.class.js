@@ -1,5 +1,5 @@
-import { ActionTool } from "../actionTool.class.js"
-import { setHashData } from "../utils.js"
+import { ActionTool } from "./actionTool.class.js"
+import { setHashData } from "./utils.js"
 
 /** class representing a component */
 class Component {

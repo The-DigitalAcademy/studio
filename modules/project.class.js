@@ -1,6 +1,6 @@
-import components from "../components/components.js";
+import components from "./components/components.js";
 import Page from "../pages/page.class.js";
-import { generateUuid, getHashData, setHashData } from "../utils.js";
+import { generateUuid, getHashData, setHashData } from "./utils.js";
 
 class Project {
     
