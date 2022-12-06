@@ -17,12 +17,10 @@ class NewEditTool {
   }
 
   renderTools() {
-    const hashData = getHashData()
-    if (hashData.method != 'edit') return;
-
-    const componentId = hashData.component;
+    const {method, page, component} = getHashData()
+    if (method != 'edit') return;
     //find component by id
-    let foundComponent = this.findComponentById(componentId, this.projectData.pages[0].components)
+    let foundComponent = this.findComponentById(component, this.projectData.pages[page].components)
     if (!foundComponent || !foundComponent.styleClasses || !foundComponent.editable) return
 
     const stylePropsArr = Object.keys(foundComponent.styleClasses);
@@ -43,7 +41,6 @@ class NewEditTool {
       } else if (component.children && component.children.length) {
         return this.findComponentById(id, component.children)
       } else  {
-        return null
       }
     }
   }
@@ -58,21 +55,21 @@ class NewEditTool {
     }
   }
   handleStyleChange(e) {
-    const id = getHashData().component;
+    const {page, component}  = getHashData();
     const property = e.currentTarget.dataset.styleProp;
     const value = e.currentTarget.dataset.styleValue;
-    this.styleComponent(id, property, value);
+    this.styleComponent(page, component, property, value);
 
     let hashData = {
       method: "render",
-      component: id,
+      component,
+      page
     }
     setHashData(hashData);
   }
-  styleComponent(id, property, value) {
-    const componentList = this.projectData.pages[0].components;
+  styleComponent(page, id, property, value) {
+    const componentList = this.projectData.pages[page].components;
     const component = this.findComponentById(id, componentList);
-    console.log(component.id);
     if (component.styleClasses[property]) {
       component.styleClasses[property] = value;
     }

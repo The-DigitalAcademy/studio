@@ -1,5 +1,5 @@
 import Component from "./component.class.js";
-import { setHashData } from "./utils.js";
+import { setHashData, getHashData } from "./utils.js";
 
 class Page {
 
@@ -23,7 +23,7 @@ class Page {
             deleteBtn.innerHTML = '<i class="bi bi-trash-fill"></i>'
             deleteBtn.onclick = () => {
                 this.deleteComponent(componentData.id, this.pageData.components);
-                setHashData({method:'render'})
+                setHashData({...getHashData(),  method:'render', })
             }
 
             let dragItem = document.createElement('div');

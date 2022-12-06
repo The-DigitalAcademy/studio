@@ -24,23 +24,28 @@ class Project {
         }
 
         this.generatePages()
+        setHashData({page: 0})
 
         window.addEventListener('hashchange', () => {
-            const hashData = getHashData()
-            if (hashData.method == "render") {
-                this.workingPage = Number.isInteger(parseInt(hashData.page)) ? parseInt(hashData.page) : this.workingPage;
-                this.pages[this.workingPage].renderPage();
-                setHashData({});            
+            const {page, method, component} = getHashData()
+            if (method == "render") {
+                this.pages[page].renderPage();
+                setHashData({method:'edit', component, page});            
             } 
-            else if (hashData.method == "add") {
-                let newComponent = components[hashData.type];
-                newComponent.id = generateUuid()
-                this.projectData.pages[this.workingPage].components.splice(hashData.position,0, newComponent);
-                this.pages[this.workingPage].renderPage()
+            else if (method == "add") {
+                const {type, position} = getHashData()
+                //get component data & set new id
+                let newComponent = components[type];
+                newComponent.id = generateUuid();
+
+                //add component to list of components at specified position
+                this.projectData.pages[page].components.splice(position,0, newComponent);
+                this.pages[page].renderPage();
             }
-            else if (hashData.method == "reorder") {
-                this.rearrangeArray(this.projectData.pages[this.workingPage].components, hashData.from, hashDatas.to);
-                this.pages[this.workingPage].renderPage()
+            else if (method == "reorder") {
+                const {from, to } = getHashData()
+                this.rearrangeArray(this.projectData.pages[page].components, from, to);
+                this.pages[page].renderPage()
             }
         })
     }
@@ -79,11 +84,6 @@ class Project {
         this.pages.push(newPage);
         this.pages[this.pages.length -1].renderPage();
     }
-
-    renderProject() {
-        this.page[this.workingPage].renderPage();
-    }
-
 }
 
 export default Project

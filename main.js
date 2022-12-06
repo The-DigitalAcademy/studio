@@ -1,9 +1,5 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { EditTool } from "./modules/editTool.class.js";
 import { renderDraggableElements, downloadCode, renderPages, restrictMobile } from "./modules/utils.js"
-import ELEMENTS from "./modules/components.js"
-import { ActionTool } from "./modules/actionTool.class.js";
-import TEMPELEMENTS from "./modules/templateComponents.js";
 import components from "./modules/components/components.js" 
 import Project from "./modules/project.class.js";
 import testProjectData from "./modules/testProjectData.js";
@@ -23,10 +19,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('menu-pages-btn').addEventListener('click', () => renderPages('pages-panel', projectData.pages));
 
     document.getElementById('export-project').onclick = downloadCode;
-    // renderDraggableTemplate('template');
-
-    // const elementsBtn = document.querySelector('.options').children[0].addEventListener('click', toggleLeftPanels);
-    // const templatesBtn = document.querySelector('.options').children[1].addEventListener('click', toggleLeftPanels);
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

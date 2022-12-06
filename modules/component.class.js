@@ -1,12 +1,11 @@
 import { ActionTool } from "./actionTool.class.js"
-import { setHashData } from "./utils.js"
+import { generateUuid, getHashData, setHashData } from "./utils.js"
 
 /** class representing a component */
 class Component {
 
     Editingtools
     #componentData
-    #iconStyleClass
     #componentElement
 
     /**
@@ -30,23 +29,33 @@ class Component {
      * @return {Element} generated Element
      */
     #generateElement(elementData) {
+        if (!elementData.id) elementData.id = generateUuid()
         const element = document.createElement(elementData.name);
         element.dataset.editable = elementData.editable;
         element.dataset.componentId = elementData.id;
         element.className = Object.values(elementData.styleClasses).join(" ");
+
+        for (const [key, value] of Object.entries(elementData.attributes)) {
+            element[key] = value;
+        }
+
         element.ondblclick = (e) => {
+            const currHashData = getHashData()
             if (e.target.dataset.componentId == elementData.id) {
                 const hashData = {
                     method: 'edit',
                     component: elementData.id,
+                    page: currHashData.page
                 } 
                 setHashData(hashData)
             }
         }
-        if (!elementData.children || !elementData.children.length) {
-            element.innerText = elementData.innerText;
-            element.contentEditable = elementData.contentEditable;
-        } else {
+        if (elementData.attributes.contentEditable) {
+            element.onkeydown = (e) => {
+                elementData.attributes.innerText = e.target.innerText
+            }
+        }
+        if (elementData.children && elementData.children.length) {
             elementData.children.forEach(childElementData => {
                 const childElement = this.#generateElement(childElementData)
                 element.append(childElement)

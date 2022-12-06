@@ -147,13 +147,13 @@ function renderPages(containerElementID, pages) {
 
   const addBtn = document.createElement('div');
   addBtn.className = "text-light text-center btn"
-  addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-1"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
+  addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-4"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
   draggablesContainer.append(addBtn);
 
   pages.forEach((page, index) => {
     const container = document.createElement('div');
     container.className = "text-center border-0 btn btn-outline-light"
-    container.innerHTML = `<i class="bi bi-file-earmark  display-1"></i><p class='text-center mb-0 text-capitalize'>${page.name}</p>`
+    container.innerHTML = `<i class="bi bi-file-earmark  display-4"></i><p class='text-center mb-0 text-capitalize'>${page.name}</p>`
     container.onclick = () => {
       document.querySelector('#workingPageName').innerHTML = page.name
       const hashData = {

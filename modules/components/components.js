@@ -4,8 +4,7 @@ import Component from "../component.class.js"
 export default 
 {
     header: {
-        id: generateUuid(),
-        name: 'div',
+        name: 'header',
         styleClasses: {
             textAlign: 'text-center',
             bgColor: 'bg-dark',
@@ -13,48 +12,46 @@ export default
             padding: 'p-2',
             fontSize: 'small',
         },
-        editable: true,
-        children: [
-            {
-                id: '850a4550-a8f6-45ca-be83-e7d1a1cda812',
-                name: 'h1',
-                innerText: 'New Header',
-                styleClasses: {},
-                contentEditable: true,
-                editable: true
-            }
-        ]
+        editable: true, 
+        attributes: {
+            innerText: 'Heading',
+            contentEditable: true
+        }
     },
 
     h3: {
-        id: generateUuid(),
         name: 'h3',
-        innerText: 'Heading 3',
         editable: true,
         styleClasses: {
             textAlign: 'text-center',
         },
-        contentEditable: true
+        attributes: {
+            contentEditable: true,
+            innerText: 'Heading 3'
+        }
     },
 
-    paragraph1: {
-        id: generateUuid(),
+    p: {
         name: 'p',
         editable: true,
         styleClasses: {
             textAlign: 'text-center',
         },
-        innerText: 'This is a paragraph 1',
-        contentEditable: true
+        attributes: {
+            contentEditable: true,
+            innerText: 'This is a paragraph', 
+        }
     },
-    paragraph2: {
-        id: generateUuid(),
-        name: 'p',
-        editable: false,
+    img: {
+        name: 'img',
+        editable: true,
         styleClasses: {
-            textAlign: 'text-center',
+            display: 'd-block',
+            borderRadius: 'rounded-0',
+            horizontalAlign: 'mx-auto'
         },
-        innerText: 'This is a paragraph 2',
-        contentEditable: true
+        attributes: {
+            src: 'https://picsum.photos/100',
+        }
     }
 }

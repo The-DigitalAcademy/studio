@@ -4,18 +4,15 @@ body {
     width: 100vw;
     position: fixed;
 }
-
-header {
+.bg-grad-blue {
     background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
+}
+#export-project {
+    color: rgba(255, 255, 255, 0.748);
+}
+
+#export-project:hover {
     color: #f8f9fa;
-
-    #export-project {
-        color: rgba(255, 255, 255, 0.748);
-    }
-
-    #export-project:hover {
-        color: #f8f9fa;
-    }
 }
 .ayoba-header-bg {
     background: rgb(237,114,53);
@@ -38,26 +35,7 @@ main {
 }
 
 #components-wrapper {
-    background-color: #222222;
     height: 94vh;
-
-    .options {
-        height: 10%;
-        background-color: #161616;
-        padding: 1rem .5rem;
-        text-align: center;
-        font-size: .8rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        button {
-            border: none;
-            color: #fff;
-            background-color: rgba(142, 142, 142, 0.246);
-            padding: .5rem;
-            border-radius: 2px;
-        }
-    }
 }
 
 .components-container {

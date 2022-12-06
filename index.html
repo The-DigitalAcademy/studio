@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header class="p-2 shadow-sm d-flex justify-content-between">
+    <header class="p-2 shadow-sm d-flex justify-content-between bg-grad-blue ">
         <a href="/" id="logo" class="text-decoration-none d-flex align-items-center text-light">
             <img class="me-1" width="25" height="25"
                 src="https://developer.ayoba.me/_next/image?url=%2Fassets%2FLogo%2FAyobaFinalIcon.png&w=64&q=75"
@@ -41,7 +41,7 @@
                 <i class="bi bi-files"></i>
             </button>
         </div>
-        <div id="components-wrapper" class="shadow-sm">
+        <div id="components-wrapper" class="shadow-sm rounded-4 bg-dark">
             <div class="components-container" id="draggable"></div>
             <div class="components-container" id="pages-panel"></div>
         </div>
@@ -64,7 +64,7 @@
         <div class="shadow-sm p-4" id="tools-pane">
             <div>
                 <div data-style-prop="textAlign">
-                    <p class="text-muted small m-0">Text</p>
+                    <p class="text-muted small m-0">Text Styling</p>
                     <div class="btn-group my-1">
                         <button data-style-prop="textAlign" data-style-value="text-start" class="btn"><i class="bi bi-justify-left"></i></button>
                         <button data-style-prop="textAlign" data-style-value="text-center" class="btn"><i class="bi bi-text-center"></i></button>
@@ -111,18 +111,18 @@
                 </div>
 
                 <div  data-style-prop="horizontalAlign" class="my-1">
-                    <p class="mb-1 text-muted small">Horizontal Align</p>
+                    <p class="mb-1 text-muted small">Horizontal Alignment</p>
                     <div class="btn-group">
-                        <button data-style-prop="horizontalAlign" class="btn"><i class="bi bi-align-start"></i></button>
-                        <button data-style-prop="horizontalAlign" class="btn"><i class="bi bi-align-center"></i></button>
-                        <button data-style-prop="horizontalAlign" class="btn"><i class="bi bi-align-end"></i></button>
+                        <button data-style-prop="horizontalAlign" data-style-value="me-auto" class="btn"><i class="bi bi-align-start"></i></button>
+                        <button data-style-prop="horizontalAlign" data-style-value="mx-auto" class="btn"><i class="bi bi-align-center"></i></button>
+                        <button data-style-prop="horizontalAlign" data-style-value="ms-auto" class="btn"><i class="bi bi-align-end"></i></button>
                     </div>
                 </div>
 
-                <div data-style-prop="borderWidth">
-                    <p class="mt-3 mb-0 small text-muted">Border</p>
+                <div>
+                    <p class="mt-3 mb-0 small text-muted">Border Styling</p>
                     <div class="d-flex">
-                        <div class="dropdown">
+                        <div class="dropdown"  data-style-prop="borderWidth">
                             <button class="btn btn-sm dropdown-toggle m-1" type="button" id="borderWidthDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-border-width"></i>
@@ -177,10 +177,10 @@
                                 <span class="btn border-dark rounded-0 sqr-1 m-1"></span>
                             </button>
                             <div class="dropdown-menu shadow border-0" aria-labelledby="borderRadiusDropdown">
-                                <button  data-style-prop="borderRadius" class="btn border-dark rounded-0 sqr-2 m-1"></button>
-                                <button  data-style-prop="borderRadius" class="btn border-dark rounded-4 sqr-2 m-1"></button>
-                                <button  data-style-prop="borderRadius" class="btn border-dark rounded-circle sqr-2 m-1 p-0"></button>
-                                <button  data-style-prop="borderRadius" class="btn border-dark rounded-pill text-light m-1 sqr-2">...</button>
+                                <button  data-style-prop="borderRadius" data-style-value="rounded-0" class="btn border-dark rounded-0 sqr-2 m-1"></button>
+                                <button  data-style-prop="borderRadius" data-style-value="rounded-4" class="btn border-dark rounded-4 sqr-2 m-1"></button>
+                                <button  data-style-prop="borderRadius" data-style-value="rounded-circle" class="btn border-dark rounded-circle sqr-2 m-1 p-0"></button>
+                                <button  data-style-prop="borderRadius" data-style-value="rounded-pill" class="btn border-dark rounded-pill text-light m-1 sqr-2">...</button>
                             </div>
                         </div>
                     </div>

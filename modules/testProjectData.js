@@ -11,8 +11,8 @@ export default
             name: 'Home',
             fileName: 'index',
             components: [
-                components.header,
-                components.h3,
+                JSON.parse(JSON.stringify(components.header)),
+                JSON.parse(JSON.stringify(components.h3)),
             ]
         },
         {
@@ -20,8 +20,17 @@ export default
             name: 'about',
             fileName: 'about',
             components: [
-                components.header,
-                components.paragraph1,
+                JSON.parse(JSON.stringify(components.header)),
+                JSON.parse(JSON.stringify(components.img)),
+            ]
+        },
+        {
+            id: generateUuid(),
+            name: 'products',
+            fileName: 'about',
+            components: [
+                JSON.parse(JSON.stringify(components.header)),
+                JSON.parse(JSON.stringify(components.p)),
             ]
         }
     ]
