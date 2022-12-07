@@ -27,6 +27,9 @@ class StylingTool {
     const targetComponent = this.findComponentById(component, this.projectData.pages[page].components)
     if (!targetComponent || !targetComponent.styleClasses || !targetComponent.editable) return
 
+    //display component name
+    document.getElementById('component-name').innerText = targetComponent.name
+
     const styleProps = Object.keys(targetComponent.styleClasses); //list of styleProps relevant to the component
     const styleTools = document.querySelectorAll(`[data-style-prop]`); //all styling tools found in the document
 

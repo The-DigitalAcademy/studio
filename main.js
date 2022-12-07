@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const { item } = data;
         const type = item.dataset.type;
         item.innerHtml = "";
-        item.append(new Component(components[type]).getElement());
+        item.append(new Component(components[type]).getComponent());
       }
     });
 

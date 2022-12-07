@@ -35,7 +35,7 @@ class Project {
             else if (method == "add") {
                 const {type, position} = getHashData()
                 //get component data & set new id
-                let newComponent = components[type];
+                let newComponent = JSON.parse(JSON.stringify(components[type]));
                 newComponent.id = generateUuid();
 
                 //add component to list of components at specified position

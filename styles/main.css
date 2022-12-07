@@ -111,10 +111,6 @@ main {
   border-bottom-right-radius: 17px;
 }
 
-#tools-panel {
-  background: rgba(45, 129, 194, 0.7098039216);
-}
-
 .edit-toolbox {
   background: rgba(45, 129, 194, 0.7098039216);
   border-radius: 0.3rem;

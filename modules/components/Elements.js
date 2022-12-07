@@ -36,6 +36,7 @@ export default
         editable: true,
         styleClasses: {
             textAlign: 'text-center',
+            textColor: 'text-dark'
         },
         attributes: {
             contentEditable: true,
@@ -91,11 +92,22 @@ export default
         editable: true,
         styleClasses: {
             form: 'form-label',
-            textColor: '',
+            textColor: 'text-dark',
         },
         attributes: {
             innerText: 'Form Label',
             contentEditable: true
+        }
+    },
+    radioInput: {
+        name: 'input',
+        editable: true,
+        styleClasses: {
+            form: 'form-check-input'
+        },
+        attributes: {
+            type: 'radio',
+            placeholder: 'john@email.com'
         }
     }
 }
