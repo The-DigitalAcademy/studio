@@ -1,4 +1,4 @@
-import { Dragoned } from "./modules/DragonedClass.js";
+import { Dragoned } from "./modules/dragoned.class.js";
 import { renderDraggableElements, renderPages, restrictMobile } from "./modules/utils.js"
 import components from "./modules/components/components.js" 
 import Project from "./modules/project.class.js";
