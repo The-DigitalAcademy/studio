@@ -1,10 +1,11 @@
 import { Dragoned } from "./modules/DragonedClass.js";
-import { renderDraggableElements, downloadCode, renderPages, restrictMobile } from "./modules/utils.js"
+import { renderDraggableElements, renderPages, restrictMobile } from "./modules/utils.js"
 import components from "./modules/components/components.js" 
 import Project from "./modules/project.class.js";
 import testProjectData from "./modules/testProjectData.js";
 import Component from "./modules/component.class.js";
 import { NewEditTool } from "./modules/newEditTool.js";
+import { ExportableProject } from "./modules/exportableProject.class.js";
 
 restrictMobile()
 
@@ -14,11 +15,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let projectData = testProjectData
     const project = new Project(projectData);
     const editor = new NewEditTool(projectData);
+    const exportableProject = new ExportableProject(projectData);
     
     renderDraggableElements('draggable');
     renderPages('pages-panel', projectData.pages);
 
-    document.getElementById('export-project').onclick = downloadCode;
+    document.getElementById('export-project').onclick = exportableProject.download();
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",

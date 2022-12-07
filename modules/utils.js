@@ -1,5 +1,4 @@
 import Components from './components/Components.js';
-import { ExportableProject } from './exportableProject.class.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -45,14 +44,14 @@ function restrictMobile() {
   const isTablet = (isIPad || (isMobile && !isSmallScreen));
 
   if (isMobile || isSmallScreen) {
-      document.body.innerHTML = `
-                          <div class="container">
-                            <div class="text-center">
-                              <img src="assets/images/desktop_only.png" style="width: 90%;">
-                            </div>
-                            <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
-                          </div>
-                          `
+      document.body.innerHTML = 
+      `<div class="container">
+        <div class="text-center">
+          <img src="assets/images/desktop_only.png" style="width: 90%;">
+        </div>
+        <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
+      </div>
+      `;
   };
 }
 
@@ -102,9 +101,9 @@ function getImmediateChild(dropTarget, target) {
 /**
  * clones dragged node, adds style declarations to clone, and renders to DOM.
  * @param {HTMLElement} dragEl element being dragged
- * @param {Number} clientX horizontal coordinate within viewport at which event occurred
- * @param {Number} clientY vertical coordinate within viewport at which event occurred
- * @returns {Node}
+ * @param {Number} clientX horizontal coordinate within viewport
+ * @param {Number} clientY vertical coordinate within viewport
+ * @returns {Node} clone of dragged node
  */
 function renderMirrorImage(dragEl, clientX, clientY) {
   if (!dragEl) {
@@ -137,6 +136,7 @@ function renderDraggableElements(containerElementID) {
     draggablesContainer.append(container);
   }
 }
+
 function renderPages(containerElementID, pages) {
   const draggablesContainer = document.getElementById(containerElementID);
   // draggablesContainer.classList.toggle('d-none')
@@ -161,52 +161,12 @@ function renderPages(containerElementID, pages) {
     }
     draggablesContainer.append(container);
   })
-
-
 }
 
-// function renderDraggableTemplate(containerElementID) {
-//   const draggablesContainer = document.getElementById(containerElementID);
-
-//   for (const property in TEMPELEMENTS) {
-//       const container = document.createElement('div');
-//       container.setAttribute('class', 'drag-item');
-//       container.setAttribute('data-type', property);
-//       container.innerHTML = `${TEMPELEMENTS[property].icon}`
-//       draggablesContainer.append(container);
-//   }
-// }
-
-function downloadCode() {
-  const rootApp = document.getElementById('container');
-  const newProject = new ExportableProject(rootApp);
-  newProject.saveAsZip();
-}
-function toggleLeftPanels(e) {
-  let container;
-  container = e.target.id == 'elementsBtn' ? 'elements' : 'templates';
-
-  const elementsBtn = document.querySelector('.options').children[0];
-  const templatesBtn = document.querySelector('.options').children[1];
-  const elementsContainer = document.querySelectorAll('.components-container')[0];
-  const templatesContainer = document.querySelectorAll('.components-container')[1];
-
-  if (container == 'elements') {
-    elementsBtn.classList.add('bg-primary');
-    elementsContainer.classList.remove('d-none');
-  } else {
-    elementsBtn.classList.remove('bg-primary');
-    elementsContainer.classList.add('d-none');
-  }
-
-  if (container == 'templates') {
-    templatesBtn.classList.add('bg-primary');
-    templatesContainer.classList.remove('d-none');
-  } else {
-    templatesBtn.classList.remove('bg-primary');
-    templatesContainer.classList.add('d-none');
-  }
-}
+/**
+ * returns a universally unique identifier
+ * @returns {string} uuid
+ */
 function generateUuid(){
   var dt = new Date().getTime();
   var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -217,6 +177,10 @@ function generateUuid(){
   return uuid;
 }
 
+/**
+ * sets opearion details to url hash
+ * @param {{method?, page?, component?, from?, to?}} hashData operation details
+ */
 function setHashData(hashData) {
   let hashString = ''
   for (const [key, value] of Object.entries(hashData)) {
@@ -224,6 +188,11 @@ function setHashData(hashData) {
   }
   window.location.hash = hashString;
 }
+
+/**
+ * destructures operation details from url hash
+ * @returns {{method?, page?, component?, from?, to?}} operation details
+ */
 function getHashData() {
   const hash = window.location.hash
   let keyValueStrings = hash.replace("#","").split('&');
@@ -248,8 +217,6 @@ export {
   detectLeftButton,
   renderDraggableElements,
   renderPages,
-  downloadCode,
-  toggleLeftPanels,
   restrictMobile,
   generateUuid,
   setHashData,

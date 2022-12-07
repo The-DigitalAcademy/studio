@@ -16,7 +16,7 @@ class ExportableProject {
      * @param {Element} rootApp the application root container
      */
     constructor(rootApp) {
-        this.#rootApp = rootApp.cloneNode(true)
+        // this.#rootApp = rootApp.cloneNode(true)
         this.#htmlFile = this.#createHtmlFile()
     }
 
@@ -97,6 +97,10 @@ class ExportableProject {
         .then(function (blob) {
             saveAs(blob, "studio_microapp.zip");
         });
+    }
+    download() {
+        //download project
+        this.saveAsZip()
     }
 }
 
