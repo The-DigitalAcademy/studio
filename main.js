@@ -15,12 +15,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let projectData = testProjectData
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
-    const exportableProject = new ExportableProject(projectData);
+    // const exportableProject = new ExportableProject(projectData);
     
     renderDraggableElements('draggable');
     renderPages('pages-panel', projectData.pages);
 
-    document.getElementById('export-project').onclick = exportableProject.download();
+    // document.getElementById('export-project').onclick = exportableProject.download();
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",
