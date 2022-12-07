@@ -1,31 +1,20 @@
-import { ActionTool } from "./actionTool.class.js"
 import { generateUuid, getHashData, setHashData } from "./utils.js"
 
 /** class representing a component */
 class Component {
 
-    Editingtools
     #componentData
-    #componentElement
 
     /**
-     * @param {component}
+     * @param {{name, styleClasses?, children?, editable?, attributes?}} componentData data about the component
      */
-    constructor(componentData, iconStyleClass) {
+    constructor(componentData) {
         this.#componentData = componentData
-        this.#generateComponent();
     }
 
     /**
-     * create and set component Element
-     */
-    #generateComponent() {
-        this.#componentElement = this.#generateElement(this.#componentData);
-    }
-
-    /**
-     * generates an Element with attributes and values along with its children based on the elementData provided
-     * @param {{name: String, styleClasses: {}, children: [], contentEditable: boolean, editable: boolean}} elementData data about the element
+     * generates an Element with attributes, values along with its children based on the elementData provided
+     * @param {{name, styleClasses?, children?, editable?, attributes?}} elementData data about the element
      * @return {Element} generated Element
      */
     #generateElement(elementData) {
@@ -33,30 +22,34 @@ class Component {
         const element = document.createElement(elementData.name);
         element.dataset.editable = elementData.editable;
         element.dataset.componentId = elementData.id;
+        element.id = elementData.id
         element.className = Object.values(elementData.styleClasses).join(" ");
 
-        if(elementData.attributes) {
+        //set element attributes
+        if (elementData.attributes) {
             for (const [key, value] of Object.entries(elementData.attributes)) {
                 element[key] = value;
             }
         }
-
+        //enable styling by setting url hash details
         element.ondblclick = (e) => {
             const currHashData = getHashData()
-            if (e.target.dataset.componentId == elementData.id) {
+            if (e.target.id == elementData.id) {
                 const hashData = {
-                    method: 'edit',
+                    method: 'style',
                     component: elementData.id,
                     page: currHashData.page
-                } 
+                }
                 setHashData(hashData)
             }
         }
+        //update element content text when changed
         if (elementData.attributes && elementData.attributes.contentEditable) {
             element.onkeydown = (e) => {
                 elementData.attributes.innerText = e.target.innerText
             }
         }
+        // generate child elements
         if (elementData.children && elementData.children.length) {
             elementData.children.forEach(childElementData => {
                 const childElement = this.#generateElement(childElementData)
@@ -66,25 +59,13 @@ class Component {
         return element
     }
 
-    getIcon() {
-        return `<i class="bi bi-pencil-square text-light"></i>`
-    }
-    getInnerHtml() {
-        const container = document.createElement('span');
-        container.append(this.#componentElement);
-        return container.innerHTML;
-    }
-    getElement() {
-        let componentCopy = this.#componentElement;
-        return componentCopy
-    }
-
     /**
-     * 
-     * @return {String} innerHTML string value of component as
+     * return element generated from componentData
+     * @returns {Element} generated element
      */
-    // #buildComponent();
-    
+    getComponent() {
+        return this.#generateElement(this.#componentData);
+    }
 }
 
 export default Component

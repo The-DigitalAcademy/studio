@@ -29,7 +29,7 @@ class Page {
             let dragItem = document.createElement('div');
             dragItem.className = "drag-item relative";
             dragItem.appendChild(deleteBtn)
-            dragItem.appendChild(component.getElement());
+            dragItem.appendChild(component.getComponent());
             container.append(dragItem)
         });
     }
