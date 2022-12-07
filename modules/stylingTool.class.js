@@ -1,7 +1,7 @@
 import { getHashData, setHashData } from "./utils.js";
 
 /** Class representing an editing tool*/
-class stylingTool {
+class StylingTool {
   /**
    * creates a styling Tool
    * @param {Object} projectData object containing data of the project
@@ -113,4 +113,4 @@ class stylingTool {
   }
 }
 
-export { NewEditTool };
+export { StylingTool };
