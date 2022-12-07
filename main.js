@@ -4,7 +4,7 @@ import components from "./modules/components/components.js"
 import Project from "./modules/project.class.js";
 import testProjectData from "./modules/testProjectData.js";
 import Component from "./modules/component.class.js";
-import { NewEditTool } from "./modules/newEditTool.js";
+import { NewEditTool } from "./modules/editTool.class.js";
 import { ExportableProject } from "./modules/exportableProject.class.js";
 
 restrictMobile()
