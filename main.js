@@ -15,8 +15,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const project = new Project(projectData);
     const editor = new NewEditTool(projectData);
     
-    document.getElementById('menu-components-btn').addEventListener('click', () => renderDraggableElements('draggable'));
-    document.getElementById('menu-pages-btn').addEventListener('click', () => renderPages('pages-panel', projectData.pages));
+    renderDraggableElements('draggable');
+    renderPages('pages-panel', projectData.pages);
 
     document.getElementById('export-project').onclick = downloadCode;
 

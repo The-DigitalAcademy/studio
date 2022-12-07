@@ -35,8 +35,10 @@ class Component {
         element.dataset.componentId = elementData.id;
         element.className = Object.values(elementData.styleClasses).join(" ");
 
-        for (const [key, value] of Object.entries(elementData.attributes)) {
-            element[key] = value;
+        if(elementData.attributes) {
+            for (const [key, value] of Object.entries(elementData.attributes)) {
+                element[key] = value;
+            }
         }
 
         element.ondblclick = (e) => {
@@ -50,7 +52,7 @@ class Component {
                 setHashData(hashData)
             }
         }
-        if (elementData.attributes.contentEditable) {
+        if (elementData.attributes && elementData.attributes.contentEditable) {
             element.onkeydown = (e) => {
                 elementData.attributes.innerText = e.target.innerText
             }

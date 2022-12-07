@@ -47,44 +47,21 @@ main {
 .components-container {
   overflow-y: scroll;
   padding: 0.9rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
 }
 .components-container .drag-item {
-  background-color: rgba(255, 255, 255, 0.1882352941);
-  color: #fff;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  height: 5rem;
-  margin: 10px;
-  cursor: -webkit-grab;
-  cursor: grab;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.825);
-  border: 1px solid rgba(255, 255, 255, 0.079);
-}
-.components-container .drag-item i {
-  font-size: 1.5rem;
+  width: 200px;
+  margin: 1rem auto;
   display: block;
-  margin: 0;
 }
 .components-container .drag-item:hover {
-  border: 1px dotted rgba(255, 255, 255, 0.523);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0rem 3px #0067a3;
 }
 
 .mirror {
-  width: 12rem;
-  opacity: 0.7;
-  border: 1px solid #fff;
+  width: 35vh;
+  opacity: 0.9;
+  border: 1px solid #0067a3;
   position: fixed;
-  background-color: rgba(0, 103, 163, 0.4117647059);
-  border-radius: 5px;
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
@@ -96,10 +73,6 @@ main {
   font-family: Arial;
   font-size: 14px;
   text-align: left;
-}
-
-.drag-item p {
-  text-align: center;
 }
 
 #view-wrapper {

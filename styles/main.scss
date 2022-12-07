@@ -42,47 +42,25 @@ main {
     // height: 90%;
     overflow-y: scroll;
     padding: .9rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
     @extend .hide-scrollbar;
 
     .drag-item {
-        background-color: #ffffff30;
-        color: #fff;
-        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
-        height: 5rem;
-        margin: 10px;
-        cursor: grab;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: .4rem;
-        font-size: .7rem;
-        color: rgba(255, 255, 255, 0.825);
-        border: 1px solid rgba(255, 255, 255, 0.079);
-
-        i {
-            font-size: 1.5rem;
-            display: block;
-            margin: 0;
-        }
+        width: 200px;
+        margin: 1rem auto;
+        display: block;
     }
-
     .drag-item:hover {
-        border: 1px dotted rgba(255, 255, 255, 0.523);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+        box-shadow: 0 0 0rem 3px #0067a3;
     }
 }
 
 .mirror {
-    width: 12rem;
-    opacity: .7;
-    border: 1px solid #fff;
+    width: 35vh;
+    opacity: .9;
+    border: 1px solid #0067a3;
     position: fixed;
-    background-color: #0067a369;
-    border-radius: 5px;
+    // background-color: #0067a369;
+    // border-radius: 5px;
     cursor: grabbing;
 
     i {
@@ -94,10 +72,6 @@ main {
     font-family: Arial;
     font-size: 14px;
     text-align: left;
-}
-
-.drag-item p {
-    text-align: center;
 }
 
 #view-wrapper {

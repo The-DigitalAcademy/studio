@@ -1,57 +1,44 @@
 import { generateUuid } from "../utils.js"
-import Component from "../component.class.js"
+import Elements from "./Elements.js"
 
-export default 
-{
-    header: {
-        name: 'header',
-        styleClasses: {
-            textAlign: 'text-center',
-            bgColor: 'bg-dark',
-            textColor: 'text-light',
-            padding: 'p-2',
-            fontSize: 'small',
+export default
+    {
+        header: JSON.parse(JSON.stringify(Elements.header)),
+        emailForm: {
+            name: 'form',
+            editable: true,
+            styleClasses: {
+                margin: 'mb-3',
+                container: 'container',
+                textAlign: 'text-start',
+            },
+            children: [
+                JSON.parse(JSON.stringify(Elements.label)),
+                JSON.parse(JSON.stringify(Elements.emailInput))
+            ]
         },
-        editable: true, 
-        attributes: {
-            innerText: 'Heading',
-            contentEditable: true
-        }
-    },
+        phoneForm: {
+            name: 'form',
+            styleClasses: {
+                margin: 'mb-3',
+                container: 'container'
+            },
+            children: [
+                JSON.parse(JSON.stringify(Elements.label)),
+                JSON.parse(JSON.stringify(Elements.phoneInput))
+            ]
+        },
+        textareaForm: {
+            name: 'form',
+            styleClasses:{
+                margin: 'mb-3',
+                container: 'container'
+            },
+            children: [
+                JSON.parse(JSON.stringify(Elements.label)),
+                JSON.parse(JSON.stringify(Elements.textarea))
+            ]
+        },
+        p: JSON.parse(JSON.stringify(Elements.p)),
 
-    h3: {
-        name: 'h3',
-        editable: true,
-        styleClasses: {
-            textAlign: 'text-center',
-        },
-        attributes: {
-            contentEditable: true,
-            innerText: 'Heading 3'
-        }
-    },
-
-    p: {
-        name: 'p',
-        editable: true,
-        styleClasses: {
-            textAlign: 'text-center',
-        },
-        attributes: {
-            contentEditable: true,
-            innerText: 'This is a paragraph', 
-        }
-    },
-    img: {
-        name: 'img',
-        editable: true,
-        styleClasses: {
-            display: 'd-block',
-            borderRadius: 'rounded-0',
-            horizontalAlign: 'mx-auto'
-        },
-        attributes: {
-            src: 'https://picsum.photos/100',
-        }
     }
-}

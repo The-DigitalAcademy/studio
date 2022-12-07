@@ -1,4 +1,5 @@
-import components from "./components/components.js";
+import Components from "./components/Components.js";
+import Elements from "./components/Elements.js";
 import { generateUuid } from "./utils.js";
 
 export default
@@ -11,8 +12,8 @@ export default
             name: 'Home',
             fileName: 'index',
             components: [
-                JSON.parse(JSON.stringify(components.header)),
-                JSON.parse(JSON.stringify(components.h3)),
+                JSON.parse(JSON.stringify(Elements.header)),
+                JSON.parse(JSON.stringify(Elements.h3)),
             ]
         },
         {
@@ -20,8 +21,8 @@ export default
             name: 'about',
             fileName: 'about',
             components: [
-                JSON.parse(JSON.stringify(components.header)),
-                JSON.parse(JSON.stringify(components.img)),
+                JSON.parse(JSON.stringify(Elements.header)),
+                JSON.parse(JSON.stringify(Elements.img)),
             ]
         },
         {
@@ -29,8 +30,9 @@ export default
             name: 'products',
             fileName: 'about',
             components: [
-                JSON.parse(JSON.stringify(components.header)),
-                JSON.parse(JSON.stringify(components.p)),
+                JSON.parse(JSON.stringify(Elements.header)),
+                JSON.parse(JSON.stringify(Elements.p)),
+                JSON.parse(JSON.stringify(Components.emailForm))
             ]
         }
     ]

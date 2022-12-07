@@ -1,8 +1,5 @@
-import  ELEMENTS from './components.js'
-import Component from './component.class.js';
-import components from './components/components.js';
+import Components from './components/Components.js';
 import { ExportableProject } from './exportableProject.class.js';
-import TEMPELEMENTS from './templateComponents.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -51,7 +48,7 @@ function restrictMobile() {
       document.body.innerHTML = `
                           <div class="container">
                             <div class="text-center">
-                              <img src="assets/desktop_only.png" style="width: 90%;">
+                              <img src="assets/images/desktop_only.png" style="width: 90%;">
                             </div>
                             <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
                           </div>
@@ -129,20 +126,20 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 
 function renderDraggableElements(containerElementID) {
   const draggablesContainer = document.getElementById(containerElementID);
-  draggablesContainer.classList.toggle('d-none')
-  draggablesContainer.innerHTML = ""
+  // draggablesContainer.classList.toggle('d-none')
+  // draggablesContainer.innerHTML = ""
 
-  for (const property in components) {
-    const container = document.createElement('div');
+  for (const property in Components) {
+    const container = document.createElement('img');
     container.setAttribute('class', 'drag-item');
     container.setAttribute('data-type', property);
-    container.innerHTML = `${new Component(components[property]).getIcon()}`
+    container.src = `assets/images/components/${property}.png`
     draggablesContainer.append(container);
   }
 }
 function renderPages(containerElementID, pages) {
   const draggablesContainer = document.getElementById(containerElementID);
-  draggablesContainer.classList.toggle('d-none')
+  // draggablesContainer.classList.toggle('d-none')
   draggablesContainer.innerHTML = ""
 
   const addBtn = document.createElement('div');
