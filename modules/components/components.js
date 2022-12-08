@@ -4,6 +4,7 @@ import Elements from "./Elements.js"
 export default
     {
         header: JSON.parse(JSON.stringify(Elements.header)),
+        footer: JSON.parse(JSON.stringify(Elements.footer)),
         emailForm: {
             name: 'form',
             editable: true,

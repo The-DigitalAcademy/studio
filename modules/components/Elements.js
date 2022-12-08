@@ -1,6 +1,3 @@
-import { generateUuid } from "../utils.js"
-import Component from "../component.class.js"
-
 export default 
 {
     header: {
@@ -10,11 +7,26 @@ export default
             bgColor: 'bg-dark',
             textColor: 'text-light',
             padding: 'p-2',
-            fontSize: '',
+            textSize: 'fs-4',
         },
         editable: true, 
         attributes: {
             innerText: 'Header',
+            contentEditable: true
+        }
+    },
+    footer: {
+        name: 'footer',
+        styleClasses: {
+            textAlign: 'text-center',
+            bgColor: 'bg-dark',
+            textColor: 'text-light',
+            padding: 'p-2',
+            textSize: 'fs-4',
+        },
+        editable: true, 
+        attributes: {
+            innerText: 'Footer',
             contentEditable: true
         }
     },
@@ -24,6 +36,7 @@ export default
         editable: true,
         styleClasses: {
             textAlign: 'text-center',
+            textSize: '.',
         },
         attributes: {
             contentEditable: true,
@@ -36,7 +49,8 @@ export default
         editable: true,
         styleClasses: {
             textAlign: 'text-center',
-            textColor: 'text-dark'
+            textColor: 'text-dark',
+            textSize: '.',
         },
         attributes: {
             contentEditable: true,
@@ -93,6 +107,7 @@ export default
         styleClasses: {
             form: 'form-label',
             textColor: 'text-dark',
+            textSize: '.',
         },
         attributes: {
             innerText: 'Form Label',
