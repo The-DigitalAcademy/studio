@@ -55,6 +55,7 @@ main {
 }
 .components-container .drag-item:hover {
   box-shadow: 0 0 0rem 3px #0067a3;
+  cursor: pointer;
 }
 
 .mirror {
@@ -65,8 +66,8 @@ main {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
-.mirror i {
-  font-size: 2rem;
+.mirror .deleteBtn i {
+  display: none;
 }
 
 [data-type=text] {
@@ -294,4 +295,12 @@ main {
 .sqr-4 {
   width: 2rem;
   height: 2rem;
+}
+
+.hover-border-secondary {
+  border: 1px solid transparent;
+}
+
+.hover-border-secondary:hover {
+  border: 1px solid rgba(108, 117, 125, 0.431372549);
 }/*# sourceMappingURL=main.css.map */
