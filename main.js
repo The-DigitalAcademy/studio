@@ -6,6 +6,7 @@ import testProjectData from "./modules/testProjectData.js";
 import Component from "./modules/component.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
 import { ExportableProject } from "./modules/exportableProject.class.js";
+import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
 
 restrictMobile()
 
@@ -15,6 +16,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let projectData = testProjectData
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
+    const ayobaApiTool = new AyobaApiTool(projectData);
     // const exportableProject = new ExportableProject(projectData);
     
     renderDraggableElements('draggable');

@@ -36,7 +36,7 @@ class Component {
             const currHashData = getHashData()
             if (e.target.id == elementData.id) {
                 const hashData = {
-                    method: 'style',
+                    method: 'edit',
                     component: elementData.id,
                     page: currHashData.page
                 }
@@ -48,6 +48,12 @@ class Component {
             element.onkeydown = (e) => {
                 elementData.attributes.innerText = e.target.innerText
             }
+        }
+        //add ayoba api dataset
+        if (elementData.ayobaApi) {
+            element.dataset.ayobaApi = elementData.ayobaApi;
+            element.classList.add('border-success')
+            element.placeholder = `will Autofill with user's ${elementData.ayobaApi}`
         }
         // generate child elements
         if (elementData.children && elementData.children.length) {

@@ -205,6 +205,22 @@ function getHashData() {
   });
   return result
 }
+/**
+ * searches through an array (including nested arrays) for a component with an id.
+ * @param {string} id component identifier
+ * @param {[]} components array of components
+ * @returns {Object} component with id or null if not found
+ */
+function findComponentById(id, components) {
+  for (const component of components) {
+    if (component.id == id) {
+      return component
+    } else if (component.children && component.children.length) {
+      return findComponentById(id, component.children)
+    } else {
+    }
+  }
+}
 
 export {
   renderMirrorImage,
@@ -220,5 +236,6 @@ export {
   restrictMobile,
   generateUuid,
   setHashData,
-  getHashData
+  getHashData,
+  findComponentById
 };

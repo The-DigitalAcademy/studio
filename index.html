@@ -219,20 +219,12 @@
             <h4 class="text-center display-4 my-3 fs-4 text-capitalize">
                 Ayoba Api Tools
             </h4>
-            <div>
-                <div class="form-check ps-0">
-                    <input type="radio" class="btn-check" name="action-item" id="getMsisdn" value="getMsisdn" autocomplete="off">
-                        <label class="btn btn-sm w-100 btn-outline-success" for="getMsisdn">get Msisdn</label>
-                    </div>
-                <div class="form-check ps-0">
-                    <input type="radio" class="btn-check" name="action-item" id="getCountry" value="getCountry" autocomplete="off">
-                    <label class="btn btn-sm w-100 btn-outline-success" for="getCountry">get Country</label>
-                </div>
-                <div class="form-check ps-0">
-                    <input type="radio" class="btn-check" name="action-item" id="getLanguage" value="getLanguage" autocomplete="off">
-                    <label class="btn btn-sm w-100 btn-outline-success" for="getLanguage">get Language</label>
-                </div>
-            </div>
+            <select class="form-select" data-ayoba-api-dropdown="dropdown" aria-label="Default select example">
+                <option value="" selected>-- select ayoba api --</option>
+                <option data-ayoba-api="msisdn" value="msisdn">get msisdn</option>
+                <option data-ayoba-api="location" value="location">get location</option>
+                <option data-ayoba-api="country" value="country">get country</option>
+            </select>
         </div>
         </div>
     </main>

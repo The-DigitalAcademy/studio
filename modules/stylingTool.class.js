@@ -1,6 +1,6 @@
-import { getHashData, setHashData } from "./utils.js";
+import { getHashData, setHashData, findComponentById } from "./utils.js";
 
-/** Class representing an editing tool*/
+/** Class representing a styling tool for elements*/
 class StylingTool {
   /**
    * creates a styling Tool
@@ -21,10 +21,10 @@ class StylingTool {
    */
   renderTools() {
     const { method, page, component } = getHashData()
-    if (method != 'style') return;
+    if (method != 'edit') return;
 
     //find component
-    const targetComponent = this.findComponentById(component, this.projectData.pages[page].components)
+    const targetComponent = findComponentById(component, this.projectData.pages[page].components)
     if (!targetComponent || !targetComponent.styleClasses || !targetComponent.editable) return
 
     //display component name
@@ -40,23 +40,6 @@ class StylingTool {
         tool.classList.remove('d-none') //show
       } else if (tool.dataset.styleProp && !tool.dataset.styleValue) {
         tool.classList.add('d-none') //hide
-      }
-    }
-  }
-
-  /**
-   * searches through an array (including nested arrays) for a component with an id.
-   * @param {string} id component identifier
-   * @param {[]} components array of components
-   * @returns {Object} component with id or null if not found
-   */
-  findComponentById(id, components) {
-    for (const component of components) {
-      if (component.id == id) {
-        return component
-      } else if (component.children && component.children.length) {
-        return this.findComponentById(id, component.children)
-      } else {
       }
     }
   }
@@ -109,7 +92,7 @@ class StylingTool {
    */
   styleComponent(page, id, property, value) {
     const componentList = this.projectData.pages[page].components;
-    const component = this.findComponentById(id, componentList);
+    const component = findComponentById(id, componentList);
     if (component.styleClasses[property]) {
       component.styleClasses[property] = value;
     }

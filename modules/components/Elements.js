@@ -86,6 +86,8 @@ export default
         styleClasses: {
             form: 'form-control'
         },
+        ayobaApiOptions: ['msisdn'],
+        ayobaApi: '',
         attributes: {
             type: 'tel',
             placeholder: '0981234567'
@@ -97,6 +99,8 @@ export default
         styleClasses: {
             form: 'form-control'
         },
+        ayobaApiOptions: ['msisdn', 'location', 'country'],
+        ayobaApi: '',
         attributes: {
             placeholder: 'enter text'
         }
@@ -123,6 +127,19 @@ export default
         attributes: {
             type: 'radio',
             placeholder: 'john@email.com'
+        }
+    },
+    textInput: {
+        name: 'input',
+        editable: true,
+        styleClasses: {
+            form: 'form-control'
+        },
+        ayobaApiOptions: ['msisdn', 'location', 'country'],
+        ayobaApi: '',
+        attributes: {
+            type: 'text',
+            placeholder: 'text'
         }
     }
 }
