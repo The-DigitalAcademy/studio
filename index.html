@@ -46,6 +46,7 @@
                 <h4 class="text-light w-100">Components</h4>
             </div>
             <div class="components-container" id="pages-panel"></div>
+            <button class="btn btn-primary" id="print-projectData">print projectData</button>
         </div>
 
         <!-- ################# MIDDLE mobile view ################## -->
@@ -81,6 +82,25 @@
 
 
                 <div class="d-flex align-items-center justify-content-start">
+                    <div data-style-prop="textSize" class="dropdown">
+                        <button class="btn border-0 btn-sm btn-small dropdown-toggle m-1" type="button"
+                            id="textSizeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="text size"
+                                class="text-dark">
+                                <span class="fs-6">A</span>
+                                <span class="fs-4">A</span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 p-1" aria-labelledby="textSizeDropdown">
+                            <li data-style-prop="textSize" data-style-value="small"  class="p-1 hover-border-secondary small">0.875</li>
+                            <li data-style-prop="textSize" data-style-value="fs-6" class="p-1 hover-border-secondary fs-6">1</li>
+                            <li data-style-prop="textSize" data-style-value="fs-5" class="p-1 hover-border-secondary fs-5">1.25</li>
+                            <li data-style-prop="textSize" data-style-value="fs-4" class="p-1 hover-border-secondary fs-4">1.5</li>
+                            <li data-style-prop="textSize" data-style-value="fs-3" class="p-1 hover-border-secondary fs-3">1.75</li>
+                            <li data-style-prop="textSize" data-style-value="fs-2" class="p-1 hover-border-secondary fs-2">2</li>
+                            <li data-style-prop="textSize" data-style-value="fs-1" class="p-1 hover-border-secondary fs-1">2.5</li>
+                        </ul>
+                    </div>
                     <div data-style-prop="textColor" class="dropdown">
                         <button class="btn border-0 btn-sm btn-small dropdown-toggle m-1" type="button"
                             id="textColordropdown" data-bs-toggle="dropdown" aria-expanded="false">

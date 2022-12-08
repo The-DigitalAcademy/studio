@@ -51,6 +51,7 @@ main {
     }
     .drag-item:hover {
         box-shadow: 0 0 0rem 3px #0067a3;
+        cursor: pointer;
     }
 }
 
@@ -59,12 +60,9 @@ main {
     opacity: .9;
     border: 1px solid #0067a3;
     position: fixed;
-    // background-color: #0067a369;
-    // border-radius: 5px;
     cursor: grabbing;
-
-    i {
-        font-size: 2rem;
+    .deleteBtn i {
+        display: none;
     }
 }
 
@@ -271,4 +269,10 @@ main {
 .sqr-4 {
     width: 2rem;
     height: 2rem;
+}
+.hover-border-secondary {
+    border: 1px solid transparent;
+}
+.hover-border-secondary:hover {
+    border: 1px solid #6c757d6e;
 }
