@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderPages('pages-panel', projectData.pages);
 
     // document.getElementById('export-project').onclick = exportableProject.download();
+    document.querySelector('#print-projectData').addEventListener('click', () => console.log(projectData))
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",
