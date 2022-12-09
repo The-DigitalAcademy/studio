@@ -118,17 +118,6 @@ export default
             contentEditable: true
         }
     },
-    radioInput: {
-        name: 'input',
-        editable: true,
-        styleClasses: {
-            form: 'form-check-input'
-        },
-        attributes: {
-            type: 'radio',
-            placeholder: 'john@email.com'
-        }
-    },
     textInput: {
         name: 'input',
         editable: true,
@@ -141,5 +130,36 @@ export default
             type: 'text',
             placeholder: 'text'
         }
+    },
+    radioInput: {
+        name: 'div',
+        styleClasses: {
+            form: 'form-check'
+        },
+        children: [
+            {
+                name: 'input',
+                editable: false,
+                styleClasses: {
+                    form: 'form-check-input'
+                },
+                attributes: {
+                    type: 'radio',
+                }
+            },
+            {
+                name: 'label',
+                editable: true,
+                styleClasses: {
+                    form: 'form-label',
+                    textColor: 'text-dark',
+                    textSize: '.',
+                },
+                attributes: {
+                    innerText: 'Form Label',
+                    contentEditable: true
+                }
+            }
+        ]
     }
 }

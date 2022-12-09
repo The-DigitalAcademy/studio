@@ -43,33 +43,17 @@ export default
         p: JSON.parse(JSON.stringify(Elements.p)),
         radioForm: {
             name: 'form',
+            editable: true,
             styleClasses: {
                 margin: 'mb-3',
                 container: 'container'
             },
             children: [
                 JSON.parse(JSON.stringify(Elements.label)),
-                {
-                    name: 'div',
-                    styleClasses: {
-                        form: 'form-check'
-                    },
-                    children: [
-                        JSON.parse(JSON.stringify(Elements.radioInput)),
-                        JSON.parse(JSON.stringify(Elements.label))
-                    ]
-                },
-                {
-                    name: 'div',
-                    styleClasses: {
-                        form: 'form-check'
-                    },
-                    children: [
-                        JSON.parse(JSON.stringify(Elements.radioInput)),
-                        JSON.parse(JSON.stringify(Elements.label))
-                    ]
-                }
+                JSON.parse(JSON.stringify(Elements.radioInput)),
+                JSON.parse(JSON.stringify(Elements.radioInput))
             ]
         }
+
 
     }

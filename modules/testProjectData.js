@@ -1,4 +1,4 @@
-import Components from "./components/Components.js";
+import Components from "./components/components.js";
 import Elements from "./components/Elements.js";
 import { generateUuid } from "./utils.js";
 

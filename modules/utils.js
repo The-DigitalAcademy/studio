@@ -1,4 +1,4 @@
-import Components from './components/Components.js';
+import Components from './components/components.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
