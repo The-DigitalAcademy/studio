@@ -78,9 +78,10 @@ class Project {
             id: generateUuid(0),
             name: pageName,
             fileName: pageName.toLowerCase().replaceAll(" ", "-"),
-            pages: []
+            components: []
         }
         const newPage = new Page(newPageData)
+        this.projectData.pages.push(newPageData)
         this.pages.push(newPage);
         this.pages[this.pages.length -1].renderPage();
     }

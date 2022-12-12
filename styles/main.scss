@@ -22,7 +22,7 @@ body {
     position: relative;
 }
 
-main {
+#studio-page main {
     display: grid;
     grid-template-columns: 50px 250px auto 250px;
 }
@@ -275,4 +275,7 @@ main {
 }
 .hover-border-secondary:hover {
     border: 1px solid #6c757d6e;
+}
+.scroll-y {
+    overflow-y: scroll;
 }

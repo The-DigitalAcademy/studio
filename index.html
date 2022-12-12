@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
 </head>
 
-<body>
+<body id="studio-page">
     <header class="p-2 shadow-sm d-flex justify-content-between bg-grad-blue ">
         <a href="/" id="logo" class="text-decoration-none d-flex align-items-center text-light">
             <img class="me-1" width="25" height="25"
@@ -41,12 +41,15 @@
                 <i class="bi bi-files"></i>
             </button>
         </div>
-        <div id="components-wrapper" class="shadow-sm rounded-4 bg-dark">
+        <div id="components-wrapper" class="shadow-sm rounded-4 bg-dark scroll-y hide-scrollbar pb-3">
             <div class="components-container" id="draggable">
                 <h4 class="text-light w-100">Components</h4>
             </div>
             <div class="components-container" id="pages-panel"></div>
-            <button class="btn btn-primary" id="print-projectData">print projectData</button>
+            <div class="text-center">
+                <button class="btn btn-sm rounded-0 btn-primary" id="print-projectData">print Template Object</button>                
+            </div>
+            
         </div>
 
         <!-- ################# MIDDLE mobile view ################## -->
