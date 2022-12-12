@@ -63,10 +63,11 @@ export default
         styleClasses: {
             display: 'd-block',
             borderRadius: 'rounded-0',
-            horizontalAlign: 'mx-auto'
+            horizontalAlign: 'mx-auto',
+            width: 'w-10'
         },
         attributes: {
-            src: 'https://picsum.photos/100',
+            src: 'https://picsum.photos/200/100',
         }
     },
     emailInput: {

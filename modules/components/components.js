@@ -53,7 +53,8 @@ export default
                 JSON.parse(JSON.stringify(Elements.radioInput)),
                 JSON.parse(JSON.stringify(Elements.radioInput))
             ]
-        }
+        },
+        img: JSON.parse(JSON.stringify(Elements.img))
 
 
     }
