@@ -1,4 +1,6 @@
 import Components from './components/components.js';
+import blankTemplate from './components/templates/blank.template.js';
+import landingTemplate from './components/templates/landing.template.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -136,6 +138,25 @@ function renderDraggableElements(containerElementID) {
     draggablesContainer.append(container);
   }
 }
+function renderTemplateIcons() {
+  const templateContainer = document.querySelector('#template-container');
+  const templatesList = [landingTemplate, blankTemplate];
+  console.log(templatesList);
+  for (const template of templatesList) {
+    
+    const container = document.createElement('div');
+    container.style.width = '150px'
+    container.innerHTML = `
+    <img src="assets/images/templates/${template.name}.png" class="drop-shadow btn img-fluid">
+    <p class="text-center">${template.name}</p>
+    `
+    container.onclick = () => {
+      localStorage.setItem('activeTemplate', JSON.stringify(template))
+      window.location.href = location.origin
+    }
+    templateContainer.append(container)
+  }
+}
 
 function renderPages(containerElementID, pages) {
   const draggablesContainer = document.getElementById(containerElementID);
@@ -237,5 +258,6 @@ export {
   generateUuid,
   setHashData,
   getHashData,
-  findComponentById
+  findComponentById,
+  renderTemplateIcons
 };

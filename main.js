@@ -1,5 +1,5 @@
 import { Dragoned } from "./modules/dragoned.class.js";
-import { renderDraggableElements, renderPages, restrictMobile } from "./modules/utils.js"
+import { renderDraggableElements, renderPages, renderTemplateIcons, restrictMobile } from "./modules/utils.js"
 import components from "./modules/components/components.js" 
 import Project from "./modules/project.class.js";
 import testProjectData from "./modules/testProjectData.js";
@@ -7,13 +7,20 @@ import Component from "./modules/component.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
 import { ExportableProject } from "./modules/exportableProject.class.js";
 import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
+import landingTemplate from "./modules/components/templates/landing.template.js";
 
 restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
-    let projectData = testProjectData
+
+    if (window.location.pathname.includes('templates')) {
+      renderTemplateIcons();
+      return
+    }
+
+    let projectData = JSON.parse(localStorage.getItem("activeTemplate"))
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
     const ayobaApiTool = new AyobaApiTool(projectData);
