@@ -7,7 +7,6 @@ import Component from "./modules/component.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
 import { ExportableProject } from "./modules/exportableProject.class.js";
 import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
-import landingTemplate from "./modules/components/templates/landing.template.js";
 
 restrictMobile()
 

@@ -1,4 +1,4 @@
-import { generateUuid } from "../../utils.js" 
+import { generateUuid } from "../utils.js" 
 
 export default {
     "id": generateUuid(),
