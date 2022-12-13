@@ -54,7 +54,7 @@ export default
         },
         attributes: {
             contentEditable: true,
-            innerText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id massa ultricies, hendrerit nulla sed, congue erat.', 
+            innerText: 'Enter Text', 
         }
     },
     img: {

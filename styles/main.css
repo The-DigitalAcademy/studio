@@ -18,8 +18,9 @@ body {
 }
 
 .ayoba-header-bg {
-  background: rgb(237, 114, 53);
-  background: linear-gradient(90deg, rgb(237, 114, 53) 0%, rgb(186, 58, 39) 100%);
+  background: #ed7235;
+  background: -webkit-gradient(linear, left top, right top, from(#ed7235), to(#ba3a27));
+  background: linear-gradient(90deg, #ed7235 0%, #ba3a27 100%);
 }
 
 .relative {
@@ -27,8 +28,10 @@ body {
 }
 
 #studio-page main {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 50px 250px auto 250px;
+  -ms-grid-columns: 50px 250px auto 250px;
+      grid-template-columns: 50px 250px auto 250px;
 }
 
 .absolute {
@@ -37,7 +40,8 @@ body {
 
 .gradient-gray {
   background: #bdc3c7;
-  background: linear-gradient(to right, rgb(255, 255, 255), rgba(190, 190, 190, 0.6901960784));
+  background: -webkit-gradient(linear, left top, right top, from(white), to(#bebebeb0));
+  background: linear-gradient(to right, white, #bebebeb0);
 }
 
 #components-wrapper {
@@ -46,56 +50,67 @@ body {
 
 .components-container {
   overflow-y: scroll;
-  padding: 0.9rem;
-  background-color: #252422;
+  padding: .9rem;
 }
+
 .components-container .drag-item {
-  width: 80px;
+  width: 200px;
   margin: 1rem auto;
+  display: block;
 }
+
 .components-container .drag-item:hover {
-  box-shadow: 0 0 0rem 3px #0067a3;
+  -webkit-box-shadow: 0 0 0rem 3px #0067a3;
+          box-shadow: 0 0 0rem 3px #0067a3;
   cursor: pointer;
 }
 
 .mirror {
-  background: #000;
-  width: 100px;
-  opacity: 0.9;
+  background: rgba(0, 0, 0, 0.801);
+  width: 35vh;
+  opacity: .9;
   border: 1px solid #0067a3;
   position: fixed;
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
+
 .mirror .deleteBtn i {
   display: none;
 }
 
-[data-type=text] {
+[data-type="text"] {
   font-family: Arial;
   font-size: 14px;
   text-align: left;
 }
 
 #view-wrapper {
-  align-self: center;
-  justify-self: center;
-}
-#view-wrapper .mobile {
-  background-color: rgb(29, 29, 29);
-  border-radius: 25px;
-  padding: 12px 7px 20px 7px;
-  box-shadow: 0 0 200px #e3e3e3 inset;
-  border: 3px solid rgba(255, 255, 255, 0.1490196078);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
-.hide-scrollbar, .innerContainer, #container, .components-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+#view-wrapper .mobile {
+  background-color: #1d1d1d;
+  border-radius: 25px;
+  padding: 12px 7px 20px 7px;
+  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
+          box-shadow: 0 0 200px #e3e3e3 inset;
+  border: 3px solid #ffffff26;
+}
+
+.hide-scrollbar, .components-container, #container, .innerContainer {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar, .innerContainer::-webkit-scrollbar, #container::-webkit-scrollbar, .components-container::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar, .components-container::-webkit-scrollbar, #container::-webkit-scrollbar, .innerContainer::-webkit-scrollbar {
   display: none;
 }
 
@@ -114,31 +129,34 @@ body {
 }
 
 .edit-toolbox {
-  background: rgba(45, 129, 194, 0.7098039216);
-  border-radius: 0.3rem;
+  background: #2d81c2b5;
+  border-radius: .3rem;
   position: absolute;
   width: 180px;
   height: 250px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  -webkit-animation: slide-left 0.5s forwards;
-          animation: slide-left 0.5s forwards;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  -webkit-animation: slide-left .5s forwards;
+          animation: slide-left .5s forwards;
 }
 
 .innerContainer {
-  box-shadow: 0 0 11px rgba(0, 0, 0, 0.0196078431) inset;
+  -webkit-box-shadow: 0 0 11px #00000005 inset;
+          box-shadow: 0 0 11px #00000005 inset;
   height: 249px;
   overflow-y: scroll;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
+  padding: .5rem;
+  border-radius: .3rem;
 }
 
 .paddingTool {
-  margin: 0.4rem 0;
+  margin: .4rem 0;
   color: white;
   font-weight: lighter;
 }
+
 .paddingTool input {
-  font-size: 0.9rem;
+  font-size: .9rem;
   width: 40px;
   height: 20px;
   border: none;
@@ -148,12 +166,13 @@ body {
 }
 
 .urlTool {
-  margin: 0.4rem 0;
+  margin: .4rem 0;
   color: white;
   font-weight: lighter;
 }
+
 .urlTool input {
-  font-size: 0.9rem;
+  font-size: .9rem;
   width: 100px;
   height: 20px;
   border: none;
@@ -165,11 +184,13 @@ body {
 .colorBtn {
   width: 25px;
   height: 25px;
-  transition: 0.5s;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .colorBtn:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
 }
 
 .edit-toolbox::before {
@@ -179,7 +200,7 @@ body {
   border-bottom-width: 13px;
   top: 21px;
   border-left-width: 24px;
-  border-color: rgba(62, 71, 79, 0) rgba(45, 129, 194, 0.7098039216) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  border-color: rgba(62, 71, 79, 0) rgba(45, 129, 194, 0.709804) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   left: -42px;
   position: absolute;
   content: "";
@@ -188,7 +209,8 @@ body {
 .block {
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
@@ -200,69 +222,79 @@ body {
 }
 
 .slide-left {
-  -webkit-animation: slide-left 0.5s forwards;
-          animation: slide-left 0.5s forwards;
+  -webkit-animation: slide-left .5s forwards;
+          animation: slide-left .5s forwards;
 }
 
 @-webkit-keyframes slide-left {
   0% {
     opacity: 0.1;
-    transform: translateX(20px);
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
 }
 
 @keyframes slide-left {
   0% {
     opacity: 0.1;
-    transform: translateX(20px);
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
 }
+
 .slide-right {
-  -webkit-animation: slide-right 0.5s forwards;
-          animation: slide-right 0.5s forwards;
+  -webkit-animation: slide-right .5s forwards;
+          animation: slide-right .5s forwards;
 }
 
 @-webkit-keyframes slide-right {
   0% {
     opacity: 0.1;
-    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
 }
 
 @keyframes slide-right {
   0% {
     opacity: 0.1;
-    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
 }
+
 .deleteBtn {
   position: absolute;
   right: 2px;
   border-radius: 20rem;
   border: none;
-  font-size: 0.8rem;
+  font-size: .8rem;
   background: transparent;
   display: none;
 }
 
 .deleteBtn:hover {
-  color: rgba(220, 53, 70, 0.8823529412);
+  color: #dc3546e1;
 }
 
 .drag-item:hover .deleteBtn {
@@ -271,16 +303,17 @@ body {
 
 [data-editable=true]:hover {
   cursor: pointer;
-  box-shadow: 0 0 0 0.1rem rgba(45, 129, 194, 0.6588235294);
+  -webkit-box-shadow: 0 0 0 0.1rem #2d81c2a8;
+          box-shadow: 0 0 0 0.1rem #2d81c2a8;
 }
 
 [contenteditable]:focus {
-  outline: 1px dotted rgb(190, 17, 212);
+  outline: 1px dotted #be11d4;
 }
 
 .sqr-1 {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: .5rem;
+  height: .5rem;
 }
 
 .sqr-2 {
@@ -303,7 +336,7 @@ body {
 }
 
 .hover-border-secondary:hover {
-  border: 1px solid rgba(108, 117, 125, 0.431372549);
+  border: 1px solid #6c757d6e;
 }
 
 .scroll-y {
@@ -311,5 +344,7 @@ body {
 }
 
 .drop-shadow {
-  filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
-}/*# sourceMappingURL=main.css.map */
+  -webkit-filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
+          filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
+}
+/*# sourceMappingURL=main.css.map */
