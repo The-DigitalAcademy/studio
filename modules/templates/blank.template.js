@@ -2,7 +2,7 @@ import { generateUuid } from "../utils.js";
 
 export default {
     "id": generateUuid(),
-    "name": "BlankTemplate",
+    "name": "blank",
     "pages": [
         {
             id: generateUuid(),

@@ -162,5 +162,29 @@ export default
                 }
             }
         ]
+    },
+    linkButton: {
+        name: 'div',
+        editable: false,
+        children: [
+            {
+                name:'a',
+                editable: true,
+                styleClasses: {
+                    button: 'btn',
+                    buttonColor: 'btn-primary',
+                    horizontalAlign: 'mx-auto',
+                    display: 'd-block',
+                    width: 'w-25'
+                },
+                routeToPage: '',
+                attributes: {
+                    role: 'button',
+                    innerText: 'button',
+                    href: '#'
+                }                
+            }
+        ]
+
     }
 }

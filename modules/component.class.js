@@ -21,9 +21,8 @@ class Component {
         if (!elementData.id) elementData.id = generateUuid()
         const element = document.createElement(elementData.name);
         element.dataset.editable = elementData.editable;
-        element.dataset.componentId = elementData.id;
         element.id = elementData.id
-        element.className = Object.values(elementData.styleClasses).join(" ");
+        element.className = elementData.styleClasses ? Object.values(elementData.styleClasses).join(" "): ' ';
 
         //set element attributes
         if (elementData.attributes) {
@@ -31,8 +30,10 @@ class Component {
                 element[key] = value;
             }
         }
+
         //enable styling by setting url hash details
-        element.ondblclick = (e) => {
+        element.onclick = (e) => {
+            e.preventDefault(); //prevent a tags from redirecting
             const currHashData = getHashData()
             if (e.target.id == elementData.id) {
                 const hashData = {

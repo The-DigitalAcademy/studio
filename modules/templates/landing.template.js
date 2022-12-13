@@ -2,7 +2,7 @@ import { generateUuid } from "../utils.js"
 
 export default {
     "id": generateUuid(),
-    "name": "landingTemplate",
+    "name": "landing",
     "pages": [
         {
             "id": "e3ea9fa2-2142-445b-90cf-e168835f7ce4",
@@ -49,7 +49,7 @@ export default {
                         "width": "w-100"
                     },
                     "attributes": {
-                        "src": "https://picsum.photos/200/100"
+                        "src": "https://picsum.photos/600/300"
                     },
                     "id": "37616299-e951-44c7-aca9-68b23735c7ed"
                 },

@@ -140,7 +140,7 @@ function renderDraggableElements(containerElementID) {
 }
 function renderTemplateIcons() {
   const templateContainer = document.querySelector('#template-container');
-  const templatesList = [landingTemplate, blankTemplate];
+  const templatesList = [blankTemplate, landingTemplate];
   
   for (const template of templatesList) {
     
