@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return
     }
 
-    let projectData = ecommerceTemplate;//JSON.parse(localStorage.getItem("activeTemplate"))
+    let projectData = JSON.parse(localStorage.getItem("activeTemplate"))
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
     const ayobaApiTool = new AyobaApiTool(projectData);

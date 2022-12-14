@@ -2,6 +2,7 @@ import Components from './components/components.js';
 import blankTemplate from './templates/blank.template.js';
 import ecommerceTemplate from './templates/ecommerce.template.js';
 import landingTemplate from './templates/landing.template.js';
+import surveyTemplate from './templates/survey.template.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -141,7 +142,7 @@ function renderDraggableElements(containerElementID) {
 }
 function renderTemplateIcons() {
   const templateContainer = document.querySelector('#template-container');
-  const templatesList = [blankTemplate, landingTemplate, ecommerceTemplate];
+  const templatesList = [blankTemplate, landingTemplate, ecommerceTemplate, surveyTemplate];
   
   for (const template of templatesList) {
     

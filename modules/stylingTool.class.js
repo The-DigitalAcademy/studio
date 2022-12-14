@@ -93,7 +93,7 @@ class StylingTool {
   styleComponent(page, id, property, value) {
     const componentList = this.projectData.pages[page].components;
     const component = findComponentById(id, componentList);
-    if (component.styleClasses[property]) {
+    if (component.styleClasses && component.styleClasses[property]) {
       component.styleClasses[property] = value;
     }
   }

@@ -185,5 +185,18 @@ export default
                 }                
             }
         ]
+    },
+    linkText: {
+        name: 'a',
+        editable: true,
+        styleClasses: {
+            display: 'd-block',
+            textAlign: 'text-center'
+        },
+        routeToPage: '',
+        attributes: {
+            innerText: 'link Text',
+            href: '#'
+        }
     }
 }

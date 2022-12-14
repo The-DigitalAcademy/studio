@@ -27,7 +27,11 @@ class Component {
         //set element attributes
         if (elementData.attributes) {
             for (const [key, value] of Object.entries(elementData.attributes)) {
-                element[key] = value;
+                if (key == 'dataset') {
+                    for (const [dataProp, dataValue] of  Object.entries(elementData.attributes.dataset)) {
+                        element.dataset[dataProp] = dataValue;
+                    }
+                } else element[key] = value;
             }
         }
 

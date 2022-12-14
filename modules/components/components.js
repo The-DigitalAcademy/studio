@@ -83,6 +83,7 @@ export default
         },
         img: JSON.parse(JSON.stringify(Elements.img)),
         linkButton: JSON.parse(JSON.stringify(Elements.linkButton)),
+        linkText: JSON.parse(JSON.stringify(Elements.linkText)),
         product: {
             name: 'div',
             styleClasses: {grid: 'col-6'},

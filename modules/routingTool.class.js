@@ -12,7 +12,6 @@ class RoutingTool {
     renderTools() {
         const { method, page, component } = getHashData();
         if (method != "edit") return;
-        console.log('routing tool');
 
         const routesDropdown = document.querySelector("[data-routes-dropdown]");
 
@@ -40,7 +39,6 @@ class RoutingTool {
 
     const targetComponent = findComponentById(component, this.projectData.pages[page].components);
     targetComponent.routeToPage = selectedPage;
-    console.log((targetComponent));
     }
 }
 

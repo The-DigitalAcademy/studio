@@ -44,4 +44,73 @@ export default {
       },
     ],
   },
+  navHeader: {
+    name: 'header',
+    styleClasses: {},
+    children: [
+      {
+        name: 'nav',
+        styleClasses: {navbar:'navbar navbar-expand-xs navbar-dark bg-dark'},
+        children: [
+          {
+            name: 'div',
+            styleClasses: {container: 'container-fluid'},
+            children: [
+              {
+                name: 'a',
+                styleClasses: {navbar: 'navbar-brand'},
+                attributes: {innerText: 'Brand Name'}
+              },
+              {
+                name: 'button',
+                styleClasses: {navbar: 'navbar-toggler'},
+                attributes: {
+                  type: 'button',
+                  dataset: {
+                    bsToggle: 'collapse',
+                    bsTarget: '#navbarNavAltMarkup',                    
+                  },
+                  ariaControls: "navbarNavAltMarkup",
+                  ariaExpanded: "false",
+                  ariaLabel: "Toggle navigation",
+                  innerHTML: '<span class="navbar-toggler-icon"></span>',
+                }
+              },
+              {
+                name: 'div',
+                id: 'navbarNavAltMarkup',
+                styleClasses: {navbar: "collapse navbar-collapse"},
+                children: [
+                  {
+                    name: 'div',
+                    styleClasses: {navbar: "navbar-nav"},
+                    children: [
+                      {
+                         name: 'a',
+                          styleClasses: {navbar: 'nav-link'},
+                          editable: true,
+                          attributes: {innerText: 'About', contentEditable: true}
+                      },
+                      {
+                        name: 'a',
+                         styleClasses: {navbar: 'nav-link'},
+                         editable: true,
+                         attributes: {innerText: 'Products', contentEditable: true}
+                     },
+                     {
+                      name: 'a',
+                       styleClasses: {navbar: 'nav-link'},
+                       editable: true,
+                       attributes: {innerText: 'contact us', contentEditable: true}
+                   }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 };
