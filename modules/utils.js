@@ -1,5 +1,6 @@
 import Components from './components/components.js';
 import blankTemplate from './templates/blank.template.js';
+import ecommerceTemplate from './templates/ecommerce.template.js';
 import landingTemplate from './templates/landing.template.js';
 
 const EVENTS = {
@@ -140,7 +141,7 @@ function renderDraggableElements(containerElementID) {
 }
 function renderTemplateIcons() {
   const templateContainer = document.querySelector('#template-container');
-  const templatesList = [blankTemplate, landingTemplate];
+  const templatesList = [blankTemplate, landingTemplate, ecommerceTemplate];
   
   for (const template of templatesList) {
     

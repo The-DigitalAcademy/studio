@@ -83,4 +83,39 @@ export default
         },
         img: JSON.parse(JSON.stringify(Elements.img)),
         linkButton: JSON.parse(JSON.stringify(Elements.linkButton)),
+        product: {
+            name: 'div',
+            styleClasses: {grid: 'col-6'},
+            children: [
+                {
+                    name:'img',
+                    styleClasses: {image: 'img-fluid'},
+                    editable: true,
+                    attributes: {
+                        src: 'https://picsum.photos/130/180'
+                    }
+                },
+                {
+                    name: 'div',
+                    children: [
+                        {
+                            name: 'p',
+                            styleClasses: {textColor: 'text-muted', margin: 'mb-1'},
+                            attributes: {
+                                contentEditable: true,
+                                innerText: 'Product Name'
+                            }
+                        },
+                        {
+                            name: 'p',
+                            styleClasses: {textColor: '.'},
+                            attributes: {
+                                contentEditable: true,
+                                innerText: `R${Math.floor(Math.random()*(999-100+1)+100)}`
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
     }
