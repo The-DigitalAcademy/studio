@@ -19,7 +19,6 @@ class ExportableProject {
         // this.#rootApp = rootApp.cloneNode(true)
         this.#htmlFile = this.#createHtmlFile()
     }
-
     /**
      * embeds root application into an Html boilerplate and returns html Blob file.
      * @returns {Blob} html content of the file
