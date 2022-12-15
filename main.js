@@ -9,6 +9,7 @@ import { ExportableProject } from "./modules/exportableProject.class.js";
 import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
 import { RoutingTool } from "./modules/routingTool.class.js";
 import ecommerceTemplate from "./modules/templates/ecommerce.template.js";
+import blankTemplate from "./modules/templates/blank.template.js";
 
 restrictMobile()
 
@@ -21,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return
     }
 
-    let projectData = JSON.parse(localStorage.getItem("activeTemplate"))
+    let projectData = localStorage.getItem("activeTemplate") ? JSON.parse(localStorage.getItem("activeTemplate")) : blankTemplate;
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
     const ayobaApiTool = new AyobaApiTool(projectData);
