@@ -1,5 +1,5 @@
 export default
-`
+    `
 function loadAyobaData() {
     const msisdnInputs = document.querySelectorAll('[data-action="getMsisdn"]');
     for (let i = 0; i < msisdnInputs.length; i++) {

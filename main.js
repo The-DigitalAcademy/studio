@@ -51,6 +51,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       clone: true,
       group: "blocks-group",
       onEnd: (data) => {
+        
         const { item } = data;
         const type = item.dataset.type;
         item.innerHtml = "";

@@ -42,7 +42,7 @@ function restrictMobile() {
   const isNewBlackBerry = (agent.indexOf("AppleWebKit") > 0 && agent.indexOf("BlackBerry") > 0);
   const isWebOS = (agent.indexOf("webOS") > 0);
   const isWindowsMobile = (agent.indexOf("IEMobile") > 0);
-  const isSmallScreen = (screen.width < 767 ||  window.innerWidth < 767 || screen.width < 767);
+  const isSmallScreen = (screen.width < 767 || window.innerWidth < 767 || screen.width < 767);
   const isUnknownMobile = (isWebkit && isSmallScreen);
   const isMobile = (isIOS || isAndroid || isNewBlackBerry || isWebOS || isWindowsMobile || isUnknownMobile);
   const isTablet = (isIPad || (isMobile && !isSmallScreen));
