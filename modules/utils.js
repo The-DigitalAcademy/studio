@@ -168,7 +168,7 @@ function renderPages(containerElementID, pages) {
   const addBtn = document.createElement('div');
   addBtn.className = "text-light text-center btn"
   addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-4"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
-  draggablesContainer.append(addBtn);
+  // draggablesContainer.append(addBtn);
 
   pages.forEach((page, index) => {
     const container = document.createElement('div');
