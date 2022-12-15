@@ -1,4 +1,4 @@
-import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage, detectLeftButton } from "./utils.js";
+import { EVENTS, DIRECTIONS, CLASS_NAMES, containerStack, getImmediateChild, renderMirrorImage, detectLeftButton, setHashData, getHashData } from "./utils.js";
 
 class Dragoned {
     constructor(container, options = {}) {
@@ -45,8 +45,7 @@ class Dragoned {
       this.guideLine = document.createElement("div");
       this.guideLine.className = CLASS_NAMES.guideLine;
       this.guideLine.style.position = "absolute";
-      this.guideLine.style.borderRadius = `.5rem`;
-      this.guideLine.style.backgroundColor = "rgb(70, 25, 194)";
+      this.guideLine.style.border = "2px dashed #3089cc"
     }
   
     init() {
@@ -101,6 +100,29 @@ class Dragoned {
           });
         }
       }
+      //LOCATION HASH STATE MANAGEMENT
+      if (this.dragEl && this.dragEl.dataset.componentId) {
+        const {page} = getHashData()
+        const componentId = this.dropEl.querySelector('[data-component-id]').dataset.componentId;
+        const hashData = {
+          method: 'reorder',
+          component: componentId,
+          from: this.oldIndex,
+          to: this.newIndex,
+          page
+        }
+        setHashData(hashData)
+      } else if (this.dragEl && this.dragEl.dataset.type) {
+        const {page} = getHashData()
+        const hashData = {
+          method: 'add',
+          type: this.dragEl.dataset.type,
+          position: this.newIndex,
+          page
+        }
+        setHashData(hashData)
+      }
+
     }
     onMouseMove(event) {
       event.preventDefault();
@@ -215,7 +237,7 @@ class Dragoned {
         this.guideLine.style.opacity = 1;
         const rect = dropEl.getBoundingClientRect();
         this.guideLine.style.width = `${rect.width}px`;
-        this.guideLine.style.height = "4px";
+        this.guideLine.style.height = `${10}px`;
         // is mouse is on the top of the element
         if (
           rect.bottom > this.moveY &&
@@ -225,7 +247,7 @@ class Dragoned {
           this.dropEl = dropEl;
           this.dragEl = this.dragEl;
           this.guideLine.style.top = `${
-            pageY - pageY + window.pageYOffset + rect.top + rect.height
+            pageY - pageY + window.pageYOffset + rect.top + rect.height - 5
           }px`;
           this.guideLine.style.left = `${rect.left}px`;
         } else if (
@@ -235,7 +257,7 @@ class Dragoned {
           this.dropEl = dropEl;
           this.direction = DIRECTIONS.BEFOREBEGIN;
           this.guideLine.style.top = `${
-            pageY - pageY + window.pageYOffset + rect.top
+            pageY - pageY + window.pageYOffset + rect.top - 5
           }px`;
           this.guideLine.style.left = `${rect.left}px`;
         }

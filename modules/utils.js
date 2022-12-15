@@ -1,6 +1,8 @@
-import ELEMENTS from './components.js'
-import { ExportableProject } from "./exportableProject.class.js";
-import TEMPELEMENTS from './templateComponents.js';
+import Components from './components/components.js';
+import blankTemplate from './templates/blank.template.js';
+import ecommerceTemplate from './templates/ecommerce.template.js';
+import landingTemplate from './templates/landing.template.js';
+import surveyTemplate from './templates/survey.template.js';
 
 const EVENTS = {
   TOUCH_MOVE: "touchmove",
@@ -46,14 +48,14 @@ function restrictMobile() {
   const isTablet = (isIPad || (isMobile && !isSmallScreen));
 
   if (isMobile || isSmallScreen) {
-    document.body.innerHTML = `
-                          <div class="container">
-                            <div class="text-center">
-                              <img src="assets/desktop_only.png" style="width: 90%;">
-                            </div>
-                            <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
-                          </div>
-                          `
+      document.body.innerHTML = 
+      `<div class="container">
+        <div class="text-center">
+          <img src="assets/images/desktop_only.png" style="width: 90%;">
+        </div>
+        <h1 class="text-center display-3">This Application is only available on Desktop devices</h1>
+      </div>
+      `;
   };
 }
 
@@ -103,9 +105,9 @@ function getImmediateChild(dropTarget, target) {
 /**
  * clones dragged node, adds style declarations to clone, and renders to DOM.
  * @param {HTMLElement} dragEl element being dragged
- * @param {Number} clientX horizontal coordinate within viewport at which event occurred
- * @param {Number} clientY vertical coordinate within viewport at which event occurred
- * @returns {Node}
+ * @param {Number} clientX horizontal coordinate within viewport
+ * @param {Number} clientY vertical coordinate within viewport
+ * @returns {Node} clone of dragged node
  */
 function renderMirrorImage(dragEl, clientX, clientY) {
   if (!dragEl) {
@@ -127,56 +129,119 @@ function renderMirrorImage(dragEl, clientX, clientY) {
 
 function renderDraggableElements(containerElementID) {
   const draggablesContainer = document.getElementById(containerElementID);
+  // draggablesContainer.classList.toggle('d-none')
+  // draggablesContainer.innerHTML = ""
 
-  for (const property in ELEMENTS) {
-    const container = document.createElement('div');
+  for (const property in Components) {
+    const container = document.createElement('img');
     container.setAttribute('class', 'drag-item');
     container.setAttribute('data-type', property);
-    container.innerHTML = `<p>${ELEMENTS[property].icon}</p>`
+    container.src = `assets/images/components/${property}.png`
     draggablesContainer.append(container);
   }
 }
+function renderTemplateIcons() {
+  const templateContainer = document.querySelector('#template-container');
+  const templatesList = [blankTemplate, landingTemplate, ecommerceTemplate, surveyTemplate];
+  
+  for (const template of templatesList) {
+    
+    const container = document.createElement('div');
+    container.style.width = '150px'
+    container.innerHTML = `
+    <img src="assets/images/templates/${template.name}.png" class="drop-shadow btn img-fluid">
+    <p class="text-center">${template.name}</p>
+    `
+    container.onclick = () => {
+      localStorage.setItem('activeTemplate', JSON.stringify(template))
+      window.location.href = location.origin
+    }
+    templateContainer.append(container)
+  }
+}
 
-function renderDraggableTemplate(containerElementID) {
+function renderPages(containerElementID, pages) {
   const draggablesContainer = document.getElementById(containerElementID);
+  // draggablesContainer.classList.toggle('d-none')
+  draggablesContainer.innerHTML = ""
 
-  for (const property in TEMPELEMENTS) {
+  const addBtn = document.createElement('div');
+  addBtn.className = "text-light text-center btn"
+  addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-4"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
+  draggablesContainer.append(addBtn);
+
+  pages.forEach((page, index) => {
     const container = document.createElement('div');
-    container.setAttribute('class', 'drag-item');
-    container.setAttribute('data-type', property);
-    container.innerHTML = `${TEMPELEMENTS[property].icon}`
+    container.className = "text-center border-0 btn btn-outline-light"
+    container.innerHTML = `<i class="bi bi-file-earmark  display-4"></i><p class='text-center mb-0 text-capitalize'>${page.name}</p>`
+    container.onclick = () => {
+      document.querySelector('#workingPageName').innerHTML = page.name
+      const hashData = {
+        method: 'render',
+        page: index
+      }
+      setHashData(hashData)
+    }
     draggablesContainer.append(container);
-  }
+  })
 }
 
-function downloadCode() {
-  const rootApp = document.getElementById('container');
-  const newProject = new ExportableProject(rootApp);
-  newProject.saveAsZip();
+/**
+ * returns a universally unique identifier
+ * @returns {string} uuid
+ */
+function generateUuid(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
 }
-function toggleLeftPanels(e) {
-  let container;
-  container = e.target.id == 'elementsBtn' ? 'elements' : 'templates';
 
-  const elementsBtn = document.querySelector('.options').children[0];
-  const templatesBtn = document.querySelector('.options').children[1];
-  const elementsContainer = document.querySelectorAll('.components-container')[0];
-  const templatesContainer = document.querySelectorAll('.components-container')[1];
-
-  if (container == 'elements') {
-    elementsBtn.classList.add('bg-primary');
-    elementsContainer.classList.remove('d-none');
-  } else {
-    elementsBtn.classList.remove('bg-primary');
-    elementsContainer.classList.add('d-none');
+/**
+ * sets opearion details to url hash
+ * @param {{method?, page?, component?, from?, to?}} hashData operation details
+ */
+function setHashData(hashData) {
+  let hashString = ''
+  for (const [key, value] of Object.entries(hashData)) {
+    hashString += `${key}=${value}&`;
   }
+  window.location.hash = hashString;
+}
 
-  if (container == 'templates') {
-    templatesBtn.classList.add('bg-primary');
-    templatesContainer.classList.remove('d-none');
-  } else {
-    templatesBtn.classList.remove('bg-primary');
-    templatesContainer.classList.add('d-none');
+/**
+ * destructures operation details from url hash
+ * @returns {{method?, page?, component?, from?, to?}} operation details
+ */
+function getHashData() {
+  const hash = window.location.hash
+  let keyValueStrings = hash.replace("#","").split('&');
+  let result = {}
+  keyValueStrings.forEach(keyValue => {
+    if (keyValue) {
+      const keyValueArr = keyValue.split('=');
+      result[keyValueArr[0]] = keyValueArr[1];      
+    }
+  });
+  return result
+}
+/**
+ * searches through an array (including nested arrays) for a component with an id.
+ * @param {string} id component identifier
+ * @param {[]} components array of components
+ * @returns {Object} component with id or null if not found
+ */
+function findComponentById(id, components) {
+  for (const component of components) {
+    if (component.id == id) {
+      return component
+    } else if (component.children && component.children.length) {
+      return findComponentById(id, component.children)
+    } else {
+    }
   }
 }
 
@@ -190,8 +255,11 @@ export {
   containerStack,
   detectLeftButton,
   renderDraggableElements,
-  renderDraggableTemplate,
-  downloadCode,
-  toggleLeftPanels,
-  restrictMobile
+  renderPages,
+  restrictMobile,
+  generateUuid,
+  setHashData,
+  getHashData,
+  findComponentById,
+  renderTemplateIcons
 };

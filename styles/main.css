@@ -5,14 +5,15 @@ body {
   position: fixed;
 }
 
-header {
+.bg-grad-blue {
   background: linear-gradient(97.5deg, #3089cc 0%, #0067a3 55.17%);
-  color: #f8f9fa;
 }
-header #export-project {
+
+#export-project {
   color: rgba(255, 255, 255, 0.748);
 }
-header #export-project:hover {
+
+#export-project:hover {
   color: #f8f9fa;
 }
 
@@ -21,10 +22,13 @@ header #export-project:hover {
   background: linear-gradient(90deg, rgb(237, 114, 53) 0%, rgb(186, 58, 39) 100%);
 }
 
-main {
+.relative {
+  position: relative;
+}
+
+#studio-page main {
   display: grid;
-  -ms-grid-columns: 250px auto;
-  grid-template-columns: 250px auto;
+  grid-template-columns: 50px 250px auto 250px;
 }
 
 .absolute {
@@ -37,81 +41,34 @@ main {
 }
 
 #components-wrapper {
-  background-color: #222222;
   height: 94vh;
-}
-#components-wrapper .options {
-  height: 10%;
-  background-color: #161616;
-  padding: 1rem 0.5rem;
-  text-align: center;
-  font-size: 0.8rem;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-}
-#components-wrapper .options button {
-  border: none;
-  color: #fff;
-  background-color: rgba(142, 142, 142, 0.246);
-  padding: 0.5rem;
-  border-radius: 2px;
 }
 
 .components-container {
-  height: 90%;
   overflow-y: scroll;
   padding: 0.9rem;
-  display: grid;
-  -ms-grid-columns: (1fr)[];
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
 }
 .components-container .drag-item {
-  background-color: rgba(255, 255, 255, 0.1882352941);
-  color: #fff;
-  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  height: 5rem;
-  padding: 0;
-  margin: 0;
-  cursor: -webkit-grab;
-  cursor: grab;
-  border-radius: 5px;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  font-size: .7rem;
-  color: rgba(255, 255, 255, 0.825);
-  border: 1px solid rgba(255, 255, 255, 0.079);
-}
-.components-container .drag-item i {
-  font-size: 1.5rem;
+  width: 200px;
+  margin: 1rem auto;
   display: block;
-  margin: 0;
 }
 .components-container .drag-item:hover {
-  border: 1px dotted rgba(255, 255, 255, 0.523);
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0rem 3px #0067a3;
+  cursor: pointer;
 }
 
 .mirror {
-  width: 12rem;
-  opacity: 0.7;
-  border: 1px solid #fff;
+  background: rgba(0, 0, 0, 0.801);
+  width: 35vh;
+  opacity: 0.9;
+  border: 1px solid #0067a3;
   position: fixed;
-  background-color: rgba(0, 103, 163, 0.4117647059);
-  border-radius: 5px;
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
-.mirror i {
-  font-size: 2rem;
+.mirror .deleteBtn i {
+  display: none;
 }
 
 [data-type=text] {
@@ -120,32 +77,20 @@ main {
   text-align: left;
 }
 
-.drag-item p {
-  text-align: center;
-  margin : 0;
-}
-
 #view-wrapper {
-  -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
   align-self: center;
-  -ms-grid-column-align: center;
   justify-self: center;
 }
 #view-wrapper .mobile {
   background-color: rgb(29, 29, 29);
   border-radius: 25px;
   padding: 12px 7px 20px 7px;
-  -webkit-box-shadow: 0 0 200px #e3e3e3 inset;
   box-shadow: 0 0 200px #e3e3e3 inset;
-  border: 3px solid #ffffff26;
+  border: 3px solid rgba(255, 255, 255, 0.1490196078);
   overflow-y: hidden;
 }
 
-.hide-scrollbar,
-.components-container,
-#container,
-.edit-toolbox .innerContainer {
+.hide-scrollbar, .innerContainer, #container, .components-container {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -153,23 +98,22 @@ main {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar,
-.components-container::-webkit-scrollbar,
-#container::-webkit-scrollbar,
-.edit-toolbox .innerContainer::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar, .innerContainer::-webkit-scrollbar, #container::-webkit-scrollbar, .components-container::-webkit-scrollbar {
   display: none;
 }
 
-#container {
-  height: 76vh;
-  width: 40vh;
-  overflow-x: hidden;
-  background-color: #fff;
-  border-radius: 17px;
+#mobile-header {
+  border-top-right-radius: 17px;
+  border-top-left-radius: 17px;
 }
-#container .drag-item:hover {
-  -webkit-box-shadow: 0 0 0 0.1rem #2d81c2a8;
-  box-shadow: 0 0 0 0.1rem #2d81c2a8;
+
+#container {
+  height: 70vh;
+  width: 40vh;
+  overflow-y: scroll;
+  background-color: #fff;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
 }
 
 .edit-toolbox {
@@ -178,25 +122,25 @@ main {
   position: absolute;
   width: 180px;
   height: 250px;
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  -webkit-animation: slide-left .5s forwards;
-  animation: slide-left .5s forwards;
+  -webkit-animation: slide-left 0.5s forwards;
+          animation: slide-left 0.5s forwards;
 }
-.edit-toolbox .innerContainer {
-  -webkit-box-shadow: 0 0 11px #00000005 inset;
-  box-shadow: 0 0 11px #00000005 inset;
+
+.innerContainer {
+  box-shadow: 0 0 11px rgba(0, 0, 0, 0.0196078431) inset;
   height: 249px;
   overflow-y: scroll;
   padding: 0.5rem;
   border-radius: 0.3rem;
 }
-.edit-toolbox .paddingTool {
+
+.paddingTool {
   margin: 0.4rem 0;
   color: white;
   font-weight: lighter;
 }
-.edit-toolbox .paddingTool input {
+.paddingTool input {
   font-size: 0.9rem;
   width: 40px;
   height: 20px;
@@ -205,12 +149,13 @@ main {
   border-radius: 5px;
   margin-left: 5px;
 }
-.edit-toolbox .urlTool {
+
+.urlTool {
   margin: 0.4rem 0;
   color: white;
   font-weight: lighter;
 }
-.edit-toolbox .urlTool input {
+.urlTool input {
   font-size: 0.9rem;
   width: 100px;
   height: 20px;
@@ -219,13 +164,14 @@ main {
   border-radius: 5px;
   margin-left: 5px;
 }
-.edit-toolbox .colorBtn {
+
+.colorBtn {
   width: 25px;
   height: 25px;
   transition: 0.5s;
 }
-.edit-toolbox .colorBtn:hover {
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
+
+.colorBtn:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.247);
 }
 
@@ -245,7 +191,6 @@ main {
 .block {
   background-color: #fff;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   padding: 10px;
@@ -258,20 +203,17 @@ main {
 }
 
 .slide-left {
-  -webkit-animation: slide-left .5s forwards;
-  animation: slide-left .5s forwards;
+  -webkit-animation: slide-left 0.5s forwards;
+          animation: slide-left 0.5s forwards;
 }
 
 @-webkit-keyframes slide-left {
   0% {
     opacity: 0.1;
-    -webkit-transform: translateX(20px);
     transform: translateX(20px);
   }
-
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
 }
@@ -279,31 +221,25 @@ main {
 @keyframes slide-left {
   0% {
     opacity: 0.1;
-    -webkit-transform: translateX(20px);
     transform: translateX(20px);
   }
-
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
 }
 .slide-right {
-  -webkit-animation: slide-right .5s forwards;
-  animation: slide-right .5s forwards;
+  -webkit-animation: slide-right 0.5s forwards;
+          animation: slide-right 0.5s forwards;
 }
 
 @-webkit-keyframes slide-right {
   0% {
     opacity: 0.1;
-    -webkit-transform: translateX(-10px);
     transform: translateX(-10px);
   }
-
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
 }
@@ -311,15 +247,72 @@ main {
 @keyframes slide-right {
   0% {
     opacity: 0.1;
-    -webkit-transform: translateX(-10px);
     transform: translateX(-10px);
   }
-
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
 }
+.deleteBtn {
+  position: absolute;
+  right: 2px;
+  border-radius: 20rem;
+  border: none;
+  font-size: 0.8rem;
+  background: transparent;
+  display: none;
+}
 
-/*# sourceMappingURL=main.css.map */
+.deleteBtn:hover {
+  color: rgba(220, 53, 70, 0.8823529412);
+}
+
+.drag-item:hover .deleteBtn {
+  display: block;
+}
+
+[data-editable=true]:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 0.1rem rgba(45, 129, 194, 0.6588235294);
+}
+
+[contenteditable]:focus {
+  outline: 1px dotted rgb(190, 17, 212);
+}
+
+.sqr-1 {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.sqr-2 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sqr-3 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.sqr-4 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.hover-border-secondary {
+  border: 1px solid transparent;
+}
+
+.hover-border-secondary:hover {
+  border: 1px solid rgba(108, 117, 125, 0.431372549);
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.drop-shadow {
+  filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.15));
+}/*# sourceMappingURL=main.css.map */

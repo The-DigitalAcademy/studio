@@ -1,21 +1,38 @@
-import { Dragoned } from "./modules/DragonedClass.js";
-import { EditTool } from "./modules/editTool.class.js";
-import { renderDraggableElements, renderDraggableTemplate, downloadCode, toggleLeftPanels, restrictMobile } from "./modules/utils.js"
-import ELEMENTS from "./modules/components.js"
-import { ActionTool } from "./modules/actionTool.class.js";
-import TEMPELEMENTS from "./modules/templateComponents.js";
+import { Dragoned } from "./modules/dragoned.class.js";
+import { renderDraggableElements, renderPages, renderTemplateIcons, restrictMobile } from "./modules/utils.js"
+import components from "./modules/components/components.js" 
+import Project from "./modules/project.class.js";
+import testProjectData from "./modules/testProjectData.js";
+import Component from "./modules/component.class.js";
+import { StylingTool } from "./modules/stylingTool.class.js";
+import { ExportableProject } from "./modules/exportableProject.class.js";
+import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
+import { RoutingTool } from "./modules/routingTool.class.js";
+import ecommerceTemplate from "./modules/templates/ecommerce.template.js";
 
 restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   (function () {
-    renderDraggableElements('draggable');
-    document.getElementById('export-project').onclick = downloadCode;
-    renderDraggableTemplate('template');
 
-    const elementsBtn = document.querySelector('.options').children[0].addEventListener('click', toggleLeftPanels);
-    const templatesBtn = document.querySelector('.options').children[1].addEventListener('click', toggleLeftPanels);
+    if (window.location.pathname.includes('templates')) {
+      renderTemplateIcons();
+      return
+    }
+
+    let projectData = JSON.parse(localStorage.getItem("activeTemplate"))
+    const project = new Project(projectData);
+    const editor = new StylingTool(projectData);
+    const ayobaApiTool = new AyobaApiTool(projectData);
+    const routingTool = new RoutingTool(projectData)
+    // const exportableProject = new ExportableProject(projectData);
+    
+    renderDraggableElements('draggable');
+    renderPages('pages-panel', projectData.pages);
+
+    // document.getElementById('export-project').onclick = exportableProject.download();
+    document.querySelector('#print-projectData').addEventListener('click', () => console.log(projectData))
 
     const container = new Dragoned(document.querySelector('#container'), {
       // draggable:".item",
@@ -37,26 +54,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         
         const { item } = data;
         const type = item.dataset.type;
-        item.innerHTML = ELEMENTS[type].content;
-        new ActionTool(item, ELEMENTS[type].actionToolList);
-        new EditTool(item, ELEMENTS[type].editingToolList);
-      }
-    });
-    const template = new Dragoned(document.querySelector('#template'), {
-      sort: false,
-      clone: true,
-      group: "blocks-group",
-      onEnd: (data) => {
-        data.item.innerText = "";
-        const { item } = data;
-        const type = item.dataset.type;
-        TEMPELEMENTS[type].elements.forEach(element => {
-          const container = document.createElement("div");
-          container.innerHTML = element.content;
-          new ActionTool(container, element.actionToolList);
-          new EditTool(container, element.editingToolList);
-          item.append(container);
-        });
+        item.innerHtml = "";
+        item.append(new Component(components[type]).getComponent());
       }
     });
 
