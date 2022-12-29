@@ -1,34 +1,8 @@
-import Components from './components/components.js';
+import { onDragEndHandler, onDragEnterHandler, onDragLeaveHandler, onDragOverHandler, onDragStartHandler, onDropHandler } from './dragDrop.module.js';
 import blankTemplate from './templates/blank.template.js';
 import ecommerceTemplate from './templates/ecommerce.template.js';
 import landingTemplate from './templates/landing.template.js';
 import surveyTemplate from './templates/survey.template.js';
-
-const EVENTS = {
-  TOUCH_MOVE: "touchmove",
-  MOUSE_MOVE: "mousemove",
-  MOUSE_UP: "mouseup",
-  MOUSE_DOWN: "mousedown",
-  TOUCH_END: "touchend",
-  TOUCH_START: "touchstart",
-  TOUCH_CANCEL: "touchcancel",
-  DRAG_START: "dragstart",
-  DRAG_END: "dragend",
-};
-const DIRECTIONS = {
-  LEFT: "left",
-  RIGHT: "right",
-  UP: "up",
-  DOWN: "down",
-  TOP: "top",
-  BOTTOM: "bottom",
-  AFTEREND: "afterend",
-  BEFOREBEGIN: "beforebegin",
-};
-const CLASS_NAMES = {
-  guideLine: "__sortable_draggable-guide-line",
-};
-const containerStack = [];
 
 /**
  * display alert if device is mobile or small screen
@@ -59,87 +33,19 @@ function restrictMobile() {
   };
 }
 
-/**
- * returns true if left mouse button clicked
- * @param {Event} evt event
- * @returns {Boolean} Boolean
- */
-function detectLeftButton(evt) {
-  evt = evt || window.event;
-  if ("buttons" in evt) {
-    return evt.buttons === 1;
-  }
-  let button = evt.which || evt.button;
-  return button === 1;
-}
-
-const getParent = (el) =>
-  el && el.parentNode === document.body ? null : el && el.parentNode;
-
-/**
- *
- * @param {HTMLElement} dropTarget
- * @param {HTMLElement} target
- * @returns {HTMLElement | null}
- */
-function getImmediateChild(dropTarget, target) {
-  let immediate = target;
-  // eslint-disable-next-line max-len
-  while (
-    immediate &&
-    immediate !== dropTarget &&
-    immediate &&
-    getParent(immediate) !== dropTarget
-  ) {
-    immediate = getParent(immediate);
-  }
-  if (immediate === document.body) {
-    return null;
-  }
-  if (target === dropTarget) {
-    return null;
-  }
-  return immediate;
-}
-
-/**
- * clones dragged node, adds style declarations to clone, and renders to DOM.
- * @param {HTMLElement} dragEl element being dragged
- * @param {Number} clientX horizontal coordinate within viewport
- * @param {Number} clientY vertical coordinate within viewport
- * @returns {Node} clone of dragged node
- */
-function renderMirrorImage(dragEl, clientX, clientY) {
-  if (!dragEl) {
-    return;
-  }
-  let rect = dragEl.getBoundingClientRect();
-  const _mirror = dragEl.cloneNode(true);
-  _mirror.classList.add("mirror");
-  // _mirror.style.width = `${rect.width}px`;
-  // _mirror.style.height = `${rect.height}px`;
-  _mirror.style.top = `${rect.top}px`;
-  _mirror.style.left = `${rect.left}px`;
-  _mirror.__offsetX = clientX - rect.left;
-  _mirror.__offsetY = clientY - rect.top;
-  // _mirror.style.transform = `translate(${Math.abs(clientX - rect.left - rect.width/2)}px, -${Math.abs(clientY - rect.top - rect.height / 2)}px)`;
-  document.body.appendChild(_mirror);
-  return _mirror;
-}
-
-function renderDraggableElements(containerElementID) {
-  const draggablesContainer = document.getElementById(containerElementID);
-  // draggablesContainer.classList.toggle('d-none')
-  // draggablesContainer.innerHTML = ""
-
-  for (const property in Components) {
-    const container = document.createElement('img');
-    container.setAttribute('class', 'drag-item');
-    container.setAttribute('data-type', property);
-    container.src = `assets/images/components/${property}.png`
-    draggablesContainer.append(container);
+function renderDraggableItems(container, items) {
+  for (const [key, value] of Object.entries(items)) {
+    const element = document.createElement('button');
+    element.className = "btn border-light rounded-0 m-1 text-light"
+    element.ondragstart = (e) => onDragStartHandler(e);
+    element.ondragend = (e) => onDragEndHandler(e);
+    element.innerText = key
+    element.dataset.type = key
+    element.draggable = true
+    container.append(element)
   }
 }
+
 function renderTemplateIcons() {
   const templateContainer = document.querySelector('#template-container');
   const templatesList = [blankTemplate, landingTemplate, ecommerceTemplate, surveyTemplate];
@@ -244,22 +150,44 @@ function findComponentById(id, components) {
     }
   }
 }
+/**
+ * returns true if an HTML element is void (cannot have any child nodes)
+ * @param {string} tagName tag name of element
+ * @return {Boolean}
+ */
+function isVoidElement(tagName) {
+  const voidElements = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr', 'textarea'];
+  if (voidElements.includes(tagName.toLowerCase())) return true;
+  else return false
+}
+
+function toggleDisplay(selectors) {
+  if (typeof selectors == "string") {
+    document.querySelector(selectors).classList.toggle('d-none')
+  } else {
+    selectors.forEach(selector => {
+      document.querySelector(selector).classList.toggle('d-none')
+    });
+  }
+}
+
+function setDragDrophandlers(container) {
+  container.ondragenter = (e) => onDragEnterHandler(e);
+  container.ondragleave = (e) => onDragLeaveHandler(e);
+  container.ondragover = (e) => onDragOverHandler(e);
+  container.ondrop = (e) => onDropHandler(e);
+}
 
 export {
-  renderMirrorImage,
-  getImmediateChild,
-  getParent,
-  EVENTS,
-  DIRECTIONS,
-  CLASS_NAMES,
-  containerStack,
-  detectLeftButton,
-  renderDraggableElements,
+  renderDraggableItems,
   renderPages,
   restrictMobile,
   generateUuid,
   setHashData,
   getHashData,
   findComponentById,
-  renderTemplateIcons
+  renderTemplateIcons,
+  toggleDisplay,
+  setDragDrophandlers,
+  isVoidElement
 };

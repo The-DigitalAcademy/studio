@@ -1,4 +1,4 @@
-import components from "./components.js";
+import components from "./formComponents.js";
 
 export default {
   card: {

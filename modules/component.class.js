@@ -1,3 +1,4 @@
+import { onDragEndHandler, onDragStartHandler } from "./dragDrop.module.js";
 import { generateUuid, getHashData, setHashData } from "./utils.js"
 
 /** class representing a component */
@@ -23,6 +24,11 @@ class Component {
         element.dataset.editable = elementData.editable;
         element.id = elementData.id
         element.className = elementData.styleClasses ? Object.values(elementData.styleClasses).join(" "): ' ';
+        element.draggable = true
+        element.ondragstart = (e) => onDragStartHandler(e);
+        element.ondrageend = (e) => onDragEndHandler(e);
+        element.onmouseenter = (e) => e.target.classList.add('highlightBorder');
+        element.onmouseout = (e) => e.target.classList.remove('highlightBorder');
 
         //set element attributes
         if (elementData.attributes) {

@@ -3,9 +3,8 @@ import Elements from "./Elements.js"
 
 export default
     {
-        header: JSON.parse(JSON.stringify(Elements.header)),
-        footer: JSON.parse(JSON.stringify(Elements.footer)),
-        emailForm: {
+        email: {
+            displayName: 'email',
             name: 'div',
             editable: true,
             styleClasses: {
@@ -31,7 +30,8 @@ export default
                 JSON.parse(JSON.stringify(Elements.emailInput))
             ]
         },
-        phoneForm: {
+        phone: {
+            displayName: 'phone',
             name: 'div',
             editable: true,
             styleClasses: {
@@ -56,67 +56,61 @@ export default
                 JSON.parse(JSON.stringify(Elements.phoneInput))
             ]
         },
-        textareaForm: {
-            name: 'form',
-            styleClasses:{
-                margin: 'mb-3',
-                container: 'container'
-            },
-            children: [
-                JSON.parse(JSON.stringify(Elements.label)),
-                JSON.parse(JSON.stringify(Elements.textarea))
-            ]
-        },
-        p: JSON.parse(JSON.stringify(Elements.p)),
-        radioForm: {
-            name: 'form',
+        textarea: {
+            name: 'textarea',
             editable: true,
             styleClasses: {
-                margin: 'mb-3',
-                container: 'container'
+                form: 'form-control'
+            },
+            ayobaApiOptions: ['msisdn', 'location', 'country'],
+            ayobaApi: '',
+            attributes: {
+                placeholder: 'enter text'
+            }
+        },
+        // radioGroup: {
+        //     displayName: 'radio',
+        //     name: 'form',
+        //     editable: true,
+        //     styleClasses: {
+        //         margin: 'mb-3',
+        //         container: 'container'
+        //     },
+        //     children: [
+        //         JSON.parse(JSON.stringify(Elements.label)),
+        //         JSON.parse(JSON.stringify(Elements.radioInput)),
+        //         JSON.parse(JSON.stringify(Elements.radioInput))
+        //     ]
+        // },
+        radio: {
+            name: 'div',
+            styleClasses: {
+                form: 'form-check'
             },
             children: [
-                JSON.parse(JSON.stringify(Elements.label)),
-                JSON.parse(JSON.stringify(Elements.radioInput)),
-                JSON.parse(JSON.stringify(Elements.radioInput))
-            ]
-        },
-        img: JSON.parse(JSON.stringify(Elements.img)),
-        linkButton: JSON.parse(JSON.stringify(Elements.linkButton)),
-        linkText: JSON.parse(JSON.stringify(Elements.linkText)),
-        product: {
-            name: 'div',
-            styleClasses: {grid: 'col-6'},
-            children: [
                 {
-                    name:'img',
-                    styleClasses: {image: 'img-fluid'},
-                    editable: true,
+                    name: 'input',
+                    editable: false,
+                    styleClasses: {
+                        form: 'form-check-input'
+                    },
                     attributes: {
-                        src: 'https://picsum.photos/130/180'
+                        type: 'radio',
                     }
                 },
                 {
-                    name: 'div',
-                    children: [
-                        {
-                            name: 'p',
-                            styleClasses: {textColor: 'text-muted', margin: 'mb-1'},
-                            attributes: {
-                                contentEditable: true,
-                                innerText: 'Product Name'
-                            }
-                        },
-                        {
-                            name: 'p',
-                            styleClasses: {textColor: '.'},
-                            attributes: {
-                                contentEditable: true,
-                                innerText: `R${Math.floor(Math.random()*(999-100+1)+100)}`
-                            }
-                        }
-                    ]
+                    name: 'label',
+                    editable: true,
+                    styleClasses: {
+                        form: 'form-label',
+                        textColor: 'text-dark',
+                        textSize: '.',
+                    },
+                    attributes: {
+                        innerText: 'Form Label',
+                        contentEditable: true
+                    }
                 }
             ]
-        }
+        },
     }

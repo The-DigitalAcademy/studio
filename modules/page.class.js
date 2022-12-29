@@ -36,10 +36,11 @@ class Page {
             //nest component & deleteBtn inside a 'drag-item' div
             let dragItem = document.createElement('div');
             dragItem.className = "drag-item relative";
-            dragItem.appendChild(deleteBtn)
+            // dragItem.appendChild(deleteBtn)
             dragItem.appendChild(component.getComponent());
 
-            container.append(dragItem);
+            // container.append(dragItem);
+            container.append(component.getComponent())
         });
     }
 

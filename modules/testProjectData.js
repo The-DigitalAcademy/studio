@@ -1,4 +1,4 @@
-import Components from "./components/components.js";
+import Components from "./components/formComponents.js";
 import Elements from "./components/Elements.js";
 import { generateUuid } from "./utils.js";
 
@@ -13,7 +13,7 @@ export default
             fileName: 'index',
             components: [
                 JSON.parse(JSON.stringify(Elements.header)),
-                JSON.parse(JSON.stringify(Elements.h3)),
+                // JSON.parse(JSON.stringify(Elements.h3)),
             ]
         },
         {

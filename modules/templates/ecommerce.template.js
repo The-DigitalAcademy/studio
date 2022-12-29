@@ -1,5 +1,5 @@
 import bootstrapComponents from "../components/bootstrapComponents.js";
-import components from "../components/components.js";
+import components from "../components/formComponents.js";
 import Elements from "../components/Elements.js";
 import { generateUuid } from "../utils.js";
 
