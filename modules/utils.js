@@ -36,7 +36,7 @@ function restrictMobile() {
 function renderDraggableItems(container, items) {
   for (const [key, value] of Object.entries(items)) {
     const element = document.createElement('button');
-    element.className = "btn border-light rounded-0 m-1 text-light"
+    element.className = "btn border-light rounded-0 m-1 text-light bg-dark"
     element.ondragstart = (e) => onDragStartHandler(e);
     element.ondragend = (e) => onDragEndHandler(e);
     element.innerText = key
@@ -60,25 +60,23 @@ function renderTemplateIcons() {
     `
     container.onclick = () => {
       localStorage.setItem('activeTemplate', JSON.stringify(template))
-      window.location.href = location.origin
+      console.log();
+      window.location.href = location.origin + '/studio.html'
     }
     templateContainer.append(container)
   }
 }
 
-function renderPages(containerElementID, pages) {
-  const draggablesContainer = document.getElementById(containerElementID);
-  // draggablesContainer.classList.toggle('d-none')
-  draggablesContainer.innerHTML = ""
+function renderPages(pagesContainer, pages) {
+  pagesContainer.innerHTML = "";
 
   const addBtn = document.createElement('div');
   addBtn.className = "text-light text-center btn"
   addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-4"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
-  draggablesContainer.append(addBtn);
 
   pages.forEach((page, index) => {
     const container = document.createElement('div');
-    container.className = "text-center border-0 btn btn-outline-light"
+    container.className = "text-center border-0 btn btn text-light"
     container.innerHTML = `<i class="bi bi-file-earmark  display-4"></i><p class='text-center mb-0 text-capitalize'>${page.name}</p>`
     container.onclick = () => {
       document.querySelector('#workingPageName').innerHTML = page.name
@@ -88,8 +86,9 @@ function renderPages(containerElementID, pages) {
       }
       setHashData(hashData)
     }
-    draggablesContainer.append(container);
+    pagesContainer.append(container);
   })
+  pagesContainer.append(addBtn);
 }
 
 /**
@@ -103,7 +102,7 @@ function generateUuid(){
       dt = Math.floor(dt/16);
       return (c=='x' ? r :(r&0x3|0x8)).toString(16);
   });
-  return uuid;
+  return uuid; 
 }
 
 /**
@@ -161,14 +160,26 @@ function isVoidElement(tagName) {
   else return false
 }
 
-function toggleDisplay(selectors) {
-  if (typeof selectors == "string") {
-    document.querySelector(selectors).classList.toggle('d-none')
-  } else {
-    selectors.forEach(selector => {
-      document.querySelector(selector).classList.toggle('d-none')
-    });
+function toggleDisplay(buttonElement, selectors) {
+  buttonElement.onclick = () => {
+    if (typeof selectors == "string") {
+      document.querySelector(selectors).classList.toggle('d-none')
+    } else {
+      selectors.forEach(selector => {
+        document.querySelector(selector).classList.toggle('d-none')
+      });
+    }    
   }
+}
+
+function switchDisplaysHandler(buttonElement, selectorToDisplay, selectorsToHide) {
+  buttonElement.onclick = (e) => {
+    selectorToDisplay.classList.remove('d-none');
+    selectorsToHide.forEach(selector => {
+      selector.classList.add('d-none')
+    })    
+  }
+
 }
 
 function setDragDrophandlers(container) {
@@ -189,5 +200,6 @@ export {
   renderTemplateIcons,
   toggleDisplay,
   setDragDrophandlers,
-  isVoidElement
+  isVoidElement,
+  switchDisplaysHandler
 };

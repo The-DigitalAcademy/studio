@@ -2,6 +2,7 @@ import components from "./formComponents.js";
 
 export default {
   card: {
+    displayName: 'card',
     name: "div",
     styleClasses: { card: "card" },
     children: [
@@ -45,6 +46,7 @@ export default {
     ],
   },
   navHeader: {
+    displayName: 'nav header',
     name: 'header',
     styleClasses: {},
     children: [

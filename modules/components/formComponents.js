@@ -27,7 +27,17 @@ export default
                       </svg>`
                     }
                 },
-                JSON.parse(JSON.stringify(Elements.emailInput))
+                {
+                    name: 'input',
+                    editable: true,
+                    styleClasses: {
+                        form: 'form-control'
+                    },
+                    attributes: {
+                        type: 'email',
+                        placeholder: 'john@email.com'
+                    }
+                }
             ]
         },
         phone: {
@@ -53,7 +63,19 @@ export default
                       </svg>`
                     }
                 },
-                JSON.parse(JSON.stringify(Elements.phoneInput))
+                {
+                    name: 'input',
+                    editable: true,
+                    styleClasses: {
+                        form: 'form-control'
+                    },
+                    ayobaApiOptions: ['msisdn'],
+                    ayobaApi: '',
+                    attributes: {
+                        type: 'tel',
+                        placeholder: '0981234567'
+                    }
+                }
             ]
         },
         textarea: {
@@ -112,5 +134,18 @@ export default
                     }
                 }
             ]
+        },
+        label: {
+            name: 'label',
+            editable: true,
+            styleClasses: {
+                form: 'form-label',
+                textColor: 'text-dark',
+                textSize: '.',
+            },
+            attributes: {
+                innerText: 'Form Label',
+                contentEditable: true
+            }
         },
     }

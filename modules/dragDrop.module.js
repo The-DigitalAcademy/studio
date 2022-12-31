@@ -11,12 +11,14 @@ function onDragEnterHandler(event) {
     //if element is empty
     const element = event.target
     if (!element.children.length && !element.innerText && !isVoidElement(element.tagName))  {
-        addFocusBorder(event.target, 'focusBorder')
+        addFocusBorder(element, 'focusBorder')
         hideGuideline()
     }
     else {
-        addFocusBorder(event.target.parentElement, 'focusBorder')
-        appendSibling(event.target, GUIDELINE)
+        addFocusBorder(element.parentElement, 'focusBorder')
+        if (element.parentElement.dataset.appendable == 'false') return
+        else appendSibling(element, GUIDELINE)
+        
     }
 }
 function onDragLeaveHandler(event) {
@@ -51,9 +53,7 @@ function onDropHandler(event) {
             position: getGuidelinePosition(),
             page
         }
-        removeFocusBorder(event.target.parentElement, 'focusBorder');
         setHashData(hashData)
-        return
     } else {
         let prevPos = getElementPosition(document.getElementById(data.id));
         let oldParent = getParentElement(document.getElementById(data.id)).id;
@@ -72,10 +72,12 @@ function onDropHandler(event) {
             newPos,
             newParent: getParentElement(event.target).id,
         }
-        removeFocusBorder(event.target.parentElement, 'focusBorder');
         setHashData(hashData)
-        return
     }
+    removeFocusBorder(event.target.parentElement, 'focusBorder');
+    removeFocusBorder(event.target, 'focusBorder');
+    hideGuideline()
+    return
 
     removeFocusBorder(event.target.parentElement, 'focusBorder');
 

@@ -20,7 +20,7 @@
 
 <body id="studio-page">
     <header class="p-2 shadow-sm d-flex justify-content-between bg-grad-blue ">
-        <a href="/templates.html" id="logo" class="text-decoration-none d-flex align-items-center text-light">
+        <a href="/" id="logo" class="text-decoration-none d-flex align-items-center text-light">
             <img class="me-1" width="25" height="25"
                 src="https://developer.ayoba.me/_next/image?url=%2Fassets%2FLogo%2FAyobaFinalIcon.png&w=64&q=75"
                 alt="ayoba logo">
@@ -34,17 +34,18 @@
     <main>
         <!-- ################# LEFT menu panel ################ -->
         <div class="bg-dark border-end border-secondary">
-            <button class="btn text-light d-flex flex-column align-items-center px-0 mx-auto">
+            <button id="components-menu-btn" class="btn btn-outline-light w-100 border-0 rounded-0 d-flex flex-column align-items-center px-0 mx-auto">
                 <i class="bi bi-bounding-box"></i>
                 <span class="fw-light smaller">Components</span>
             </button>
-            <button class="btn text-light d-flex flex-column align-items-center px-0 mx-auto">
+            <button id="pages-menu-btn" class="btn btn-outline-light w-100 border-0 rounded-0 d-flex flex-column align-items-center px-0 mx-auto">
                 <i class="bi bi-files fw-light fst-normal"></i>
                 <span class="smaller fw-light">pages</span>
             </button>
         </div>
         <div class="shadow-sm text-light bg-dark scroll-y hide-scrollbar">   
-            <div data-menu-panel="components">
+            <div id="components-panel">
+                <h4 class="text-center fw-light my-3">Components</h4>
                 <div>
                     <button id="basic-elements" class="border-0 w-100 text-light rounded-0 d-flex justify-content-between p-1 bg-gray-800 mb-1">
                         <span>Basic Elements</span>
@@ -53,9 +54,7 @@
                     </button>
                     <div class="p-2" id="basic-elements-list"></div>
                 </div>
-            </div> 
-            <div data-menu-panel="forms">
-                <div class="components">
+                <div>
                     <button id="forms" class="border-0 w-100 text-light rounded-0 d-flex justify-content-between p-1 bg-gray-800 mb-1">
                         <span>Forms</span>
                         <i class="bi bi-chevron-down" id="forms-down"></i>
@@ -63,7 +62,19 @@
                     </button>
                     <div class="p-2" id="forms-list"></div>
                 </div>
-            </div>         
+                <div>
+                    <button id="bootstrap-components" class="border-0 w-100 text-light rounded-0 d-flex justify-content-between p-1 bg-gray-800 mb-1">
+                        <span>Bootstrap Components</span>
+                        <i class="bi bi-chevron-down" id="bootstrap-components-down"></i>
+                        <i class="bi bi-chevron-up d-none" id="bootstrap-components-up"></i>
+                    </button>
+                    <div class="p-2" id="bootstrap-components-list"></div>
+                </div>
+            </div>  
+            <div id="pages-panel" class="d-none">
+                <h4 class="text-center fw-light my-3">Pages</h4>
+                <div id="pages-container"></div>
+            </div>    
         </div>
 
         <!-- ################# MIDDLE mobile view ################## -->

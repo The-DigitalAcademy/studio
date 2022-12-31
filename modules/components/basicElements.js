@@ -116,5 +116,57 @@ export default {
     },
     hr: {
         name: 'hr',
-    }
+    },
+    header: {
+        name: 'header',
+        styleClasses: {
+            textAlign: 'text-center',
+            bgColor: 'bg-dark',
+            textColor: 'text-light',
+            padding: 'p-2',
+            textSize: 'fs-4',
+        },
+        editable: true, 
+        attributes: {
+            innerText: 'Header',
+            contentEditable: true
+        }
+    },
+    footer: {
+        name: 'footer',
+        styleClasses: {
+            textAlign: 'text-center',
+            bgColor: 'bg-dark',
+            textColor: 'text-light',
+            padding: 'p-2',
+            textSize: 'fs-4',
+        },
+        editable: true, 
+        attributes: {
+            innerText: 'Footer',
+            contentEditable: true
+        }
+    },
+    button: {
+        name: 'div',
+        editable: false,
+        children: [
+            {
+                name:'button',
+                editable: true,
+                styleClasses: {
+                    button: 'btn',
+                    buttonColor: 'btn-primary',
+                    horizontalAlign: 'mx-auto',
+                    display: 'd-block',
+                    width: 'w-25'
+                },
+                attributes: {
+                    role: 'button',
+                    innerText: 'button',
+                    contentEditable: true
+                }                
+            }
+        ]
+    },
 }
