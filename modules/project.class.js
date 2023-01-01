@@ -1,13 +1,9 @@
+import Component from "./component.class.js";
 import allComponents from "./components/allComponents.js";
-import components from "./components/formComponents.js";
-import Page from "./page.class.js";
 import { deleteComponentById, findComponentById, generateUuid, getHashData, setHashData } from "./utils.js";
-
 class Project {
     
-    pages = [];
-    projectData = 0;
-    workingPage = 0;
+    projectData = {};
     /**
      * Construct a new project.
      * @param {Object | String} projectData Object containing the Project Data or a project name for a new project
@@ -24,13 +20,13 @@ class Project {
             this.projectData = projectData
         }
 
-        this.generatePages()
+        this.renderPage(0)
         setHashData({page: 0})
 
         window.addEventListener('hashchange', () => {
             const {page, method, component} = getHashData()
             if (method == "render") {
-                this.pages[page].renderPage();
+                this.renderPage(page)
                 setHashData({method:'edit', component, page});            
             } 
             else if (method == "add") {
@@ -47,12 +43,9 @@ class Project {
                     //add component to list of components at specified position
                     parentComponent.children.splice(position,0, newComponent);                    
                 }
-                this.pages[page].renderPage();
+                this.renderPage(page)
             }
             else if (method == "reorder") {
-                // const {from, to } = getHashData()
-                // this.rearrangeArray(this.projectData.pages[page].components, from, to);
-                // this.pages[page].renderPage()
                 const {oldParent, newParent, oldPos, newPos, component } = getHashData();
                 if (oldParent == newParent) {
                     if (oldParent == 'container') {
@@ -66,21 +59,24 @@ class Project {
                     this.addChildComponent(newParent, component, newPos, this.projectData.pages[page].components);
                     this.removeChildComponent(oldParent, oldPos)
                 }
-                this.pages[page].renderPage()
+                this.renderPage(page)
             }
             else if (method == "createPage") {
                 const { name } = getHashData();
                 this.createNewPage(name)
+                const newPageNum = this.projectData.pages.length - 1
+                this.renderPage(newPageNum)
             }
             //save working project
             localStorage.setItem('workingProject', JSON.stringify(this.projectData))
         })
 
+        //delete key listener
         window.addEventListener('keydown', (e) => {
             if ((e.key.toLowerCase() == 'd' && e.ctrlKey) || e.key.toLowerCase() == 'delete') {
                 const {component, page} = getHashData();
                 deleteComponentById(component, this.projectData.pages[page].components)
-                this.pages[page].renderPage();
+                this.renderPage(page)
             }
         })
     }
@@ -105,19 +101,6 @@ class Project {
         const parent = findComponentById(parentId, pageComponents);
         delete parent.children.splice(childPosition, 1)
     }
-
-    generatePages() {
-        if (!this.projectData.pages.length) {
-            this.createNewPage('home')
-            return;
-        }
-        this.projectData.pages.forEach(pageData => {
-            let page = new Page(pageData);
-            this.pages.push(page);
-            this.pages[this.workingPage].renderPage()
-        });
-    }
-
     createNewPage(pageName) {
         if (!pageName || typeof pageName != 'string' || pageName.length < 3) return
         const newPageData = {
@@ -126,10 +109,20 @@ class Project {
             fileName: pageName.toLowerCase().replaceAll(" ", "-"),
             components: []
         }
-        const newPage = new Page(newPageData)
         this.projectData.pages.push(newPageData)
-        this.pages.push(newPage);
-        this.pages[this.pages.length -1].renderPage();
+    }
+    /**
+     * render each component of a page onto the specified document container
+     */
+    renderPage(pageNum) {
+        //clear container
+        const container = document.getElementById('container');
+        container.innerHTML = ''
+
+        this.projectData.pages[pageNum].components.forEach(componentData => {
+            let component = new Component(componentData);
+            container.append(component.getComponent())
+        });
     }
 }
 
