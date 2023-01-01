@@ -108,7 +108,6 @@ export default {
             display: 'd-block',
             textAlign: 'text-center'
         },
-        routeToPage: '',
         attributes: {
             innerText: 'link Text',
             href: '#'
