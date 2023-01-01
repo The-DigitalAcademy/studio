@@ -1,7 +1,7 @@
 import allComponents from "./components/allComponents.js";
 import components from "./components/formComponents.js";
 import Page from "./page.class.js";
-import { findComponentById, generateUuid, getHashData, setHashData } from "./utils.js";
+import { deleteComponentById, findComponentById, generateUuid, getHashData, setHashData } from "./utils.js";
 
 class Project {
     
@@ -63,10 +63,24 @@ class Project {
                     }
                 } else {
                     newParentChildren = findComponentById(newParent, this.projectData.pages[page].components).children;
-                    this.addChildComponent(newParent, component, newPos, this.projectData.components);
+                    this.addChildComponent(newParent, component, newPos, this.projectData.pages[page].components);
                     this.removeChildComponent(oldParent, oldPos)
                 }
                 this.pages[page].renderPage()
+            }
+            else if (method == "createPage") {
+                const { name } = getHashData();
+                this.createNewPage(name)
+            }
+            //save working project
+            localStorage.setItem('workingProject', JSON.stringify(this.projectData))
+        })
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.key.toLowerCase() == 'd' && e.ctrlKey) || e.key.toLowerCase() == 'delete') {
+                const {component, page} = getHashData();
+                deleteComponentById(component, this.projectData.pages[page].components)
+                this.pages[page].renderPage();
             }
         })
     }
@@ -107,7 +121,7 @@ class Project {
     createNewPage(pageName) {
         if (!pageName || typeof pageName != 'string' || pageName.length < 3) return
         const newPageData = {
-            id: generateUuid(0),
+            id: generateUuid(),
             name: pageName,
             fileName: pageName.toLowerCase().replaceAll(" ", "-"),
             components: []

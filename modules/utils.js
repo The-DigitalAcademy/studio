@@ -59,7 +59,7 @@ function renderTemplateIcons() {
     <p class="text-center">${template.name}</p>
     `
     container.onclick = () => {
-      localStorage.setItem('activeTemplate', JSON.stringify(template))
+      localStorage.setItem('workingProject', JSON.stringify(template))
       console.log();
       window.location.href = location.origin + '/studio.html'
     }
@@ -69,11 +69,7 @@ function renderTemplateIcons() {
 
 function renderPages(pagesContainer, pages) {
   pagesContainer.innerHTML = "";
-
-  const addBtn = document.createElement('div');
-  addBtn.className = "text-light text-center btn"
-  addBtn.innerHTML = `<i class="bi bi-file-earmark-plus display-4"></i><p class='text-center mb-0 text-capitalize'>New Page</p>`
-
+ 
   pages.forEach((page, index) => {
     const container = document.createElement('div');
     container.className = "text-center border-0 btn btn text-light"
@@ -88,7 +84,6 @@ function renderPages(pagesContainer, pages) {
     }
     pagesContainer.append(container);
   })
-  pagesContainer.append(addBtn);
 }
 
 /**
@@ -150,6 +145,24 @@ function findComponentById(id, components) {
   }
 }
 /**
+ * searches through an array (including nested arrays) for a component with an id and removes that component
+ * @param {string} id component identifier
+ * @param {[]} components array of components
+ * @returns {boolean} true if component id found and removed
+ */
+ function deleteComponentById(id, components) {
+  for (let i = 0; i < components.length; i++) {
+    const component = components[i];
+    if (component.id == id) {
+      components.splice(i, 1)
+      return true
+    } else if (component.children && component.children.length) {
+      return deleteComponentById(id, component.children)
+    } else {
+    }
+  }
+}
+/**
  * returns true if an HTML element is void (cannot have any child nodes)
  * @param {string} tagName tag name of element
  * @return {Boolean}
@@ -189,6 +202,20 @@ function setDragDrophandlers(container) {
   container.ondrop = (e) => onDropHandler(e);
 }
 
+function createNewPageHandler(nameInputElement, createBtnElement) {
+  createBtnElement.onclick = () => {
+    if (nameInputElement.value.length > 3) {
+      const {} = getHashData();
+      const hashData = {
+        method: 'createPage',
+        name: nameInputElement.value
+      }
+      nameInputElement.value = ''
+      setHashData(hashData)
+    }
+  }
+}
+
 export {
   renderDraggableItems,
   renderPages,
@@ -201,5 +228,7 @@ export {
   toggleDisplay,
   setDragDrophandlers,
   isVoidElement,
-  switchDisplaysHandler
+  switchDisplaysHandler,
+  createNewPageHandler,
+  deleteComponentById
 };

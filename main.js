@@ -1,4 +1,4 @@
-import { renderDraggableItems, renderPages, renderTemplateIcons, restrictMobile, setDragDrophandlers, switchDisplaysHandler, toggleDisplay } from "./modules/utils.js"
+import { createNewPageHandler, renderDraggableItems, renderPages, renderTemplateIcons, restrictMobile, setDragDrophandlers, switchDisplaysHandler, toggleDisplay } from "./modules/utils.js"
 import Project from "./modules/project.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
 import { ExportableProject } from "./modules/exportableProject.class.js";
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return
     }
 
-    let projectData = JSON.parse(localStorage.getItem("activeTemplate"))
+    let projectData = JSON.parse(localStorage.getItem("workingProject"))
 
     //MENU
     const componentsBtn = document.querySelector('#components-menu-btn')
@@ -35,6 +35,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       //pages panel
     const pagesPanel = document.querySelector('#pages-panel');
     const pagesContainer = document.querySelector('#pages-container');
+    const pageNameInput = document.querySelector('#page-name-input');
+    const createPageBtn = document.querySelector('#create-page-btn');
+
+    createNewPageHandler(pageNameInput, createPageBtn);
 
     setDragDrophandlers(document.querySelector('#container'))
 
@@ -49,7 +53,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     switchDisplaysHandler(componentsBtn, componentsPanel, [pagesPanel]);
     switchDisplaysHandler(pagesBtn, pagesPanel, [componentsPanel]);
 
-    renderPages(pagesContainer, projectData.pages)
+    renderPages(pagesContainer, projectData.pages);
+    window.addEventListener('hashchange', () => {
+      setTimeout(() => {
+        renderPages(pagesContainer, projectData.pages)
+      }, 1000)
+    })
 
     const project = new Project(projectData);
     const editor = new StylingTool(projectData);
