@@ -31,18 +31,7 @@ class Project {
             } 
             else if (method == "add") {
                 const {type, position, parent} = getHashData()
-                //get component data & set new id
-                let newComponent = JSON.parse(JSON.stringify(allComponents[type]));
-                newComponent.id = generateUuid();
-
-                
-                if (parent == 'container') {
-                    this.projectData.pages[page].components.splice(position,0, newComponent)
-                } else {
-                    const parentComponent = findComponentById(parent, this.projectData.pages[page].components)
-                    //add component to list of components at specified position
-                    parentComponent.children.splice(position,0, newComponent);                    
-                }
+                this.addNewComponent(page, parent, type, position)
                 this.renderPage(page)
             }
             else if (method == "reorder") {
@@ -63,9 +52,9 @@ class Project {
             }
             else if (method == "createPage") {
                 const { name } = getHashData();
-                this.createNewPage(name)
-                const newPageNum = this.projectData.pages.length - 1
-                this.renderPage(newPageNum)
+                const newPage = this.createNewPage(name)
+                const newLength = this.projectData.pages.push(newPage)
+                this.renderPage(newLength - 1)
             }
             //save working project
             localStorage.setItem('workingProject', JSON.stringify(this.projectData))
@@ -109,7 +98,7 @@ class Project {
             fileName: pageName.toLowerCase().replaceAll(" ", "-"),
             components: []
         }
-        this.projectData.pages.push(newPageData)
+        return newPageData
     }
     /**
      * render each component of a page onto the specified document container
@@ -123,6 +112,18 @@ class Project {
             let component = new Component(componentData);
             container.append(component.getComponent())
         });
+    }
+    addNewComponent(page, parentId, componentType, position) {
+        let newComponent = JSON.parse(JSON.stringify(allComponents[componentType]));
+        newComponent.id = generateUuid();
+
+        if (parent == 'container') {
+            this.projectData.pages[page].components.splice(position,0, newComponent)
+        } else {
+            const parentComponent = findComponentById(parentId, this.projectData.pages[page].components)
+            //add component to list of components at specified position
+            parentComponent.children.splice(position,0, newComponent);                    
+        }
     }
 }
 
