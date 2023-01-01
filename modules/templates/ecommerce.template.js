@@ -10,7 +10,7 @@ export default {
     {
       "id": "0bd2a91c-9291-43b5-9a80-0c4585bd66a3",
       "name": "Home",
-      "filename": "index.html",
+      "filename": "index",
       "components": [
         JSON.parse(JSON.stringify(bootstrapComponents.navHeader)),
         {

@@ -14,11 +14,10 @@ class Component {
     }
 
     /**
-     * generates an Element with attributes, values along with its children based on the elementData provided
-     * @param {{name, styleClasses?, children?, editable?, attributes?}} elementData data about the element
+     * generates an Element with attributes, values along with its children based on the element data provided
      * @return {Element} generated Element
      */
-    #generateElement(elementData) {
+    generateStudioElement(elementData) {
         if (!elementData.id) elementData.id = generateUuid()
         const element = document.createElement(elementData.name);
         element.dataset.editable = elementData.editable;
@@ -69,19 +68,48 @@ class Component {
         // generate child elements
         if (elementData.children && elementData.children.length) {
             elementData.children.forEach(childElementData => {
-                const childElement = this.#generateElement(childElementData)
+                const childElement = this.generateStudioElement(childElementData)
                 element.append(childElement)
             });
         }
         return element
     }
 
-    /**
-     * return element generated from componentData
-     * @returns {Element} generated element
-     */
-    getComponent() {
-        return this.#generateElement(this.#componentData);
+    generateExportableElement(elementData) {
+        const element = document.createElement(elementData.name);
+        element.id = elementData.id
+        element.className = elementData.styleClasses ? Object.values(elementData.styleClasses).join(" "): ' ';
+
+        //set element attributes
+        if (elementData.attributes) {
+            for (const [key, value] of Object.entries(elementData.attributes)) {
+                if (key == 'dataset') {
+                    for (const [dataProp, dataValue] of  Object.entries(elementData.attributes.dataset)) {
+                        element.dataset[dataProp] = dataValue;
+                    }
+                } else element[key] = value;
+            }
+            element.contentEditable = false
+        }
+        //add ayoba api dataset
+        if (elementData.ayobaApi) {
+            element.dataset.ayobaApi = elementData.ayobaApi;
+        }
+        // generate child elements
+        if (elementData.children && elementData.children.length) {
+            elementData.children.forEach(childElementData => {
+                const childElement = this.generateExportableElement(childElementData)
+                element.append(childElement)
+            });
+        }
+        return element
+    }
+
+    getExportableElement() {
+        return this.generateExportableElement(this.#componentData)
+    }
+    getStudioElement() {
+        return this.generateStudioElement(this.#componentData)
     }
 }
 

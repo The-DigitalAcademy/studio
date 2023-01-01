@@ -110,14 +110,14 @@ class Project {
 
         this.projectData.pages[pageNum].components.forEach(componentData => {
             let component = new Component(componentData);
-            container.append(component.getComponent())
+            container.append(component.getStudioElement())
         });
     }
     addNewComponent(page, parentId, componentType, position) {
         let newComponent = JSON.parse(JSON.stringify(allComponents[componentType]));
         newComponent.id = generateUuid();
 
-        if (parent == 'container') {
+        if (parentId == 'container') {
             this.projectData.pages[page].components.splice(position,0, newComponent)
         } else {
             const parentComponent = findComponentById(parentId, this.projectData.pages[page].components)

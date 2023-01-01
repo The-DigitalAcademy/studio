@@ -28,7 +28,7 @@ class RoutingTool {
         routesDropdown.innerHTML = ""
         this.projectData.pages.forEach(page => {
             const option = document.createElement('option');
-            option.value = page.fileName;
+            option.value = page.filename;
             option.innerText = page.name;
             routesDropdown.append(option);
         })
@@ -38,7 +38,7 @@ class RoutingTool {
     const selectedPage = e.currentTarget.value;
 
     const targetComponent = findComponentById(component, this.projectData.pages[page].components);
-    targetComponent.attributes.href = '/'+selectedPage+'.html';
+    targetComponent.attributes.href = './'+selectedPage+'.html';
     }
 }
 

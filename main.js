@@ -1,7 +1,7 @@
 import { createNewPageHandler, renderDraggableItems, renderPages, renderTemplateIcons, restrictMobile, setDragDrophandlers, switchDisplaysHandler, toggleDisplay } from "./modules/utils.js"
 import Project from "./modules/project.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
-import { ExportableProject } from "./modules/exportableProject.class.js";
+import { downloadProject } from "./modules/exportProject.module.js";
 import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
 import { RoutingTool } from "./modules/routingTool.class.js";
 import basicElements from "./modules/components/basicElements.js";
@@ -36,6 +36,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const pageNameInput = document.querySelector('#page-name-input');
   const createPageBtn = document.querySelector('#create-page-btn');
 
+  const exportBtn = document.querySelector('#export-project')
+
   createNewPageHandler(pageNameInput, createPageBtn);
 
   setDragDrophandlers(document.querySelector('#container'))
@@ -61,6 +63,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const project = new Project(projectData);
   const editor = new StylingTool(projectData);
   const ayobaApiTool = new AyobaApiTool(projectData);
-  const routingTool = new RoutingTool(projectData)
+  const routingTool = new RoutingTool(projectData);
+
+  exportBtn.addEventListener('click', () => {
+    downloadProject(projectData)
+  })
 
 });
