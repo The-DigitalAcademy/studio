@@ -13,7 +13,7 @@ class Project {
             this.projectData = {
                 id: generateUuid(),
                 name: projectData,
-                fileName: projectData.toLowerCase().replaceAll(" ","-"),
+                filename: projectData.toLowerCase().replaceAll(" ","-"),
                 pages: []
             }
         } else if (typeof projectData == 'object') {
@@ -95,7 +95,7 @@ class Project {
         const newPageData = {
             id: generateUuid(),
             name: pageName,
-            fileName: pageName.toLowerCase().replaceAll(" ", "-"),
+            filename: pageName.toLowerCase().replaceAll(" ", "-"),
             components: []
         }
         return newPageData

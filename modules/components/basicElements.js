@@ -110,7 +110,8 @@ export default {
         },
         attributes: {
             innerText: 'link Text',
-            href: '#'
+            href: '#',
+            contentEditable: true
         }
     },
     hr: {
