@@ -17,9 +17,9 @@ function onDragEnterHandler(event) {
         addFocusBorder(element, 'focusBorder')
         element.append(GUIDELINE)
     } else {
-        addFocusBorder(element.parentElement, 'focusBorder')
         if (element.parentElement.dataset.appendable == 'false') return
-        else appendSibling(element, GUIDELINE)
+        addFocusBorder(element.parentElement, 'focusBorder')
+        appendSibling(element, GUIDELINE)
         
     }
 }
@@ -48,6 +48,7 @@ function onDropHandler(event) {
     const {page} = getHashData()
     //dropping new component
     if (data.type && !data.id) {
+        if (event.target.parentElement.dataset.appendable == 'false') return
         const hashData = {
             method: 'add',
             type: data.type,
@@ -60,6 +61,8 @@ function onDropHandler(event) {
         let prevPos = getElementPosition(document.getElementById(data.id));
         let oldParent = getParentElement(document.getElementById(data.id)).id;
         let newPos = getGuidelinePosition();
+
+        if (event.target.parentElement.dataset.appendable == 'false') return
 
         //if drag and drop is inside the same parent element
         if (document.getElementById(data.id).parentElement.id == event.target.parentElement.id) {
