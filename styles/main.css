@@ -311,12 +311,12 @@ body {
 }
 
 .focusBorder {
-  box-shadow: 0 0 0 0.1rem #c80cce !important;
+  border: 0.5px dashed red !important;
 }
 
 .highlightBorder {
+  border: 0.3px dashed rgba(45, 129, 194, 0.6588235294) !important;
   cursor: pointer;
-  box-shadow: 0 0 0 0.1rem rgba(45, 129, 194, 0.6588235294) !important;
 }
 
 .muted {
