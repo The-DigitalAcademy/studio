@@ -13,8 +13,10 @@ function onDragEnterHandler(event) {
     if (!element.children.length && !element.innerText && !isVoidElement(element.tagName))  {
         addFocusBorder(element, 'focusBorder')
         hideGuideline()
-    }
-    else {
+    } else if(element.id == 'container') {
+        addFocusBorder(element, 'focusBorder')
+        element.append(GUIDELINE)
+    } else {
         addFocusBorder(element.parentElement, 'focusBorder')
         if (element.parentElement.dataset.appendable == 'false') return
         else appendSibling(element, GUIDELINE)
@@ -77,18 +79,6 @@ function onDropHandler(event) {
     removeFocusBorder(event.target.parentElement, 'focusBorder');
     removeFocusBorder(event.target, 'focusBorder');
     hideGuideline()
-    return
-
-    removeFocusBorder(event.target.parentElement, 'focusBorder');
-
-    if (!event.target.children.length && !event.target.innerText) {
-        // event.target.append(document.getElementById(data))
-        console.log(data);
-    } else {
-        // appendSibling(event.target, document.getElementById(data))
-        console.log(data);
-    }
-    hideGuideline()
 }
 // -----------------------------------------------
 
@@ -148,7 +138,8 @@ function getParentElement(element) {
     if (!document.body.contains(GUIDELINE)) {
         return element;
     } else {
-        return element.parentElement
+        if (element.id == 'container') return element
+        else return element.parentElement
     }
 }
 /**
