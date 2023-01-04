@@ -139,7 +139,8 @@ function findComponentById(id, components) {
     if (component.id == id) {
       return component
     } else if (component.children && component.children.length) {
-      return findComponentById(id, component.children)
+      const matchingChild = findComponentById(id, component.children)
+      if (matchingChild) return matchingChild
     } else {
     }
   }
@@ -157,7 +158,8 @@ function findComponentById(id, components) {
       components.splice(i, 1)
       return true
     } else if (component.children && component.children.length) {
-      return deleteComponentById(id, component.children)
+      const deleted = deleteComponentById(id, component.children)
+      if (deleted) return true
     } else {
     }
   }

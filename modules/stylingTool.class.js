@@ -25,7 +25,7 @@ class StylingTool {
 
     //find component
     const targetComponent = findComponentById(component, this.projectData.pages[page].components)
-    if (!targetComponent || !targetComponent.styleClasses || !targetComponent.editable) return
+    if (!targetComponent || !targetComponent.styleClasses || targetComponent.editable == false) return
 
     //display component name
     document.getElementById('component-name').innerText = targetComponent.name
