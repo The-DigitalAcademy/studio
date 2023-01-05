@@ -57,11 +57,14 @@ body {
   padding: 12px 7px 20px 7px;
   box-shadow: 0 0 200px #e3e3e3 inset;
   border: 3px solid rgba(255, 255, 255, 0.1490196078);
+  overflow-y: hidden;
 }
 
 .hide-scrollbar, .innerContainer, #container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -222,7 +225,7 @@ body {
   }
 }
 [contenteditable]:focus {
-  outline: 1px dotted rgb(190, 17, 212);
+  outline: 1px solid rgb(190, 17, 212);
 }
 
 .bg-gray-dark {
@@ -315,10 +318,17 @@ body {
 }
 
 .highlightBorder {
-  border: 0.3px dashed rgba(45, 129, 194, 0.6588235294) !important;
-  cursor: pointer;
+  box-shadow: 0 0 0.05rem 0.11rem rgb(45, 129, 194) !important;
+}
+
+.highlightBorder2 {
+  box-shadow: 0 0 0.05rem 0.11rem rgb(45, 129, 194) !important;
 }
 
 .muted {
   opacity: 0.4;
+}
+
+.mx-min {
+  margin: 5px 1%;
 }/*# sourceMappingURL=main.css.map */

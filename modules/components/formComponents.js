@@ -11,7 +11,8 @@ export default
                 margin: 'mb-3',
                 container: 'container',
                 textAlign: 'text-start',
-                form: 'input-group'
+                form: 'input-group',
+                margin: 'mx-min mb-3 py-1' 
             },
             attributes: {
                 dataset: {
@@ -37,7 +38,7 @@ export default
                 },
                 {
                     name: 'input',
-                    editable: true,
+                    editable: false,
                     styleClasses: {
                         form: 'form-control'
                     },
@@ -59,7 +60,8 @@ export default
                 margin: 'mb-3',
                 container: 'container',
                 textAlign: 'text-start',
-                form: 'input-group'
+                form: 'input-group',
+                margin: 'mx-min mb-3 py-1'  
             },
             attributes: {
                 dataset: {
@@ -84,7 +86,7 @@ export default
                 },
                 {
                     name: 'input',
-                    editable: true,
+                    editable: false,
                     styleClasses: {
                         form: 'form-control'
                     },
@@ -104,7 +106,8 @@ export default
             name: 'textarea',
             editable: true,
             styleClasses: {
-                form: 'form-control'
+                form: 'form-control',
+                margin: 'mx-min'
             },
             ayobaApiOptions: ['msisdn', 'location', 'country'],
             ayobaApi: '',

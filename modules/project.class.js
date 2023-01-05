@@ -25,6 +25,10 @@ class Project {
 
         window.addEventListener('hashchange', () => {
             const {page, method, component} = getHashData()
+            // if (component && component != 'undefined') {
+            //     // document.querySelector('.highlightBorder2').classList.remove('highlightBorder2')
+            //     // document.getElementById(component).classList.add('highlightBorder2')
+            // }
             if (method == "render") {
                 this.renderPage(page)
                 setHashData({method:'edit', component, page});            

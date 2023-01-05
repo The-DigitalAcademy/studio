@@ -76,7 +76,7 @@ export default {
               {
                 name: 'a',
                 styleClasses: {navbar: 'navbar-brand'},
-                attributes: {innerText: 'Brand Name'}
+                attributes: {innerText: 'Brand Name', contentEditable: true}
               },
               {
                 name: 'button',

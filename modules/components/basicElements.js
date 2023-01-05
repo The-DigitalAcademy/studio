@@ -8,6 +8,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -20,6 +21,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -32,6 +34,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -44,6 +47,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -56,6 +60,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -68,6 +73,7 @@ export default {
         styleClasses: {
             textAlign: 'text-center',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -82,6 +88,7 @@ export default {
             textAlign: 'text-center',
             textColor: 'text-dark',
             textSize: '.',
+            margin: 'mx-min'
         },
         attributes: {
             contentEditable: true,
@@ -106,7 +113,8 @@ export default {
         editable: true,
         styleClasses: {
             display: 'd-block',
-            textAlign: 'text-center'
+            textAlign: 'text-center',
+            margin: 'mx-min'
         },
         attributes: {
             innerText: 'link Text',
@@ -116,6 +124,10 @@ export default {
     },
     hr: {
         name: 'hr',
+        styleClasses: {
+            margin: 'mx-min my-2'        
+        }
+        
     },
     header: {
         name: 'header',
@@ -150,6 +162,9 @@ export default {
     button: {
         name: 'div',
         editable: false,
+        styleClasses: {
+            margin: 'mx-min'
+        },
         children: [
             {
                 name:'button',
