@@ -1,64 +1,72 @@
-import { Dragoned } from "./modules/dragoned.class.js";
-import { renderDraggableElements, renderPages, renderTemplateIcons, restrictMobile } from "./modules/utils.js"
-import components from "./modules/components/components.js" 
+import { createNewPageHandler, renderDraggableItems, renderPages, renderTemplateIcons, restrictMobile, setDragDrophandlers, switchDisplaysHandler, toggleDisplay } from "./modules/utils.js"
 import Project from "./modules/project.class.js";
-import testProjectData from "./modules/testProjectData.js";
-import Component from "./modules/component.class.js";
 import { StylingTool } from "./modules/stylingTool.class.js";
-import { ExportableProject } from "./modules/exportableProject.class.js";
+import { downloadProject } from "./modules/exportProject.module.js";
 import { AyobaApiTool } from "./modules/ayobaApiTool.class.js";
 import { RoutingTool } from "./modules/routingTool.class.js";
-import ecommerceTemplate from "./modules/templates/ecommerce.template.js";
-import blankTemplate from "./modules/templates/blank.template.js";
+import basicElements from "./modules/components/basicElements.js";
+import formComponents from "./modules/components/formComponents.js";
+import bootstrapComponents from "./modules/components/bootstrapComponents.js";
 
 restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  (function () {
+  if (!window.location.pathname.includes('studio')) {
+    renderTemplateIcons();
+    return
+  }
 
-    if (window.location.pathname.includes('templates')) {
-      renderTemplateIcons();
-      return
-    }
+  let projectData = JSON.parse(localStorage.getItem("workingProject"))
 
-    let projectData = localStorage.getItem("activeTemplate") ? JSON.parse(localStorage.getItem("activeTemplate")) : blankTemplate;
-    const project = new Project(projectData);
-    const editor = new StylingTool(projectData);
-    const ayobaApiTool = new AyobaApiTool(projectData);
-    const routingTool = new RoutingTool(projectData)
-    // const exportableProject = new ExportableProject(projectData);
-    
-    renderDraggableElements('draggable');
-    renderPages('pages-panel', projectData.pages);
+  //MENU
+  const componentsBtn = document.querySelector('#components-menu-btn')
+  const pagesBtn = document.querySelector('#pages-menu-btn')
+    //components panel
+  const componentsPanel = document.querySelector('#components-panel')
+  const basicElementsBtn = document.querySelector('#basic-elements');
+  const basicElementsContainer = document.querySelector('#basic-elements-list')
+  const formsBtn = document.querySelector('#forms');
+  const formsContainer = document.querySelector('#forms-list');
+  const bootstrapComponentsBtn = document.querySelector('#bootstrap-components');
+  const bootstrapComponentsContainer = document.querySelector('#bootstrap-components-list');
+    //pages panel
+  const pagesPanel = document.querySelector('#pages-panel');
+  const pagesContainer = document.querySelector('#pages-container');
+  const pageNameInput = document.querySelector('#page-name-input');
+  const createPageBtn = document.querySelector('#create-page-btn');
 
-    // document.getElementById('export-project').onclick = exportableProject.download();
-    document.querySelector('#print-projectData').addEventListener('click', () => console.log(projectData))
+  const exportBtn = document.querySelector('#export-project')
 
-    const container = new Dragoned(document.querySelector('#container'), {
-      // draggable:".item",
-      // handle:".handle",
-      group: "blocks-group",
-      delay: 100,
-      onEnd: (data) => {
+  createNewPageHandler(pageNameInput, createPageBtn);
 
-      }
-    });
-    //=========Initialize start here=========//
-    const draggable = new Dragoned(document.querySelector('#draggable'), {
-      // draggable:".item",
-      // handle:".handle",
-      sort: false,
-      clone: true,
-      group: "blocks-group",
-      onEnd: (data) => {
-        
-        const { item } = data;
-        const type = item.dataset.type;
-        item.innerHtml = "";
-        item.append(new Component(components[type]).getComponent());
-      }
-    });
+  setDragDrophandlers(document.querySelector('#container'))
 
-  })();
+  toggleDisplay(basicElementsBtn, ['#basic-elements-list', '#basic-elements-up', '#basic-elements-down'])
+  toggleDisplay(formsBtn, ['#forms-list', '#forms-up', '#forms-down'])
+  toggleDisplay(bootstrapComponentsBtn, ['#bootstrap-components-list', '#bootstrap-components-up', '#bootstrap-components-down'])
+
+  renderDraggableItems(basicElementsContainer, basicElements );
+  renderDraggableItems(formsContainer, formComponents );
+  renderDraggableItems(bootstrapComponentsContainer, bootstrapComponents );
+
+  switchDisplaysHandler(componentsBtn, componentsPanel, [pagesPanel]);
+  switchDisplaysHandler(pagesBtn, pagesPanel, [componentsPanel]);
+
+  renderPages(pagesContainer, projectData.pages);
+  window.addEventListener('hashchange', () => {
+    setTimeout(() => {
+      renderPages(pagesContainer, projectData.pages)
+    }, 1000)
+  })
+
+  const project = new Project(projectData);
+  const editor = new StylingTool(projectData);
+  const ayobaApiTool = new AyobaApiTool(projectData);
+  const routingTool = new RoutingTool(projectData);
+
+  exportBtn.addEventListener('click', () => {
+    downloadProject(projectData)
+  })
+
 });

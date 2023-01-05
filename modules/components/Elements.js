@@ -1,124 +1,5 @@
 export default 
 {
-    header: {
-        name: 'header',
-        styleClasses: {
-            textAlign: 'text-center',
-            bgColor: 'bg-dark',
-            textColor: 'text-light',
-            padding: 'p-2',
-            textSize: 'fs-4',
-        },
-        editable: true, 
-        attributes: {
-            innerText: 'Header',
-            contentEditable: true
-        }
-    },
-    footer: {
-        name: 'footer',
-        styleClasses: {
-            textAlign: 'text-center',
-            bgColor: 'bg-dark',
-            textColor: 'text-light',
-            padding: 'p-2',
-            textSize: 'fs-4',
-        },
-        editable: true, 
-        attributes: {
-            innerText: 'Footer',
-            contentEditable: true
-        }
-    },
-
-    h3: {
-        name: 'h3',
-        editable: true,
-        styleClasses: {
-            textAlign: 'text-center',
-            textSize: '.',
-        },
-        attributes: {
-            contentEditable: true,
-            innerText: 'Heading 3'
-        }
-    },
-
-    p: {
-        name: 'p',
-        editable: true,
-        styleClasses: {
-            textAlign: 'text-center',
-            textColor: 'text-dark',
-            textSize: '.',
-        },
-        attributes: {
-            contentEditable: true,
-            innerText: 'Enter Text', 
-        }
-    },
-    img: {
-        name: 'img',
-        editable: true,
-        styleClasses: {
-            display: 'd-block',
-            borderRadius: 'rounded-0',
-            horizontalAlign: 'mx-auto',
-            width: 'w-10'
-        },
-        attributes: {
-            src: 'https://picsum.photos/200/100',
-        }
-    },
-    emailInput: {
-        name: 'input',
-        editable: true,
-        styleClasses: {
-            form: 'form-control'
-        },
-        attributes: {
-            type: 'email',
-            placeholder: 'john@email.com'
-        }
-    },
-    phoneInput: {
-        name: 'input',
-        editable: true,
-        styleClasses: {
-            form: 'form-control'
-        },
-        ayobaApiOptions: ['msisdn'],
-        ayobaApi: '',
-        attributes: {
-            type: 'tel',
-            placeholder: '0981234567'
-        }
-    },
-    textarea: {
-        name: 'textarea',
-        editable: true,
-        styleClasses: {
-            form: 'form-control'
-        },
-        ayobaApiOptions: ['msisdn', 'location', 'country'],
-        ayobaApi: '',
-        attributes: {
-            placeholder: 'enter text'
-        }
-    },
-    label: {
-        name: 'label',
-        editable: true,
-        styleClasses: {
-            form: 'form-label',
-            textColor: 'text-dark',
-            textSize: '.',
-        },
-        attributes: {
-            innerText: 'Form Label',
-            contentEditable: true
-        }
-    },
     textInput: {
         name: 'input',
         editable: true,
@@ -131,37 +12,6 @@ export default
             type: 'text',
             placeholder: 'text'
         }
-    },
-    radioInput: {
-        name: 'div',
-        styleClasses: {
-            form: 'form-check'
-        },
-        children: [
-            {
-                name: 'input',
-                editable: false,
-                styleClasses: {
-                    form: 'form-check-input'
-                },
-                attributes: {
-                    type: 'radio',
-                }
-            },
-            {
-                name: 'label',
-                editable: true,
-                styleClasses: {
-                    form: 'form-label',
-                    textColor: 'text-dark',
-                    textSize: '.',
-                },
-                attributes: {
-                    innerText: 'Form Label',
-                    contentEditable: true
-                }
-            }
-        ]
     },
     linkButton: {
         name: 'div',
@@ -186,17 +36,39 @@ export default
             }
         ]
     },
-    linkText: {
-        name: 'a',
-        editable: true,
-        styleClasses: {
-            display: 'd-block',
-            textAlign: 'text-center'
-        },
-        routeToPage: '',
-        attributes: {
-            innerText: 'link Text',
-            href: '#'
-        }
+    product: {
+        name: 'div',
+        styleClasses: {grid: 'col-6'},
+        children: [
+            {
+                name:'img',
+                styleClasses: {image: 'img-fluid'},
+                editable: true,
+                attributes: {
+                    src: 'https://picsum.photos/130/180'
+                }
+            },
+            {
+                name: 'div',
+                children: [
+                    {
+                        name: 'p',
+                        styleClasses: {textColor: 'text-muted', margin: 'mb-1'},
+                        attributes: {
+                            contentEditable: true,
+                            innerText: 'Product Name'
+                        }
+                    },
+                    {
+                        name: 'p',
+                        styleClasses: {textColor: '.'},
+                        attributes: {
+                            contentEditable: true,
+                            innerText: `R${Math.floor(Math.random()*(999-100+1)+100)}`
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }

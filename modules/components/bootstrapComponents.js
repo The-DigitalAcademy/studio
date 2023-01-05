@@ -1,7 +1,8 @@
-import components from "./components.js";
+import components from "./formComponents.js";
 
 export default {
   card: {
+    displayName: 'card',
     name: "div",
     styleClasses: { card: "card" },
     children: [
@@ -45,16 +46,32 @@ export default {
     ],
   },
   navHeader: {
+    displayName: 'nav header',
     name: 'header',
     styleClasses: {},
+    attributes: {
+      dataset: {
+        appendable: false,
+      },
+    },
     children: [
       {
         name: 'nav',
         styleClasses: {navbar:'navbar navbar-expand-xs navbar-dark bg-dark'},
+        attributes: {
+          dataset: {
+            appendable: false,
+          },
+        },
         children: [
           {
             name: 'div',
             styleClasses: {container: 'container-fluid'},
+            attributes: {
+              dataset: {
+                appendable: false,
+              },
+            },
             children: [
               {
                 name: 'a',
@@ -67,6 +84,7 @@ export default {
                 attributes: {
                   type: 'button',
                   dataset: {
+                    appendable: false,
                     bsToggle: 'collapse',
                     bsTarget: '#navbarNavAltMarkup',                    
                   },
