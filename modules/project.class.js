@@ -25,6 +25,10 @@ class Project {
 
         window.addEventListener('hashchange', () => {
             const {page, method, component} = getHashData()
+            // if (component && component != 'undefined') {
+            //     // document.querySelector('.highlightBorder2').classList.remove('highlightBorder2')
+            //     // document.getElementById(component).classList.add('highlightBorder2')
+            // }
             if (method == "render") {
                 this.renderPage(page)
                 setHashData({method:'edit', component, page});            
@@ -62,8 +66,15 @@ class Project {
 
         //delete key listener
         window.addEventListener('keydown', (e) => {
+            const {component, page} = getHashData();
+            if (e.key.toLowerCase() == 'backspace') {
+                if (e.target.contentEditable !== 'true') {
+                    deleteComponentById(component, this.projectData.pages[page].components)
+                    this.renderPage(page)
+                }
+                else return
+            }
             if ((e.key.toLowerCase() == 'd' && e.ctrlKey) || e.key.toLowerCase() == 'delete') {
-                const {component, page} = getHashData();
                 deleteComponentById(component, this.projectData.pages[page].components)
                 this.renderPage(page)
             }

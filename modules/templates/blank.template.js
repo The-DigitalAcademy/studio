@@ -7,7 +7,7 @@ export default {
         {
             id: generateUuid(),
             name: 'Home',
-            filename: 'index.html',
+            filename: 'index',
             components: []
         }
     ]

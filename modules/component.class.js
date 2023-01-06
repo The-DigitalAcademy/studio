@@ -26,8 +26,8 @@ class Component {
         element.draggable = true
         element.ondragstart = (e) => onDragStartHandler(e);
         element.ondrageend = (e) => onDragEndHandler(e);
-        element.onmouseenter = (e) => e.target.classList.add('highlightBorder');
-        element.onmouseout = (e) => e.target.classList.remove('highlightBorder');
+        element.onmouseover = (e) => e.target.classList.add('highlightBorder');
+        element.onmouseleave = (e) => e.target.classList.remove('highlightBorder');
 
         //set element attributes
         if (elementData.attributes) {

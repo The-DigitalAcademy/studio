@@ -5,7 +5,7 @@ export default {
     "name": "landing",
     "pages": [
         {
-            "id": "e3ea9fa2-2142-445b-90cf-e168835f7ce4",
+            "id": "7bbd68c7-0dfe-453a-b06e-4e22700b438c",
             "name": "Home",
             "filename": "index",
             "components": [
@@ -16,26 +16,37 @@ export default {
                         "bgColor": "bg-dark",
                         "textColor": "text-light",
                         "padding": "p-2",
-                        "textSize": "fs-5"
+                        "textSize": "fs-4"
                     },
                     "editable": true,
                     "attributes": {
-                        "innerText": "Landing Page ",
+                        "innerText": "Header Title",
                         "contentEditable": true
                     },
                 },
                 {
-                    "name": "p",
+                    "name": "h1",
                     "editable": true,
                     "styleClasses": {
                         "textAlign": "text-center",
-                        "textColor": "text-dark",
-                        "textSize": "small"
+                        "textSize": "fs-3",
+                        "margin": "mx-min"
                     },
                     "attributes": {
                         "contentEditable": true,
-                        "innerText": "Lorem ipsum dolor sit , elit. Aliquam id massa, nulla sed, erat."
+                        "innerText": "Heading 1"
                     },
+                },
+                {
+                    "displayName": "nav header",
+                    "name": "header",
+                    "styleClasses": {},
+                    "attributes": {
+                        "dataset": {
+                            "appendable": false
+                        }
+                    },
+                    "children": [],
                 },
                 {
                     "name": "img",
@@ -47,7 +58,7 @@ export default {
                         "width": "w-100"
                     },
                     "attributes": {
-                        "src": "https://picsum.photos/600/300"
+                        "src": "https://picsum.photos/200/100"
                     },
                 },
                 {
@@ -56,14 +67,15 @@ export default {
                     "styleClasses": {
                         "textAlign": "text-center",
                         "textColor": "text-dark",
-                        "textSize": "."
+                        "textSize": ".",
+                        "margin": "mx-min"
                     },
                     "attributes": {
                         "contentEditable": true,
-                        "innerText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id massa ultricies, hendrerit nulla sed, congue erat."
+                        "innerText": "Intro for a landing page of a websit"
                     },
                 }
             ]
-        },
+        }
     ]
 }

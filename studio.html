@@ -74,16 +74,19 @@
             <div id="pages-panel" class="d-none">
                 <h4 class="text-center fw-light my-3">Pages</h4>
                 <div id="new-page" class="text-center border-bottom border-secondary mx-1 p-2">
-                    <input type="text" id="page-name-input" placeholder="new page name" class="w-100 form-control py-0">
+                    <input type="text" id="page-name-input" minlength="3" maxlength="15" placeholder="new page name" class="w-100 form-control py-0">
                     <button id="create-page-btn" class="btn btn-sm btn-success my-2 w-100 p-0">create page</button>
                 </div>
-                <div id="pages-container"></div>
+                <div id="pages-container" class="container"></div>
             </div>    
         </div>
 
         <!-- ################# MIDDLE mobile view ################## -->
         <div id="view-wrapper">
-            <p class="text-center m-0 fs-5 text-capitalize fw-bold mb-1" id="workingPageName">Home</p>
+            <div class="m-0 mb-1 d-flex justify-content-between mx-3 align-items-center">
+                <span id="workingPageName" class="fs-5 text-capitalize">Home</span>
+                <!-- <button class="btn"><i class="bi bi-trash-fill"></i></button> -->
+            </div>
             <div class="mobile shadow">
                 <div id="mobile-header" class="p-2 ayoba-header-bg EDITONLY shadow-sm">
                     <h1 class="dispay-4 fs-4 text-center text-light">
@@ -262,6 +265,12 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- IMAGE URL TOOL -->
+                <!-- <div data-style-prop="imageUrl">
+                    <label for="image-url" class="form-label small">Image url:</label>
+                    <input type="email" class="form-control py-0" id="image-url">
+                </div> -->
             </div>
             <hr>
 

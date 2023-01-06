@@ -212,7 +212,7 @@ body {
 }
 
 [contenteditable]:focus {
-    outline: 1px dotted rgb(190, 17, 212);
+    outline: 1px solid rgb(190, 17, 212);
   }
 
 .bg-gray-dark { background-color: #343a40 }
@@ -266,10 +266,19 @@ body {
     // box-shadow: 0 0 0 0.1rem #c80cce !important;
 }
 .highlightBorder {
-    border: .3px dashed #2d81c2a8 !important;
-    cursor: pointer;
+    // border: .3px dashed #2d81c2a8 !important;
+    // cursor: pointer;
     // box-shadow: 0 0 0 0.1rem #2d81c2a8 !important;
+    box-shadow: 0 0 0.05rem 0.11rem rgb(45 129 194) !important
+}
+.highlightBorder2 {
+    box-shadow: 0 0 0.05rem 0.11rem rgb(45 129 194) !important
 }
 .muted {
     opacity: .4;
+}
+.mx-min {
+    // margin-left: 2%;
+    // margin-right: 2%;
+    margin: 5px 1%;
 }
