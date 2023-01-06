@@ -7,7 +7,7 @@ export default {
         {
             "id": "704102c8-d283-49e5-9d64-2b0174fda6ec",
             "name": "Home",
-            "filename": "index.html",
+            "filename": "index",
             "components": [
                 {
                     "name": "header",

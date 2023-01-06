@@ -92,7 +92,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "About",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": "./about.html"
                                                           },
                                                           "id": "368d0558-a2ac-4f64-a9a0-91a1f8bfb803"
                                                       },
@@ -104,7 +105,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "Products",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": "./products.html"
                                                           },
                                                           "id": "607a6754-0e26-477e-b2a3-d7f0e4956977"
                                                       },
@@ -116,7 +118,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "contact us",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": "./contact.html"
                                                           },
                                                           "id": "7d54e747-db23-4a23-a759-4fbd17a32c80"
                                                       }
@@ -373,7 +376,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "About",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './about.html'
                                                           },
                                                           "id": "fb82b475-a6ee-49fc-a690-51f4f55d7e7a"
                                                       },
@@ -385,7 +389,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "Products",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './products.html'
                                                           },
                                                           "id": "b5154d0a-4bb7-4490-83ca-4347880896a8"
                                                       },
@@ -397,7 +402,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "contact us",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './contact.html'
                                                           },
                                                           "id": "7900e372-84a3-46de-b141-6ea0f86f2986"
                                                       }
@@ -741,7 +747,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "About",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './about.html'
                                                           },
                                                           "id": "97dba427-d10a-4869-8ac4-355bd970751e"
                                                       },
@@ -753,7 +760,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "Products",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './products.html'
                                                           },
                                                           "id": "d394509f-b01a-4672-a6eb-a12fc1591cce"
                                                       },
@@ -765,7 +773,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "contact us",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './contact.html'
                                                           },
                                                           "id": "703048db-2af4-48ab-aeaa-b9958bb6e366"
                                                       }
@@ -960,7 +969,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "About",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './about.html'
                                                           },
                                                           "id": "fc51eeb1-4fdf-43f8-869f-4b55240f1e1c"
                                                       },
@@ -972,7 +982,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "Products",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './products.html'
                                                           },
                                                           "id": "54ee3f8f-fafc-4257-b04e-e901fb7472a5"
                                                       },
@@ -984,7 +995,8 @@ export default {
                                                           "editable": true,
                                                           "attributes": {
                                                               "innerText": "contact us",
-                                                              "contentEditable": true
+                                                              "contentEditable": true,
+                                                              "href": './contact.html'
                                                           },
                                                           "id": "b85bd5e9-eca7-48be-84ef-c23e8650c491"
                                                       }
