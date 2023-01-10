@@ -12,7 +12,7 @@ restrictMobile()
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  if (!window.location.pathname.includes('studio')) {
+  if (!window.location.pathname.includes('studio.html')) {
     renderTemplateIcons();
     return
   }
