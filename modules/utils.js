@@ -61,7 +61,7 @@ function renderTemplateIcons() {
     container.onclick = () => {
       localStorage.setItem('workingProject', JSON.stringify(template))
       console.log();
-      window.location.href = location.origin + '/studio.html'
+      window.location.href = location + 'studio.html'
     }
     templateContainer.append(container)
   }
